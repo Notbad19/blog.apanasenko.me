@@ -23,6 +23,10 @@ layout: default
 
 <div id="content">
 	{{ content }}
+
+	{% if page.categories %}
+	    Tags: {{ page.categories }}
+	{% endif %}
 </div>
 
 <div id="disqus_thread"></div>
