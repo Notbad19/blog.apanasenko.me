@@ -62,12 +62,12 @@ div#wrapper
   background-image: url('/images/gradient.png');
   background-position: center;
   background-repeat: repeat-y;
-  min-width:990px;
+  min-width:790px;
   overflow:hidden;
 }
 
 div#inner{
-  width:990px;
+  width:790px;
   margin:50px auto;
   position:relative;
 }
@@ -85,7 +85,7 @@ div#container
   font-size:15px;
   line-height:150%;
   opacity:0.9px;
-  width:950px;
+  width:750px;
   padding:20px;
   text-shadow:0 1px 0 #fff;
   position:relative;
@@ -99,7 +99,7 @@ div#content img, div#content object
   -webkit-border-radius:5px;
   -webkit-box-shadow:0 1px 0 #fff;
   border: 5px #222 solid;
-  width: 940px;
+  width: 740px;
 }
 
 
@@ -288,7 +288,7 @@ div#content pre
   font-size: 13px;
   padding: 20px;
   text-shadow:0 1px 0 #000;
-  width: 490px;
+  width: 790px;
   margin: 0px 0px 0px -40px;
 }
 
@@ -301,7 +301,7 @@ div.notice
   background-color:#fffbbb;
   padding: 20px;
   text-shadow:0 1px 0 #dddaaa;
-  width: 990px;
+  width: 790px;
   margin: 0px 0px 5px -40px;
 }
 
