@@ -1,0 +1,34 @@
+---
+layout: post
+title: RabbitMQ Erlang Client
+excerpt: Пишу для себя маленький гайд по сборке и установке Erlang клиента для RabbiMQ, а то каждый раз все заново проходиться делать :) Ревизии приведены для версии 2.0.0, а пути к директории Erlang/lib для Ubuntu 10.04. Для OS X, надо будет поменять /usr/lib на /opt/local/lib/, если Erlang ставили из портов.
+published: true
+---
+
+!http://www.rabbitmq.com/img/rabbitmq_logo_strap.png(RabbitMQ Server)!
+
+Пишу для себя маленький гайд по сборке и установке Erlang клиента для RabbiMQ, а то каждый раз все заново проходиться делать :) Ревизии приведены для версии 2.0.0, а пути к директории Erlang/lib для Ubuntu 10.04. Для OS X, надо будет поменять /usr/lib на /opt/local/lib/, если Erlang ставили из портов.
+
+{% highlight bash %}
+hg clone http://hg.rabbitmq.com/rabbitmq-server -r 4f72e4d66f23
+hg clone http://hg.rabbitmq.com/rabbitmq-codegen/ -r f8b34141e6cb
+hg clone http://hg.rabbitmq.com/rabbitmq-erlang-client/ -r 0a312262a2f1
+cd rabbitmq-erlang-client/
+make
+{% endhighlight %}
+
+Ubuntu/Linux
+
+{% highlight bash %}
+sudo cp -r dist/amqp_client/ /usr/lib/erlang/lib/amqp_client-2.0.0/
+sudo cp -r dist/rabbit_common/ /usr/lib/erlang/lib/rabbit_common-2.0.0/
+{% endhighlight %}
+
+OS X/MacPorts
+
+{% highlight bash %}
+sudo cp -r dist/amqp_client/ /opt/local/lib/erlang/lib/amqp_client-2.0.0/
+sudo cp -r dist/rabbit_common/ /opt/local/lib/erlang/lib/rabbit_common-2.0.0/
+{% endhighlight %}
+
+Всем спасибо за внимание :)
