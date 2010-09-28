@@ -67,7 +67,7 @@ div#wrapper
 }
 
 div#inner{
-  width:490px;
+  width:990px;
   margin:50px auto;
   position:relative;
 }
@@ -85,7 +85,7 @@ div#container
   font-size:15px;
   line-height:150%;
   opacity:0.9px;
-  width:450px;
+  width:950px;
   padding:20px;
   text-shadow:0 1px 0 #fff;
   position:relative;
@@ -99,7 +99,7 @@ div#content img, div#content object
   -webkit-border-radius:5px;
   -webkit-box-shadow:0 1px 0 #fff;
   border: 5px #222 solid;
-  width: 440px;
+  width: 940px;
 }
 
 
@@ -301,7 +301,7 @@ div.notice
   background-color:#fffbbb;
   padding: 20px;
   text-shadow:0 1px 0 #dddaaa;
-  width: 490px;
+  width: 990px;
   margin: 0px 0px 5px -40px;
 }
 

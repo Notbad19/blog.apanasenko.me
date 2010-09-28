@@ -4,20 +4,20 @@ layout: none
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title>Jeff Kreeftmeijer</title>
-  <link href="http://jeffkreeftmeijer.com/feed.xml" rel="self"/>
-  <link href="http://jeffkreeftmeijer.com/"/>
+  <title>Anton Panasenko</title>
+  <link href="http://dieu.github.com/feed.xml" rel="self"/>
+  <link href="http://dieu.github.com/"/>
   <updated>{{ site.time | date_to_xmlschema }}</updated>
-  <id>http://jeffkreeftmeijer.com/</id>
+  <id>http://dieu.github.com/</id>
   <author>
-    <name>Jeff Kreeftmeijer</name>
+    <name>Anton Panasenko</name>
   </author>
 
   {% for post in site.posts %}
   <entry>
     <title type="html">{{ post.title | xml_escape }}</title>
-    <link href="http://jeffkreeftmeijer.com{{ post.url }}"/>
-    <id>http://jeffkreeftmeijer.com{{ post.url }}</id>
+    <link href="http://dieu.github.com{{ post.url }}"/>
+    <id>http://dieu.github.com{{ post.url }}</id>
     <updated>{{ post.date | date_to_xmlschema }}</updated>
     <content type="html">
       {% if post.author %}
