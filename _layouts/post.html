@@ -24,11 +24,11 @@ layout: default
 		<h5>Posted {{page.date | date_to_string}} by Anton Panasenko | tags:
 		{% for item in page.categories %} 
 			{% if forloop.last %}
-				and {{ item }}.
+				and <a href="/search/label/{{ item }}">{{ item }}</a>.
 			{% elsif forloop.rindex == 2 %}		
-				{{ item }}
+				<a href="/search/label/{{ item }}">{{ item }}</a>
 			{% else %}
-				{{ item }},
+				<a href="/search/label/{{ item }}">{{ item }}</a>,
 			{% endif %} 
 		{% endfor %}
 	{% endif %}</h5>
