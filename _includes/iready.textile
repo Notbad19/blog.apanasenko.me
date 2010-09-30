@@ -1,5 +1,5 @@
 <ol>
 <li><a href="http://alenacpp.blogspot.com/">Алена С++</a></li>
 <li></li>
-<li><a href="http://samolisov.blogspot.com/">Блог Cурового Челябинского Программиста</a></li>
+<li><a href="http://samolisov.blogspot.com/">Челябинский Программист</a></li>
 </ol>

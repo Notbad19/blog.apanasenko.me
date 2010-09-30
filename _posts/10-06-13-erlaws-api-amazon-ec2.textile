@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Erlaws API к Amazon EC2
+title: Erlaws API for Amazon EC2
 excerpt: На днях понадбилась библиотека для работы с <strong>Amazon EC2</strong> из под <strong>Erlang</strong>'a, но адекватных предложений не было (гугл в принципе не нашел ни одного варианта). По этому пришлось взять существующую библиотеку для других сервисов Amazon'a и добавить в неё поддержку EC2.
 published: true
 categories:

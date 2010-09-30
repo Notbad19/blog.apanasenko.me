@@ -88,14 +88,14 @@ div#container
   border-radius:5px;
   box-shadow:0 1px 0 #fff;
   color:#222;
-  font-size:15px;
+  font-family: "Verdana";
+  font-size:12px;
   line-height:150%;
   opacity:0.9px;
   width:750px;
   padding:20px;
   text-shadow:0 1px 0 #fff;
   position:relative;
-  font-family: "";
   z-index: 1;
 }
 
@@ -141,7 +141,7 @@ div.post h3,div.post p
 div#slide_bar {
   position:absolute;
   top: 110px;
-  right: -270px;
+  right: -210px;
 }
 
 div#slide_bar a:hover
@@ -162,7 +162,7 @@ div#slide_bar p
 }
 
 div#cloud_tag {
-  width: 250px;
+  width: 190px;
   background-color: #222;
   font-size: 12px;
   padding: 10px;
@@ -176,7 +176,7 @@ div#cloud_tag {
 }
 
 div#iready {
-  width: 250px;
+  width: 190px;
   background-color: #222;
   font-size: 12px;
   padding: 10px;
@@ -190,9 +190,9 @@ div#iready {
 }
 
 div#twitter {
-  width: 250px;
+  width: 190px;
   background-color: #222;
-  font-size: 12px;
+  font-size: 15px;
   padding: 10px;
   -moz-border-radius-topright:5px;
   -moz-border-radius-bottomright:5px;
@@ -203,11 +203,22 @@ div#twitter {
   z-index:0;
 }
 
-.twtr-widget{
+div#twitter a {
+  font-family: 'lucida grande', lucida, tahoma, helvetica, arial, sans-serif !important;
+  font-size: 13px;
+}
+
+div#twitter h3 {
+  font-family: 'lucida grande', lucida, tahoma, helvetica, arial, sans-serif !important;
+  font-size: 13px;
+}
+
+.twtr-widget {
     position:relative;
-    font-size:12px !important;
-    font-family: "Yanone Kaffeesatz", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    zoom:1;
+}
+
+.twtr-ft {
+  display: none;
 }
 
 ul.header {

@@ -21,7 +21,7 @@ layout: default
 	{{ content }}
 
 	{% if page.categories %}
-		<h5>Posted {{page.date | date_to_string}} by Anton Panasenko | tags:
+		<h4>Posted {{page.date | date_to_string}} by Anton Panasenko | tags:
 		{% for item in page.categories %} 
 			{% if forloop.last %}
 				and <a href="/search/label/{{ item }}">{{ item }}</a>.
@@ -31,7 +31,7 @@ layout: default
 				<a href="/search/label/{{ item }}">{{ item }}</a>,
 			{% endif %} 
 		{% endfor %}
-	{% endif %}</h5>
+	{% endif %}</h4>
 </div>
 
 <div id="disqus_thread"></div>
