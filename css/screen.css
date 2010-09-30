@@ -138,15 +138,33 @@ div.post h3,div.post p
   margin:5px 0;
 }
 
-div#ads{
+div#slide_bar {
   position:absolute;
   top: 110px;
-  right: -140px;
+  right: -270px;
 }
 
-div#adzerk{
-  width: 120px;
+div#slide_bar a:hover
+{
+  color: #ddd;
+}
+
+div#slide_bar, div#slide_bar a
+{
+  color:#fff;
+  line-height: 130%;
+  text-shadow:0 1px 0 #000;
+}
+
+div#slide_bar p
+{
+  margin:10px 0 0 0;
+}
+
+div#cloud_tag {
+  width: 250px;
   background-color: #222;
+  font-size: 11px;
   padding: 10px;
   -moz-border-radius-topright:5px;
   -moz-border-radius-bottomright:5px;
@@ -157,27 +175,39 @@ div#adzerk{
   z-index:0;
 }
 
-div#adzerk, div#adzerk a
-{
-  color:#fff;
-  font-size: 11px;
-  line-height: 130%;
-  text-shadow:0 1px 0 #000;
+div#iready {
+  width: 250px;
+  background-color: #222;
+  font-size: 12px;
+  padding: 10px;
+  -moz-border-radius-topright:5px;
+  -moz-border-radius-bottomright:5px;
+  -moz-box-shadow:0 -1px 0 #444;
+  -webkit-border-top-right-radius:5px;
+  -webkit-border-bottom-right-radius:5px;
+  -webkit-box-shadow:0 -1px 0 #444, 0 0 10px #222;
+  z-index:0;
 }
 
-div#adzerk a:hover
-{
-  color: #ddd;
+div#twitter {
+  width: 250px;
+  background-color: #222;
+  font-size: 12px;
+  padding: 10px;
+  -moz-border-radius-topright:5px;
+  -moz-border-radius-bottomright:5px;
+  -moz-box-shadow:0 -1px 0 #444;
+  -webkit-border-top-right-radius:5px;
+  -webkit-border-bottom-right-radius:5px;
+  -webkit-box-shadow:0 -1px 0 #444, 0 0 10px #222;
+  z-index:0;
 }
 
-div#adzerk p
-{
-  margin:10px 0 0 0;
-}
-
-div#webbynode
-{
-  padding: 25px 5px;
+.twtr-widget{
+    position:relative;
+    font-size:12px !important;
+    font-family: "Yanone Kaffeesatz", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    zoom:1;
 }
 
 h1
@@ -287,9 +317,7 @@ pre{
 div#content pre
 {
   -moz-border-radius:5px;
-  -moz-box-shadow:0 -1px 0 #444;
   -webkit-border-radius:5px;
-  -webkit-box-shadow:0 -1px 0 #444;
   background-color:#222;
   color:#fff;
   font-size: 13px;
@@ -325,7 +353,9 @@ div#disqus_thread{
   margin: 50px 0px 0px 0px;
 }
 
-div.dsq-options, div.dsq-sharing-options, div.dsq-dc-logo, div#dsq-global-toolbar, div#dsq-pagination{
+#div.dsq-options, div#dsq-pagination, div.dsq-sharing-options
+
+div.dsq-dc-logo, div#dsq-global-toolbar {
   display:none !important;
 }
 
@@ -361,4 +391,17 @@ span.balloon{
   margin: 0 5px;
   display:none;
   line-height: 16px;
+}
+
+ol#tag-cloud {
+  margin-bottom: 35px;
+}
+
+ol#tag-cloud li {
+    display: inline;
+    line-height: 150%;
+}
+
+ol#tag-cloud a {
+      padding: 2px;
 }

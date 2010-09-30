@@ -47,19 +47,49 @@
         {{ content }}
       </div>
 
-<!--
-      <div id="ads">
-        <div class="ad" id="adzerk">
-          <div id="adzerk_ad_div">
-            <script type="text/javascript" src="http://engine.rubyrow.net/Server/RUBY/JK/NOCSS"></script>
+      <div id="slide_bar">
+        <div id="cloud_tag">
+          <div id="cloud_tag_div">
+            {% include tag_cloud.textile %}
           </div>
-          <p id="adzerk_by">Ads from <a href='http://rubyrow.net'>RubyRow</a></p>
         </div>
-
-        <div class="ad" id="webbynode">
-          <a href="http://webbynode.com">
-            <img src="/images/webbynode.png"/>
-          </a>
+	<br/>
+	<div id="iready">
+	    {% include iready.textile %}
+        </div>
+        <br/>
+        <div id="twitter">
+<script src="http://widgets.twimg.com/j/2/widget.js"></script>
+<script>
+new TWTR.Widget({
+  version: 2,
+  type: 'profile',
+  rpp: 6,
+  interval: 6000,
+  width: 250,
+  height: 300,
+  theme: {
+    shell: {
+      background: '#222',
+      color: '#ffffff'
+    },
+    tweets: {
+      background: '#222',
+      color: '#ffffff',
+      links: '#4aed05'
+    }
+  },
+  features: {
+    scrollbar: false,
+    loop: true,
+    live: true,
+    hashtags: true,
+    timestamp: true,
+    avatars: false,
+    behavior: 'default'
+  }
+}).render().setUser('apanasenko').start();
+</script>
         </div>
       </div> -->
     </div>
