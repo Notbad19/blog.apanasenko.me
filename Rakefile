@@ -13,13 +13,12 @@ task :tags do
     html << <<-HTML
 ---
 layout: default
-title: Posts tagged "#{tag}"
-excerpt: Posts tagged "#{tag}"
+title: Posts tagged #{tag}
+excerpt: Posts tagged #{tag}
 ---
-
-{% assign tag = #{tag} %}
-{% for post in posts %}
-    {% if post.categories.include?(tag) %}
+{% for post in site.posts %}
+    {% for tag in post.categories %}
+	{% if tag == '#{tag}' %}
   <div class="post">
     <h3><a href="{{ post.url }}/">{{ post.title }}</a></h3>
     <p class="date">{{ post.date | date_to_string }}
@@ -29,7 +28,8 @@ excerpt: Posts tagged "#{tag}"
     </p>
     <p>{{ post.excerpt }}</p>
   </div>
-    {% endif %}
+	{% endif %}
+    {% endfor %}
 {% endfor %}
     HTML
 
