@@ -13,11 +13,10 @@ body
   -webkit-background-size:100% auto;
   background-attachment:fixed;
   background-color:#222;
-#  background-image:url('../images/background.jpg');
   background-image:url('http://farm4.static.flickr.com/3580/3433083850_624f1be8de_b.jpg');
   background-position:center;
   background-size:100% auto;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  #font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 h2,h3,h4,h5,h6
@@ -96,6 +95,7 @@ div#container
   padding:20px;
   text-shadow:0 1px 0 #fff;
   position:relative;
+  font-family: "";
   z-index: 1;
 }
 
@@ -164,7 +164,7 @@ div#slide_bar p
 div#cloud_tag {
   width: 250px;
   background-color: #222;
-  font-size: 11px;
+  font-size: 12px;
   padding: 10px;
   -moz-border-radius-topright:5px;
   -moz-border-radius-bottomright:5px;
@@ -208,6 +208,10 @@ div#twitter {
     font-size:12px !important;
     font-family: "Yanone Kaffeesatz", "Helvetica Neue", Helvetica, Arial, sans-serif;
     zoom:1;
+}
+
+ul.header {
+    font-size: 14px;
 }
 
 h1
@@ -353,9 +357,9 @@ div#disqus_thread{
   margin: 50px 0px 0px 0px;
 }
 
-#div.dsq-options, div#dsq-pagination, div.dsq-sharing-options
+#, div#dsq-pagination, div.dsq-sharing-options, div.dsq-dc-logo
 
-div.dsq-dc-logo, div#dsq-global-toolbar {
+div.dsq-options, div#dsq-global-toolbar {
   display:none !important;
 }
 
@@ -364,6 +368,9 @@ p.article_date{
 }
 
 span#article_buttons{
+  position: absolute;
+  right: 5px;
+  top: 100px;
   margin:20px 0;
   float:right;
   text-align: right;
@@ -391,6 +398,13 @@ span.balloon{
   margin: 0 5px;
   display:none;
   line-height: 16px;
+}
+
+div#content ol {
+    list-style: disc;
+    margin: 0.5em 0px;
+    padding: 0px 2.5em;
+    line-height: 1.4;
 }
 
 ol#tag-cloud {

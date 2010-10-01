@@ -1,0 +1,25 @@
+---
+layout: post
+title: Erlaws API к Amazon EC2
+excerpt: На днях понадбилась библиотека для работы с <strong>Amazon EC2</strong> из под <strong>Erlang</strong>'a, но адекватных предложений не было (гугл в принципе не нашел ни одного варианта). По этому пришлось взять существующую библиотеку для других сервисов Amazon'a и добавить в неё поддержку EC2.
+published: true
+categories:
+- amazon
+- aws
+- ec2
+- erlang
+---
+
+<div class="separator" style="clear: both; text-align: center;"><a href="http://github.com/dieu/erlaws" alt="erlaws" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="http://sameshirteveryday.com/wp-content/uploads/2009/10/erlan_logo.jpg" alt="erlaws" height="400"/></a></div>
+
+На днях понадбилась библиотека для работы с *Amazon EC2* из под <strong>Erlang</strong>'a, но адекватных предложений не было (гугл в принципе не нашел ни одного варианта). По этому пришлось взять существующую библиотеку для других сервисов Amazon'a и добавить в неё поддержку EC2. Встречайте "Erlaws (Erlaws)":http://github.com/dieu/erlaws :)
+
+Пока что мой модуль имеет поддержку следующих команд:
+# start_instances/1
+# run_instances/13
+# stop_instances/2
+# terminate_instances/1
+# describe_instances/0
+# describe_instances/1
+
+Но по мере надобности мне других команд я буду её обновлять. И если вам нужны какие либо команды пишите, реализую без проблем.
