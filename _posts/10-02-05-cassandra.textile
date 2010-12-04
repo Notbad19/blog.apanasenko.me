@@ -1,0 +1,66 @@
+---
+layout: post
+title: Cassandra
+excerpt: Cassandra - это NoSQL хранилище данных, которое родилось в Facebook и успешно используется в таких крупных веб проектах, как Digg, Twitter и других. Cassandra основана на Columnfamily (первый кто использовал данный подход в NoSQL хранилище <a href="http://labs.google.com/papers/bigtable-osdi06.pdf">Google co своей BigTable</a>) моделе. В ней, у вас есть строки и столбцы, как вы и привыкли видеть.
+published: true
+categories:
+- java
+- nosql
+- cassandra
+---
+
+<div class="separator" style="clear: both; text-align: center;">
+<a href="http://cassandra.apache.org/media/img/cassandra_logo.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="64" src="http://cassandra.apache.org/media/img/cassandra_logo.png" width="320" /></a></div>
+
+<strong>Cassandra</strong> - это <strong>NoSQL</strong> хранилище данных, которое родилось в <strong>Facebook</strong> и успешно используется в таких крупных веб проектах, как <strong>Digg</strong>, <strong>Twitter</strong> и других. <strong>Cassandra</strong> основана на <strong>Columnfamily</strong> (первый кто использовал данный подход в NoSQL хранилище "Google co своей BigTable":http://labs.google.com/papers/bigtable-osdi06.pdf ) моделе. В ней, у вас есть строки и столбцы, как вы и привыкли видеть.
+
+h4. Почему Cassandra?
+
+# У RDMS слишком много случайных операций ввода/вывода
+# Файл-решения требует слишком много локов
+
+h4. Что предлагает Cassandra?
+
+# Масштабирование
+# Балансировка нагрузки, добавление нод на лету
+# Гибкие схемы хранения данных
+# Key ориентированные запросы
+# AP из теоремы CAP
+
+h4. CAP теорема
+
+В теореме CAP ("Брюэр":http://www.cs.berkeley.edu/~brewer/cs262b-2004/PODC-keynote.pdf ) говорится, что вы можете получить два свойства из 3х (<strong>Consistency, Availability, Partition tolerance</strong>). Вы не можете иметь все 3 свойства и иметь приемлемый <strong>latency</strong>.
+
+Cassandra предлагает нам  Availability и Partitioning tolerance (AP). Компромисс между Сonsistency и Latency можно настроить в ней, вы можете получить усиленное Сonsistency, но заплатите за это увеличением задержек. 
+
+h4. История и подходы
+
+Существуют две известные работы:
+
+# BigTable: распределенная система хранения структурированных данных, 2006
+# Dynamo: Key-Value сторадж Амазона, 2007
+
+Cassandra взяла лучшие из данных подходов:
+
+# Из Dynamo partitioning и replication
+# Структурированную ColumnFamily модель данных похожую на BigTable
+
+h4. Cassandra дает:
+
+# Высокая доступность
+# Возрастающая масштабируемость
+# В конечном итоге Сonsistency
+# Настраиваемый компромисс между Сonsistency и Latency
+# Минимальную настройку (имеется виду простота настройки, а неё скудность)
+# Нет SPF (единой точки отказа)*
+
+*p2p модель распределения - подразумевает отсутствие единой точки отказа.
+
+h4. Распределение и разделение ключей
+
+В Cassandra используется "архитектура поиска Dynamo":http://s3.amazonaws.com/AllThingsDistributed/sosp/amazon-dynamo-sosp2007.pdf
+Не которые тезисы:
+
+# поиск узла за O(1)
+# Явные репликации
+# В конечном итоге Сonsistency
