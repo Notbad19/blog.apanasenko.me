@@ -20,7 +20,7 @@ layout: none
     <id>http://dieu.github.com{{ post.url }}</id>
     <updated>{{ post.date | date_to_xmlschema }}</updated>
     <content type="html">
-		{{ post.content | xml_escape }}
+		{{ post.content }}
     </content>
   </entry>
   {% endfor %}
