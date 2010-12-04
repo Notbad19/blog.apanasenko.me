@@ -1,6 +1,6 @@
 ---
 layout: post
-title: RabbitMQ & Alice
+title: RabbitMQ and Alice
 excerpt: Есть такой прекрасный проект RabbitMQ. И вот появилась задача организовать мониторинг за <strong>RabbitMQ</strong> сервером. Поискав не много в <strong>google</strong> нашел решение в виде Alice - это приложение выставляющие <strong>RESTful API</strong> написанное на <strong>Erlang</strong>. 
 published: true
 categories:
