@@ -5,8 +5,8 @@ layout: none
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title>Anton Panasenko</title>
-  <link href="http://dieu.github.com/feed.xml" rel="self"/>
-  <link href="http://dieu.github.com/"/>
+  <link href="http://blog.apanasenko.me/feed.xml" rel="self"/>
+  <link href="http://blog.apanasenko.me/feed.xml"/>
   <updated>{{ site.time | date_to_xmlschema }}</updated>
   <id>http://dieu.github.com/</id>
   <author>
@@ -16,13 +16,11 @@ layout: none
   {% for post in site.posts %}
   <entry>
     <title type="html">{{ post.title | xml_escape }}</title>
-    <link href="http://dieu.github.com{{ post.url }}"/>
+    <link href="http://blog.apanasenko.me{{ post.url }}"/>
     <id>http://dieu.github.com{{ post.url }}</id>
     <updated>{{ post.date | date_to_xmlschema }}</updated>
     <content type="html">
-      {% if post.author %}
-        &lt;p&gt;This is a guest post written by &lt;a href=&quot;http://twitter.com/{{ post.author.twitter }}&quot; title=&quot;{{ post.author.full}}&quot;&gt;@{{ post.author.twitter }}&lt;/a&gt;. {{ post.author.description | xml_escape }}
-      {% endif %}{{ post.content | xml_escape }}
+		{{ post.content | xml_escape }}
     </content>
   </entry>
   {% endfor %}
