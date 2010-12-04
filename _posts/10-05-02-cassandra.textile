@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Cassandra
-excerpt: Cassandra - это NoSQL хранилище данных, которое родилось в Facebook и успешно используется в таких крупных веб проектах, как Digg, Twitter и других. Cassandra основана на Columnfamily (первый кто использовал данный подход в NoSQL хранилище <a href="http://labs.google.com/papers/bigtable-osdi06.pdf">Google co своей BigTable</a>) моделе. В ней, у вас есть строки и столбцы, как вы и привыкли видеть.
+excerpt: Cassandra - это NoSQL хранилище данных, которое родилось в Facebook и успешно используется в таких крупных веб проектах, как Digg, Twitter и других. Cassandra основана на Columnfamily (первый кто использовал данный подход в NoSQL хранилище Google co своей BigTable) моделе. В ней, у вас есть строки и столбцы, как вы и привыкли видеть.
 published: true
 categories:
 - java

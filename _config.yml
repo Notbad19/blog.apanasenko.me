@@ -1,2 +1,2 @@
-permalink: /:year/:day/:title
+permalink: /:year/:month/:title
 exclude: lib
