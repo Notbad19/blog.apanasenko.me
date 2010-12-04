@@ -1,0 +1,353 @@
+---
+layout: post
+title: Hg server install
+excerpt: Опять ударила пуля в голову и захотелось на домашнем сервере держать <strong>Mercurial</strong> репозиторий, который был бы доступен по http. Для этого нам понадобится <strong>Mercurial</strong>, <strong>Python</strong>, <strong>Apache2</strong>, все производиться на Ubuntu, но и для других OS принцип будет тот же.
+published: true
+categories:
+- hg
+- server
+- dvcs
+---
+
+<div style="text-align:center;">
+<img src="http://lh6.ggpht.com/_wN3Yn5K_LYs/Sv9RZPG2API/AAAAAAAAACs/I0Qq9icgvCA/Mercurial_logo.png?imgmax=800" alt="Mercurial_logo.png" border="0" width="200" height="240" /></div>
+
+Опять ударила пуля в голову и захотелось на домашнем сервере держать <strong>Mercurial</strong> репозиторий, который был бы доступен по http. Для этого нам понадобится <strong>Mercurial</strong>, <strong>Python</strong>, <strong>Apache2</strong>, все производиться на Ubuntu, но и для других OS принцип будет тот же.
+
+{% highlight bash %}
+sudo su -
+apt-get install mercurial apache2 libapache2-mod-python
+a2enmod python
+/etc/init.d/apache2 reload
+mkdir /home/hg
+chown www-data:www-data /home/hg
+cd /home/hg
+{% endhighlight %}
+
+Потом создаем файл <strong>modpython_gateway.py</strong> с содержанием:
+
+{% highlight python %}
+import traceback
+
+from mod_python import apache
+
+
+class InputWrapper(object):
+
+def __init__(self, req):
+self.req = req
+
+def close(self):
+pass
+
+def read(self, size=-1):
+return self.req.read(size)
+
+def readline(self, size=-1):
+return self.req.readline(size)
+
+def readlines(self, hint=-1):
+return self.req.readlines(hint)
+
+def __iter__(self):
+line = self.readline()
+while line:
+yield line
+# Notice this won't prefetch the next line; it only
+# gets called if the generator is resumed.
+line = self.readline()
+
+
+class ErrorWrapper(object):
+
+def __init__(self, req):
+self.req = req
+
+def flush(self):
+pass
+
+def write(self, msg):
+self.req.log_error(msg)
+
+def writelines(self, seq):
+self.write(''.join(seq))
+
+
+bad_value = ("You must provide a PythonOption '%s', either 'on' or 'off', "
+"when running a version of mod_python < 3.1")
+
+
+class Handler:
+
+def __init__(self, req):
+self.started = False
+
+options = req.get_options()
+
+# Threading and forking
+try:
+q = apache.mpm_query
+threaded = q(apache.AP_MPMQ_IS_THREADED)
+forked = q(apache.AP_MPMQ_IS_FORKED)
+except AttributeError:
+threaded = options.get('multithread', '').lower()
+if threaded == 'on':
+threaded = True
+elif threaded == 'off':
+threaded = False
+else:
+raise ValueError(bad_value % "multithread")
+
+forked = options.get('multiprocess', '').lower()
+if forked == 'on':
+forked = True
+elif forked == 'off':
+forked = False
+else:
+raise ValueError(bad_value % "multiprocess")
+
+env = self.environ = dict(apache.build_cgi_env(req))
+
+if 'SCRIPT_NAME' in options:
+# Override SCRIPT_NAME and PATH_INFO if requested.
+env['SCRIPT_NAME'] = options['SCRIPT_NAME']
+env['PATH_INFO'] = req.uri[len(options['SCRIPT_NAME']):]
+
+env['wsgi.input'] = InputWrapper(req)
+env['wsgi.errors'] = ErrorWrapper(req)
+env['wsgi.version'] = (1,0)
+env['wsgi.run_once'] = False
+if env.get("HTTPS") in ('yes', 'on', '1'):
+env['wsgi.url_scheme'] = 'https'
+else:
+env['wsgi.url_scheme'] = 'http'
+env['wsgi.multithread']  = threaded
+env['wsgi.multiprocess'] = forked
+
+self.request = req
+
+def run(self, application):
+try:
+result = application(self.environ, self.start_response)
+for data in result:
+self.write(data)
+if not self.started:
+self.request.set_content_length(0)
+if hasattr(result, 'close'):
+result.close()
+except:
+traceback.print_exc(None, self.environ['wsgi.errors'])
+if not self.started:
+self.request.status = 500
+self.request.content_type = 'text/plain'
+data = "A server error occurred. Please contact the administrator."
+self.request.set_content_length(len(data))
+self.request.write(data)
+
+def start_response(self, status, headers, exc_info=None):
+if exc_info:
+try:
+if self.started:
+raise exc_info[0], exc_info[1], exc_info[2]
+finally:
+exc_info = None
+
+self.request.status = int(status[:3])
+
+for key, val in headers:
+if key.lower() == 'content-length':
+self.request.set_content_length(int(val))
+elif key.lower() == 'content-type':
+self.request.content_type = val
+else:
+self.request.headers_out.add(key, val)
+
+return self.write
+
+def write(self, data):
+if not self.started:
+self.started = True
+self.request.write(data)
+
+
+startup = None
+cleanup = None
+
+def handler(req):
+# Run a startup function if requested.
+global startup
+if not startup:
+func = req.get_options().get('wsgi.startup')
+if func:
+module_name, object_str = func.split('::', 1)
+module = __import__(module_name, globals(), locals(), [''])
+startup = apache.resolve_object(module, object_str)
+startup(req)
+
+# Register a cleanup function if requested.
+global cleanup
+if not cleanup:
+func = req.get_options().get('wsgi.cleanup')
+if func:
+module_name, object_str = func.split('::', 1)
+module = __import__(module_name, globals(), locals(), [''])
+cleanup = apache.resolve_object(module, object_str)
+def cleaner(data):
+cleanup()
+try:
+# apache.register_cleanup wasn't available until 3.1.4.
+apache.register_cleanup(cleaner)
+except AttributeError:
+req.server.register_cleanup(req, cleaner)
+
+# Import the wsgi 'application' callable and pass it to Handler.run
+modname, objname = req.get_options()['wsgi.application'].split('::', 1)
+module = __import__(modname, globals(), locals(), [''])
+app = getattr(module, objname)
+Handler(req).run(app)
+
+# status was set in Handler; always return apache.OK
+return apache.OK
+{% endhighlight %}
+
+или скачать <a href="http://www.aminus.net/browser/modpython_gateway.py?format=txt">отсюда</a>. Затем создаем тестовый репозиторий:
+
+{% highlight bash %}
+cd /home/hg
+mkdir hgtest; cd hgtest
+hg init
+echo 'Hello World!' >> README.txt
+hg add README.txt
+hg commit -m 'this is the first change to my test repository'
+{% endhighlight %}
+
+Затем создаем файл <strong>hgwebdir.py</strong> с содержанием:
+
+{% highlight python %}
+#!/usr/bin/env python
+#
+# $Id: hgwebdir.py 1478 2008-11-21 11:09:22Z matthew $
+#
+# An example CGI script to export multiple hgweb repos, edit as necessary
+
+# adjust python path if not a system-wide install:
+#import sys
+#sys.path.insert(0, "/path/to/python/lib")
+
+# Uncomment to send python tracebacks to the browser if an error occurs:
+import cgitb
+cgitb.enable()
+
+# enable importing on demand to reduce startup time
+# from mercurial import demandimport; demandimport.enable()
+# from mercurial import demandload; demandload.enable()
+
+# If you'd like to serve pages with UTF-8 instead of your default
+# locale charset, you can do so by uncommenting the following lines.
+# Note that this will cause your .hgrc files to be interpreted in
+# UTF-8 and all your repo files to be displayed using UTF-8.
+#
+#import os
+#os.environ["HGENCODING"] = "UTF-8"
+
+from mercurial.hgweb.hgweb_mod import hgweb
+from mercurial.hgweb.hgwebdir_mod import hgwebdir
+from mercurial.hgweb.request import wsgiapplication
+
+# The config file looks like this.  You can have paths to individual
+# repos, collections of repos in a directory tree, or both.
+#
+# [paths]
+# virtual/path = /real/path
+# virtual/path = /real/path
+#
+# [collections]
+# /prefix/to/strip/off = /root/of/tree/full/of/repos
+#
+# collections example: say directory tree /foo contains repos /foo/bar,
+# /foo/quux/baz.  Give this config section:
+#   [collections]
+#   /foo = /foo
+# Then repos will list as bar and quux/baz.
+#
+# Alternatively you can pass a list of ('virtual/path', '/real/path') tuples
+# or use a dictionary with entries like 'virtual/path': '/real/path'
+
+# application = hgwebdir('hgweb.config')
+# wsgicgi.launch(application)
+
+def make_web_app():
+return hgwebdir("/home/hg/hgweb.config")
+
+def gateway(environ, start_response):
+app = wsgiapplication(make_web_app)
+return app(environ, start_response)
+{% endhighlight %}
+
+или качаем <a href="http://www.aventinesolutions.nl/code-samples/hgwebdir.py">отсюда</a>, но в нем надо изменить функцию:
+
+{% highlight python %}
+def make_web_app():
+return hgwebdir("/export/home/hg/hgweb.config")
+{% endhighlight %}
+
+и заменить на правильный путь до файла <strong>hgweb.config</strong>, который состоит из:
+
+{% highlight bash %}
+[collections]
+/home/hg = /home/hg
+{% endhighlight %}
+
+в нем указываются пути до папки где хранятся репозитории. Далее настроим конфигурацию нашего тестового репозитория, она храниться в файле <strong>$REPO_PATH/.hg/hgrc</strong>:
+
+{% highlight bash %}
+[web]
+contact = Anton Panasenko
+description = testing Mercurial Web
+style = coal
+allow_read = *
+allow_push = *
+push_ssl = false
+allow_archive = bz2 gz zip
+{% endhighlight %}
+
+поля <strong>allow_read = *</strong> и <strong>allow_push = *</strong> разграничивают доступ к репозиторию. В них можно указать имена пользователей, если вы будете использовать через Apache. Далее даем права Apache на папку и делаем скрипты исполняемыми:
+
+{% highlight bash %}
+cd /home/
+chown -R www-data:www-data hg/
+chmod 755 hg/hgwebdir.py hg/modpython_gateway.py
+{% endhighlight %}
+
+В завершении нам осталось только сконфигурировать Apache, а именно создать файл hg.conf:
+
+{% highlight bash %}
+<Location /hg>
+PythonPath "sys.path + [ '/home/hg' ]"
+PythonDebug On
+SetHandler mod_python
+PythonHandler modpython_gateway::handler
+PythonOption SCRIPT_NAME /hg
+PythonOption wsgi.application hgwebdir::gateway
+AuthType Basic
+AuthName "Aventine Solutions"
+AuthUserFile conf/httpd.passwd
+&lt LimitExcept GET>
+require user matthew
+</LimitExcept>
+</Location>
+{% endhighlight %}
+
+затем подключим этот файл в главный конфиг Apache <strong>/etc/apache2/apache2.conf</strong> добавив строчку:
+
+{% highlight bash %}
+Include /etc/apache2/hg.conf
+{% endhighlight %}
+
+или сохранить его в папке <strong>/etc/apache2/conf.d</strong>. Последняя команда: 
+
+{% highlight bash %}
+/etc/init.d/apache2 restart
+{% endhighlight %}
+
+и сервер готов к работе.

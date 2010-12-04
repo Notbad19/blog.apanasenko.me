@@ -1,0 +1,174 @@
+---
+layout: post
+title: CLIPS
+excerpt: <strong>CLIPS</strong> (C Language Integrated Production System) - это язык c clojure'о подобным синтаксисом, название которого предложено Чарльзом Форги (Charles Forgy). <strong>CLIPS</strong> создавался для простой и быстрой разработки экспертных систем. 
+published: true
+categories:
+- fl
+- fp
+- clips
+- clojure
+---
+
+h4. CLIPS?
+
+<div style="text-align:center;">
+<img src="http://clipsrules.sourceforge.net/clips.gif" alt="Mercurial_logo.png" border="0" width="200" height="240" /></div>
+
+<strong>CLIPS</strong> (C Language Integrated Production System) - это язык c clojure'о подобным синтаксисом, название которого предложено Чарльзом Форги (Charles Forgy). <strong>CLIPS</strong> создавался для простой и быстрой разработки экспертных систем. У него есть несколько потомков:
+
+# <a href="http://www.jessrules.com">Jess</a> (часть CLIPS, работающая с правилами и переписанная на Java, позже развившаяся в другом направлении);
+# <a href="http://eclipse-clp.org">ECLiPSe</a>;
+# <a href="http://ai.iit.nrc.ca/IR_public/fuzzy/fuzzyClips/fuzzyCLIPSIndex.html">FuzzyCLIPS</a>.
+
+К 1985 NASA стандартизировал свои разработки в области искусственного интеллекта на ART, но у него возникла необходимость в том, чтобы программы выполнялись на персональных компьютерах типа Macintosh и IBM. В результате Software Technology Branch в Космическом центре имени Джонсона имитировал возможность вывода от фактов к цели и синтаксис языка ART и ввел "Интегрированную Систему Продукции на Языке C" (то есть, CLIPS) в общественное применение. Правительственное финансирование для разработки или поддержки CLIPS было прекращено несколько лет назад.
+
+<strong>CLIPS</strong> редко используется для коммерческих целей из-за отсутствия длительного финансирования и других практических, коммерческих соображений, особенно по сравнению с функциональными преимуществами ART - IM Inference Corporatin. Следуя CLIPS'у NASA, Inference Corpotation воплотила вывод "от фактов к цели", объединив ART и CLIPS. 
+Скачать интерпретатор и IDE можно <a href="http://clipsrules.sourceforge.net/">отсюда</a> для Mac OS и Windows.
+
+h4. ЭС?
+
+<strong>Экспертная система</strong> (ЭС, expert system) — компьютерная программа, способная частично заменить специалиста-эксперта в разрешении проблемной ситуации. <strong>ЭС</strong> начали разрабатываться исследователями искусственного интеллекта в 1970-х годах, а в 1980-х получили коммерческое подкрепление.
+
+В информатике экспертные системы рассматриваются совместно с базами знаний как модели поведения экспертов в определенной области знаний с использованием процедур логического вывода и принятия решений, а базы знаний — как совокупность фактов и правил логического вывода в выбранной предметной области деятельности.
+
+Похожие действия выполняет программа-мастер. Мастера применяются как в системных программах так и в прикладных для интерактивного общения с пользователем (например, при установке ПО). Главное отличие мастеров от ЭС — отсутствие базы знаний; все действия жестко запрограммированы. Это просто набор форм для заполнения пользователем.
+
+Другие подобные программы — поисковые или справочные (энциклопедические) системы. По запросу пользователя они предоставляют наиболее подходящие (релевантные) разделы базы статей (представления об объектах областей знаний, их виртуальную модель).
+Классификация ЭС по решаемой задаче:
+
+# Интерпретация данных;
+# Диагностирование;
+# Мониторинг;
+# Проектирование;
+# Прогнозирование;
+# Сводное Планирование;
+# Обучение;
+# Управление;
+# Ремонт;
+# Отладка.
+
+h4. Небольшой пример
+
+{% highlight clojure %}
+(deffunction ask-question (?question $?allowed-values)
+ (printout t ?question) 
+ (bind ?answer (read)) 
+ (if (lexemep ?answer) then
+  (bind ?answer (lowcase ?answer)))
+ (while (not (member ?answer ?allowed-values)) do 
+  (printout t ?question)
+  (bind ?answer (read))
+  (if (lexemep ?answer) then
+   (bind ?answer (lowcase ?answer))))
+ ?answer
+)
+
+(deffunction yes-or-no-p (?question) 
+ (bind ?response (ask-question ?question yes no у n)) 
+ (if (or (eq ?response yes) (eq ?response y)) then
+  TRUE 
+ else
+  FALSE)
+ )
+)
+
+(defrule dela  "" 
+ (not (repair ?) )
+  =>
+   (if (yes-or-no-p "Все хорошо? ") then
+    (assert (repair "веселый"))
+   else
+    (assert (repair "смурной"))
+   )
+)
+
+(defrule system-banner ""
+ (declare (salience 10)) 
+  =>
+   (printout t crlf crlf)
+   (printout t "**********************************" crlf) 
+   (printout t "* Экспертная система      *" crlf) 
+   (printout t "**********************************" crlf)
+   (printout t crlf crlf) 
+) 
+(defrule print-repair ""
+ (declare (salience 10)) 
+ (repair ?item) 
+  =>
+   (printout t crlf crlf)
+   (printout t "Вы:")
+   (printout t  crlf  crlf)
+   (format  t   "   %s%n%n%n"   ?item)
+)
+{% endhighlight %}
+
+В этом примере используются основные функции и правила, для написания простой ЭС.
+Основная функция:
+
+{% highlight clojure %}
+(deffunction ask-question (?question $?allowed-values)
+ (printout t ?question) 
+ (bind ?answer (read)) 
+ (if (lexemep ?answer) then
+  (bind ?answer (lowcase ?answer)))
+ (while (not (member ?answer ?allowed-values)) do 
+  (printout t ?question)
+  (bind ?answer (read))
+  (if (lexemep ?answer) then
+   (bind ?answer (lowcase ?answer))))
+ ?answer
+)
+{% endhighlight %}
+
+она считывает из диалогового окна интерпретатора все что вы вводите с клавиатуры и возвращает это. 
+Следующая функция выбирает ввели вы или нет требуемый ответ (конкретно yes или no):
+
+{% highlight clojure %}
+(deffunction yes-or-no-p (?question) 
+ (bind ?response (ask-question ?question yes no у n)) 
+ (if (or (eq ?response yes) (eq ?response y)) then
+  TRUE 
+ else
+  FALSE)
+ )
+)
+{% endhighlight %}
+
+Далее следует основные и единственное правило в нашем примере:
+
+{% highlight clojure %}
+(defrule dela  "" 
+ (not (repair ?) )
+  =>
+   (if (yes-or-no-p "Все хорошо? ") then
+    (assert (repair "веселый"))
+   else
+    (assert (repair "смурной"))
+   )
+)
+{% endhighlight %}
+
+тут мы проверяем начальные значения для выполнения правила и если они удовлетворяют нас, мы выполняем само правило, которое задает вопрос и устанавливает в переменной значение (в нашем случае это и есть конечный ответ). 
+И в конце мы просто выводим установленный ранее ответ, особенность лишь одна, то что у данных правил установлен пониженный приоритет, что бы мы точно знали что они выполняться последними.
+
+{% highlight clojure %}
+(defrule system-banner ""
+ (declare (salience 10)) 
+  =>
+   (printout t crlf crlf)
+   (printout t "**********************************" crlf) 
+   (printout t "* Экспертная система      *" crlf) 
+   (printout t "**********************************" crlf)
+   (printout t crlf crlf) 
+) 
+(defrule print-repair ""
+ (declare (salience 10)) 
+ (repair ?item) 
+  =>
+   (printout t crlf crlf)
+   (printout t "Вы:")
+   (printout t  crlf  crlf)
+   (format  t   "   %s%n%n%n"   ?item)
+)
+{% endhighlight %}

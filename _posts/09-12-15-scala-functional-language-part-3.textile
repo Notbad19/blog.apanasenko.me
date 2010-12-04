@@ -1,0 +1,214 @@
+---
+layout: post
+title: Scala Functional Language (part 3)
+excerpt: Сегодня я и Эльдар попытаемся рассказать о <strong>Scala</strong> с функционального взгляда. <strong>Scala</strong> – это функциональный язык в том смысле, что каждая функция – это значение. Он предоставляет легковесный синтаксис для определения анонимных функций, а также поддерживает вложенные функции.
+published: true
+categories:
+- fl
+- fp
+- jvm
+- scala
+---
+
+<div style="text-align:center;">
+<img src="http://lh6.ggpht.com/_wN3Yn5K_LYs/SyeQl3IHyBI/AAAAAAAAAJg/EUkRIIcWRRA/function%3Dmachine.jpg?imgmax=800" alt="function=machine.jpg" border="0" width="400" height="325" /></div>
+
+Сегодня я и <a href="http://reldan.livejournal.com/">Эльдар</a> попытаемся рассказать о <strong>Scala</strong> с функционального взгляда. <strong>Scala</strong> – это функциональный язык в том смысле, что каждая функция – это значение. Он предоставляет легковесный синтаксис для определения анонимных функций, а также поддерживает вложенные функции.
+
+h4. Локальные функции
+
+В Scala мы можем определить функцию внутри другой функции.
+
+{% highlight scala %}
+object Function {
+  def main(arg:Array[String]) = {
+    println(f(2, 3)) //9
+  }
+  def f(i: Int, j: Int):Int = {
+    def localF(i: Int) = {
+      i + j + 1
+    }
+    localF(i + 3)
+  }
+}
+{% endhighlight %}
+
+h4. Замыкания
+
+<strong>Замыкание</strong> — это особый вид функции. Она определена в теле другой функции и создаётся каждый раз во время её выполнения. При этом вложенная внутренняя функция содержит ссылки на локальные переменные внешней функции. Каждый раз при выполнении внешней функции происходит создание нового экземпляра внутренней функции, с новыми ссылками на переменные внешней функции. Как видно из примера функция <strong>closure</strong> содержит свободную переменную <strong>j</strong> и связанную <strong>i</strong>.
+
+{% highlight scala %}
+object Function {
+  def main(arg:Array[String]) = {
+    println(f(2, 3)) //9
+  }
+  def f(i: Int, j: Int):Int = {
+    val closure = (i: Int) => i + j + 1
+    closure(i + 3)
+  }
+}
+{% endhighlight %}
+
+Также можно это записать вот так:
+
+{% highlight scala %}
+object Function {
+  def main(arg:Array[String]) = {
+    println(f(2, 3))
+  }
+  def f(i: Int, j: Int):Int = ((i: Int) => i + j + 1) (i + 3)
+}
+{% endhighlight %}
+
+Можно использовать подчеркивания, как <strong>плейсхолдеры</strong> параметров:
+
+{% highlight scala %}
+object Function {
+  def main(arg:Array[String]) = {
+    println(f(2, 3))
+  }
+  def f(i: Int, j: Int):Int = ((_:Int) + j + 1) (i + 3)
+}
+{% endhighlight %}
+
+h4. Частично применимые функции
+
+Пусть в <strong>Scala</strong> есть функция :
+
+{% highlight scala %}
+def sum(a:Int, b:Int, c:Int) = a + b + c
+{% endhighlight %}
+
+Если вызвать sum(1) компилятор сообщит о неправильном количестве параметров. Однако есть способ заменить при вызове функции часть входных переменных подчеркиванием.
+
+{% highlight scala %}
+sum(1, 2, 3) 
+(sum(1, 2, _:Int))(3) // (Int) => Int
+(sum(1, _:Int, _:Int))(2, 3) // (Int, Int) => Int
+(sum(_:Int, _:Int, _:Int))(1, 2, 3) //(Int, Int, Int) => Int
+{% endhighlight %}
+
+h4. Списки
+
+Список, пожалуй, самая распространенная структура при программировании на <strong>Scala</strong>. Список подобно массивам гомогенный, т.е. содержит элементы только определенного типа.
+
+{% highlight scala %}
+val fruit = List("apples", "oranges", "bananas")
+{% endhighlight %}
+
+Над списком в <strong>Scala</strong> можно применять функции <strong>head</strong> и <strong>tail</strong> (Lisp: car cdr). <strong>head</strong> возвращает первый элемент списка, <strong>tail</strong> - все элементы списка, кроме первого.
+
+{% highlight scala %}
+val fruit = "apples" :: ("oranges" :: ("bananas" :: Nil))
+{% endhighlight %}
+
+Сортировка вставками используя head и tail:
+
+{% highlight scala %}
+object Function {
+  def main(arg:Array[String]) = {
+    println(iSort(List(5, 4, 3, 2, 1, 0))) //List(0, 1, 2, 3, 4, 5)
+  }
+  def iSort(xs: List[Int]): List[Int] =
+    if (xs.isEmpty) Nil
+    else insert(xs.head, iSort(xs.tail))
+  def insert(x: Int, xs: List[Int]): List[Int] =
+    if (xs.isEmpty || x <= xs.head) x::xs
+    else xs.head :: insert(x, xs.tail)
+}
+{% endhighlight %}
+
+Тоже самое можно записать несколько иначе использую паттерн матчинг(Pattern matching)
+<blockquote>
+<strong>Pattern matching</strong> - это сравнение с образцом, сопоставление с шаблоном.</blockquote>
+
+{% highlight scala %}
+object Function {
+  def main(arg:Array[String]) = {
+    println(iSort(List(5, 4, 3, 2, 1, 0)))
+  }
+  def iSort(xs: List[Int]): List[Int] = xs match {
+    case List() => List()
+    case x :: xs1 => insert(x, iSort(xs1))
+  }
+  def insert(x: Int, xs: List[Int]): List[Int] = xs match {
+    case List() => List(x)
+    case y :: ys => if (x <= y) x :: xs
+    else y :: insert(x, ys)
+  }
+}
+{% endhighlight %}
+
+Кроме в работе с <strong>pattern matching</strong>'ом часто используются так называемые <strong>case class</strong>'ы, которые имеют некторые особенности. При объявлении компилятор:
+
+# cоздет функцию-конструктор с именем, совпадающим с класом
+# имплиментирует в классе toString, equals, hashCode на основе аргументов конструктора
+# создает селекторы для всех аргументов конструктора
+
+Мы их использовали в предыдущей <a href="http://www.jprogers.info/2009/12/scala-actors-part-2.html">статье</a> в примере с пинг-понгом.
+
+h4. Работа со списками
+
+<strong>Map</strong> принимает <strong>List[Т]</strong> и функцию <strong>Т => U</strong>. Возвращает <strong>List[U]</strong>
+
+{% highlight scala %}
+List.range(1, 6) map (_ % 2) // List(1, 0, 1, 0, 1)
+List("apples", "oranges", "bananas") map (_.toList.reverse.mkString) // List(selppa, segnaro, sananab)
+{% endhighlight %}
+
+<strong>FlatMap</strong> схож с <strong>Map</strong>, но вызывает конкатенацию всех результатов функции.
+
+{% highlight scala %}
+List("apples", "oranges", "bananas") map (_.toList) // List(List(a, p, p, l, e, s), List(o, r, a, n, g, e, s), List(b, a, n, a, n, a, s))
+List("apples", "oranges", "bananas") flatMap (_.toList) // List(a, p, p, l, e, s, o, r, a, n, g, e, s, b, a, n, a, n, a, s)
+{% endhighlight %}
+
+<strong>Foreach</strong>:
+
+{% highlight scala %}
+object Function {
+  def main(arg:Array[String]) = {
+    var sum = 0
+    List.range(1, 6) foreach (sum += _)
+    println(sum) // 15
+  }
+}
+{% endhighlight %}
+
+<strong>Filter</strong>:
+
+{% highlight scala %}
+List.range(1, 6) filter (_ > 3)// List(4, 5)
+{% endhighlight %}
+
+Также есть find, forall, exists, find, partition, takeWhile, dropWhile
+
+h4. Свертки
+
+<blockquote>
+В программировании <strong>свёртка</strong> (англ. <strong>folding</strong>, также известна как reduce и accumulate) — функция высшего порядка, которая производит преобразование структуры данных к единственному атомарному значению при помощи заданной функции. Операция свёртки часто используется в функциональном программировании при обработке списков.
+Свёртка может быть обобщена на произвольный алгебраический тип данных при помощи понятия «катаморфизм» из теории категорий.</blockquote>
+
+{% highlight scala %}
+fold left /:
+fold right :\
+{% endhighlight %}
+
+Сумма всех элементов:
+
+{% highlight scala %}
+def sum(xs: List[Int]):Int = (0 /: xs) (_ + _)
+(0 /: List.range(1, 6)) (_ + _)
+{% endhighlight %}
+
+Эквивалентно:
+
+{% highlight scala %}
+List.range(1, 6).foldLeft(0)(_+_)
+{% endhighlight %}
+
+Произведение всех элементов
+
+{% highlight scala %}
+def product(xs: List[Int]): Int = (1 /: xs) (_ * _)
+{% endhighlight %}

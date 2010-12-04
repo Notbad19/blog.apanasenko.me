@@ -1,0 +1,172 @@
+---
+layout: post
+title: Scala Actors (part 2)
+excerpt: В прошлой статье я попытался рассказать, о том что такое <strong>Scala</strong> и особенностях синтаксиса/языка по сравнению с <strong>Java</strong>. В этом посте попробую рассмотреть <strong>Scala Actors</strong>. С появлением многоядерных процессоров параллельное программирование становится незаменимым. Параллелизм в <strong>Scala</strong> строиться в первую очередь с помощью <strong>actors</strong>. <strong>Actors</strong> это параллельные процессы, которые взаимодействуют путем обмена сообщениями. <strong>Actors</strong> можно также рассматривать как одну из форм активных объектов, где применение метода соответствует посылке сообщений.
+published: true
+categories:
+- fl
+- fp
+- jvm
+- scala
+- actors
+---
+
+<div style="text-align:center;">
+<img src="http://lh5.ggpht.com/_wN3Yn5K_LYs/SyUTH_nU5hI/AAAAAAAAAI0/buL0ZX6nd7M/scala_logo.png?imgmax=800" alt="scala_logo.png" border="0" width="268" height="174" /></div>
+
+В прошлой <a href="http://www.jprogers.info/2009/12/scala-fl-jvm-part-1.html">статье</a> я попытался рассказать, о том что такое <strong>Scala</strong> и особенностях синтаксиса/языка по сравнению с <strong>Java</strong>. В этом посте попробую рассмотреть <strong>Scala Actors</strong>. С появлением многоядерных процессоров параллельное программирование становится незаменимым. Параллелизм в <strong>Scala</strong> строиться в первую очередь с помощью <strong>actors</strong>. <strong>Actors</strong> это параллельные процессы, которые взаимодействуют путем обмена сообщениями. <strong>Actors</strong> можно также рассматривать как одну из форм активных объектов, где применение метода соответствует посылке сообщений.
+
+Библиотеки реализующие модель взаимодействия процессов <strong>Actors</strong> в <strong>Scala</strong> обеспечивают как асинхронный так и синхронный обмен сообщеними (последняя осуществляется путем обмена нескольких асинхронных сообщений). Кроме того, <strong>actors</strong> могут общаться с помощью <strong>futures</strong>, где запросы обрабатываются асинхронно, а ответ синхронно (в будущем), что позволяет ожидать его.
+
+<a href="http://lh3.ggpht.com/_wN3Yn5K_LYs/SyU60dL8s-I/AAAAAAAAAI8/hrxPRwC05lM/actors.png"><div style="text-align:center;">
+<img src="http://lh3.ggpht.com/_wN3Yn5K_LYs/SyU60dL8s-I/AAAAAAAAAI8/hrxPRwC05lM/actors.png?imgmax=800" alt="actors.png" border="0" width="600" height="500" /></div></a>
+
+Далее можно рассмотреть простой пример пинг понга:
+
+{% highlight scala %}
+case object Ping
+case object Pong
+case object Stop
+
+class Ping(count: int, pong: Actor) extends Actor {
+  def act() {
+    var pingsLeft = count - 1
+    pong ! Ping
+    while (true) {
+      receive {
+        case Pong =>
+          if (pingsLeft % 1000 == 0)
+            Console.println("Ping: pong")
+          if (pingsLeft > 0) {
+            pong ! Ping
+            pingsLeft -= 1
+          } else {
+            Console.println("Ping: stop")
+            pong ! Stop
+            exit()
+          }
+      }
+    }
+  }
+}
+{% endhighlight %}
+<br/>
+
+{% highlight scala %}
+class Pong extends Actor {
+  def act() {
+    var pongCount = 0
+    while (true) {
+      receive {
+        case Ping =>
+          if (pongCount % 1000 == 0)
+            Console.println("Pong: ping "+pongCount)
+          sender ! Pong
+          pongCount = pongCount + 1
+        case Stop =>
+          Console.println("Pong: stop")
+          exit()
+      }
+    }
+  }
+}
+{% endhighlight %}
+
+* Нужно заметить, что использование <strong>trait Application</strong> не желательно в многопточных приложения. Более подробно о проблеме <a href="http://scala-blogs.org/2008/07/application-trait-considered-harmful.html">в блоге разработчиков</a>.
+
+{% highlight scala %}
+object Pingpong extends Application {
+    val pong = new Pong
+    val ping = new Ping(100000, pong)
+    ping.start
+    pong.start
+}
+{% endhighlight %}
+
+Этот пример состоит из двух <strong>actor</strong>'ов, которые обмениваются несколькими сообщениями, а затем прекращают свою работу. Первый <strong>actor</strong> посылает "Ping" сообщения второму <strong>actor</strong>'у, который, в свою очередь, посылает "Pong" сообщения обратно (на каждый полученный "Ping" один "Pong").
+В начале мы определяем сообщения, которые и будут курсировать между нашими <strong>actor</strong>'ов. Для этого мы используем Singleton объекты (в более сложных программах, сообщения, как правило, параметризованы). Поскольку мы хотим использовать <strong>pattern matching</strong> (который мы рассмотрим в следующий раз), каждое сообщение, является <strong>case object</strong>:
+
+{% highlight scala %}
+case object Ping
+case object Pong
+case object Stop
+{% endhighlight %}
+
+Далее определяются классы <strong>Ping</strong> и <strong>Pong</strong>, которые наследуют <strong>trait Actor</strong> и реализуют метод <strong>act</strong>:
+
+{% highlight scala %}
+class Ping(count: int, pong: Actor) extends Actor {
+  def act() {
+    var pingsLeft = count - 1
+    pong ! Ping
+    while (true) {
+      receive {
+        case Pong =>
+          if (pingsLeft % 1000 == 0)
+            Console.println("Ping: pong")
+          if (pingsLeft > 0) {
+            pong ! Ping
+            pingsLeft -= 1
+          } else {
+            Console.println("Ping: stop")
+            pong ! Stop
+            exit()
+          }
+      }
+    }
+  }
+}
+{% endhighlight %}
+<br/>
+
+{% highlight scala %}
+class Pong extends Actor {
+  def act() {
+    var pongCount = 0
+    while (true) {
+      receive {
+        case Ping =>
+          if (pongCount % 1000 == 0)
+            Console.println("Pong: ping "+pongCount)
+          sender ! Pong
+          pongCount = pongCount + 1
+        case Stop =>
+          Console.println("Pong: stop")
+          exit()
+      }
+    }
+  }
+}
+{% endhighlight %}
+
+Количество <strong>Ping</strong> сообщений, которые будут отправлены <strong>Pong</strong> актеру и сам <strong>Pong</strong> актор передаются в качестве аргумента в конструктор класса <strong>Ping</strong>. <strong>receive</strong> метод находясь внутри бесконечного цикла приостанавливает актор, пока сообщение <strong>Pong</strong> не дойдет до актера. Когда сообщение будет доставлено, оно исчезнет из <strong>mailbox</strong>'a актера и будет обработано определенным образом. В случае, когда <strong>pingsLeft</strong> больше нуля, мы посылаем <strong>Ping</strong> сообщение для <strong>Pong</strong>'a с помощью оператора отправить <strong>!</strong> и уменьшает <strong>pingsLeft</strong> на еденицу. Если <strong>pingsLeft</strong> достиг нуля, мы посылаем сообщение <strong>Stop Pong</strong>'у, и прекращаем выполнение текущего актера, вызывая <strong>exit()</strong>.
+
+Актеры всегда выполняются на пуле потоков. Первоначально в пуле 4 рабочих потока. Пул возрастает, если все рабочие потоки заблокированы, но в нем все еще остаются задачи, которые нуждаются в обработке. В идеале, размер пула соответствует количеству ядер процессора.
+
+Когда <strong>actor</strong> входит в выполнение метода <strong>receive</strong> (либо другой  блокирующий метод), рабочий поток блокируется. Это означает, что в основе <strong>actor</strong>'a лежит блокирующая операция, эту ситуацию можно избежать.
+Потоко блокирующие операции можно избежать, используя <strong>react</strong> метод, который ждет новых сообщений (на основе <strong>event-based</strong> реализации метода <strong>receive</strong>). Однако, есть (обычно малая) вероятность, что <strong>react</strong> никогда не вернет значение(не получит нового сообщения). На практике это означает, что на конец реакция на сообщение, нужно позвонить некоторой функции, которая содержит остальные вычисления актера. Заметим, что <strong>react</strong> внутри while  цикла не работает! Однако, существует специальная реализация цикла: <strong>loop</strong>. Она может быть использована следующим образом:
+
+{% highlight scala %}
+def act() {
+  var pongCount = 0
+  loop {
+    react {
+      case Ping =>
+        if (pongCount % 1000 == 0)
+          Console.println("Pong: ping "+pongCount)
+        sender ! Pong
+        pongCount = pongCount + 1
+      case Stop =>
+        Console.println("Pong: stop")
+        exit()
+    }
+  }
+}
+{% endhighlight %}
+
+h4. Другие реализации
+
+Кроме стандартной реализации существуют и другие реализации <strong>Actor</strong>'ов, одна из интереснейших это <a href="http://wiki.github.com/jboner/akka/reference-actors-scala-api">Akka</a>, которая очень бурно развивается её автором <a href="http://jonasboner.com/">Jonas Bonér</a>'ом.
+
+<strong>Akka</strong> призвана стать своего рода <strong>framework</strong>'ом, который поддерживает <strong>System Of Service</strong> приложения. Она имеет много возможностей, слишком много, чтобы охватить все сразу и поэтому я хочу рассмотреть только возможности <strong>Акка's Actors Supervisor</strong>. 
+В <strong>Akka</strong> реализованна <strong>Actor</strong> модель с <strong>supervision</strong> деревьями, основанная на принципах <strong>OTP</strong> дизайна Эрланга. <strong>Supervision</strong> являются процессами, которые контролируют набор рабочих акторов выполняющих какие либо задачи (какую либо обработку данных). Основной идеей является то, что <strong>Supervision</strong> должен держать свои дочерние процессы под контролем, перезапуская их при необходимости. Когда <strong>actor</strong> умирает ненормально (бросая исключение), сигнал доходит до <strong>Supervision</strong>'ера, чтобы определить, что делать с ним. Он может принять решение о перезагрузке <strong>actor</strong>'а и пытается обработать сообщение снова. Этот подход ожидает, что неудачи могут быть и в конечном итоге произойдут. Вместо того, чтобы предотвратить неудачу, данных подход допускает это падение (<a href="http://letitcrash.com/">Let it crash</a> - TM Jonas Bonér), либо сбрасывает работника в стабильное состояние, либо перезапускает его. Эта идея также послужила в Ericsson при создании высокой отказоустойчивости для распределенной передачи сообщений. Для более подробного обзора надо писать отдельную статью, по этому остановимся на этой информации :)

@@ -1,0 +1,220 @@
+---
+layout: post
+title: Scala FL JVM (part 1)
+excerpt: В сегодняшнем хайпе <strong>функциональных языках</strong> программирования <strong>Java</strong> программисты так же как и все испытывают потребность в каком-то языковом сахаре, функциональных плюшках, etc. Но Sun пока не дает всего этого в своём флагманском языке программирования в отличии от конкурентов, она придерживается консервативного подхода (хотя уже есть подвижки). В следствии всего этого, <strong>Java</strong> программисты смотрят на другие <strong>JVM</strong> языки (благо платформа дает все возможности для полета фантазии любого программиста), которые дают все блага описанные выше и многое другое. Один из таких языков это <strong>Scala (SCAlable LAnguage)</strong> — мультипарадигмальный язык программирования, без <strong>С</strong> подобного синтаксиса (с более лакониченым). В нем органично сочетаются возможности функционального и объектно ориентированного программирования.
+published: true
+categories:
+- fl
+- fp
+- jvm
+- scala
+---
+
+<div style="text-align:center;">
+<img src="http://lh6.ggpht.com/_wN3Yn5K_LYs/SyTg_KXBQOI/AAAAAAAAAIs/vP10ZF48vtk/newsflash_logo.png?imgmax=800" alt="newsflash_logo.png" border="0" width="646" height="93" /></div>
+
+В сегодняшнем хайпе <strong>функциональных языках</strong> программирования <strong>Java</strong> программисты так же как и все испытывают потребность в каком-то языковом сахаре, функциональных плюшках, etc. Но Sun пока не дает всего этого в своём флагманском языке программирования в отличии от конкурентов, она придерживается консервативного подхода (хотя уже есть <a href="http://www.jroller.com/scolebourne/entry/closures_in_jdk_7">подвижки</a>). В следствии всего этого, <strong>Java</strong> программисты смотрят на другие <strong>JVM</strong> языки (благо платформа дает все возможности для полета фантазии любого программиста), которые дают все блага описанные выше и многое другое. Один из таких языков это <strong>Scala (SCAlable LAnguage)</strong> — мультипарадигмальный язык программирования, без <strong>С</strong> подобного синтаксиса (с более лакониченым). В нем органично сочетаются возможности функционального и объектно ориентированного программирования.
+
+h4. История
+
+Язык был создан в 2001—2004 годах в Лаборатории методов программирования <a href="http://ru.wikipedia.org/wiki/EPFL">EPFL</a>. Автором языка считается <a href="http://people.epfl.ch/martin.odersky">Martin Odersky</a> создатель языка <strong>Pizza</strong>, который стал прототипом <strong>Generic</strong> в <strong>Java</strong>. Он стал результатом исследований, направленных на разработку улучшенной языковой поддержки компонентного ПО. За основу при разработке языка были взяты 2 идеи:
+
+# Язык программирования компонентного ПО должен быть масштабируемым в том смысле, что должна быть возможность с помощью одних и тех же концепций описать как маленькие, так и большие части. Поэтому внимание было сконцентрировано на механизмах абстракции, композиции и декомпозиции вместо введения большого количества примитивов, которые могут быть полезными только на каком-то одном уровне масштабирования.
+# Масштабируемая поддержка компонентов может быть предоставлена языком программирования, унифицирующим и обобщающим объектно-ориентированное и функциональное программирование. Некоторые из основных технических новшеств Scala — это концепции, представляющие собой сплав этих парадигм программирования. В статически типизированных языках, к которым относится Scala, эти парадигмы до сих пор были почти полностью разделены.
+
+<strong>Scala</strong> была выпущена для общего пользования на платформе <strong>JVM</strong> в январе 2004 года и на платформе <strong>.NET</strong> в июне 2004 года. Планируется продолжить работу над формализацией ключевых аспектов языка и над разработкой оптимизаций, выполняемых компилятором.
+
+h4. Истоки дизайна
+
+Конечно, <strong>Scala</strong> впитала значительное число концепций и синтаксических соглашений <strong>Java</strong> и <strong>C#</strong>. Способ выражения свойств во многом заимствован из <strong>Sather</strong>. Из <strong>Smalltalk</strong> взята концепция унифицированной объектной модели. Из <strong>Beta</strong> пришла идея, что всё, включая классы, должно допускать вложенность. Абстрактные типы в <strong>Scala</strong> очень похожи на абстрактные типы сигнатур в <strong>SML</strong> и <strong>OCaml</strong>, обобщенные в контексте полноценных компонентов. В некотором смысле <strong>Scala</strong> — это продолжение работы <strong>Pizza</strong>. Как и <strong>Pizza</strong>, <strong>Scala</strong> компилируется под <strong>Java VM</strong>, добавляя функции высшего порядка, сопоставление с образцом, конструкции, которые исходно были созданы в сообществе функционального программирования. В то время как <strong>Pizza</strong> обратно совместима с <strong>Java</strong>, цель <strong>Scala</strong> — всего лишь возможность взаимодействия, так что у нее больше степеней свободы в дизайне. Ещё одна цель <strong>Scala</strong> — предоставить расширенные конструкции для абстракции и композиции компонентов — общая с несколькими недавними исследовательскими разработками.
+
+h4. Ключевые аспекты языка
+
+# Scala-программы во многом похожи на Java-программы, и могут свободно взаимодействовать с Java-кодом.
+# Scala включает единообразную объектную модель — в том смысле, что любое значение является объектом, а любая операция — вызовом метода.
+# Scala — это также функциональный язык в том смысле, что функции — это полноправные значения.
+# В Scala включены мощные и единообразные концепции абстракций как для типов, так и для значений.
+# Она содержит гибкие симметричные конструкции примесей для композиции классов и trait-ов.
+# Она позволяет производить декомпозицию объектов путем сравнения с образцом.
+# Образцы и выражения были обобщены для поддержки естественной обработки XML-документов.
+# В целом, эти конструкции позволяют легко выражать самостоятельные компоненты, использующие библиотеки Scala, не пользуясь специальными языковыми конструкциями.
+# Scala допускает внешние расширения компонентов с использованием видов (views).
+# Есть поддержка структурных и экзистенциальных типов.
+# На текущий момент Scala реализована на платформах Java и .NET.
+
+h4. Различия синтаксиса по сравнению с Java
+
+# <strong>Hello World и Object</strong>: 
+
+{% highlight scala %}
+object HelloWorld {
+  def main(arg: Array[String]) {
+    println("Hello, world!")
+  }
+}
+{% endhighlight %}
+
+В Scala можно объявить отдельные объекты, которые буду себя вести согласно паттерну <a href="http://ru.wikipedia.org/wiki/Одиночка_(шаблон_проектирования)">Singelton</a>. Из этого листинга видно, что массивы типизируются с помощью <strong>[]</strong>, а не как обычно в <strong>Java, <></strong>. Доступ к элементам массива происходит через оператор <strong>()</strong>
+
+{% highlight scala %}
+object HelloWorld {
+  def main(arg: Array[String]) {
+    println("Hello, world! " + arg(0))
+  }
+}
+{% endhighlight %}
+
+# <strong>Функции(Методы)</strong>:
+Функции как видно из листинга выше объявляются с помощью ключевого слова <strong>def</strong>, так же перед объявлением функции могут быть указаны модификаторы доступа <strong>private, protected</strong> (по умолчанию всем методам выставляется модификатор <strong>public</strong>, который отсутствует в явном виде). Есть еще один интересный момент, с помощью которого можно типизировать модификаторы доступа, как и обычные типы, накладывая тем самым на методы и поля больше ограничений.
+
+{% highlight scala %}
+object HelloWorld {
+  def main(arg: Array[String]) {
+    println(hello + world)
+  }
+  private[HelloWorld] def hello() = "Hello, "
+  protected[this] def world() = "World!"
+}
+{% endhighlight %}
+
+Так же в <strong>Scala</strong> методы и операторы однозначны, т.е. в <strong>Scala</strong> по сравнению с <strong>Java</strong> появилась возможность перегрузки операторов.
+
+{% highlight scala %}
+class Complex(r: Double, i: Double) {
+  def real = r
+  def image = i
+  def magnitude = Math.sqrt(r * r + i * i)
+  def angle = Math.atan2(i, r)
+  def +(that: Complex) = new Complex(this.real + that.real, this.image + that.image)
+  override def toString = real + " + i*" + image + " | " + magnitude + "*e^(i*" + angle + "))"
+}
+{% endhighlight %}
+
+Модификатор <strong>override</strong>, как уже можно было заметить обязателен когда вы хотите перегрузить метод.
+
+# <strong>Классы</strong>:
+
+{% highlight scala %}
+class Point2d(x: Float, y: Float) { 
+  def length = Math.sqrt(x * 2, y * y)
+  override def toString = "(" + x + ", " + y + ")"
+}
+{% endhighlight %}
+
+Как видно из листинга примера, объявление класса отличается от Java, сразу рядом с названием можно объявить "простой" конструктор, тем самым сохранив начальные поля класса, но так же существует и способ объявления конструктора обычным способом.
+
+{% highlight scala %}
+class Point2d { 
+  var x: Float 
+  var y: Float 
+  def this(x: Float, y: Float) { 
+ this.x = x; this.y = y
+  } 
+  def length = Math.sqrt(x * 2, y * y)
+  override def toString = ”(” + x + ”, ” + y + ”)”
+} 
+{% endhighlight %}
+
+Из этого листинга так же видно, что ";" не обязательный знак как в Java, а применяется только тогда когда надо явно указать разделение операций, в остальных случаях достаточно перевода строки. Так же видно, что для указания типа используется ":" как у переменных, так и у методов. Так же у переменных существуют модификаторы <strong>var</strong> и <strong>val</strong>, которые делают переменные изменяемыми и не изменяемыми соответственно.
+
+# <strong>Traits</strong>:
+
+Trait — это интерфейс, который может содержать реализации методов, но не может содержать поля. В этом смысле в Scala есть множественное наследование.
+
+{% highlight scala %}
+trait Comparable[T] { 
+  def compareTo(that: T): Int 
+  def >(that: T) = compareTo(that) > 0 
+  def >=(that: T) = compareTo(that) >= 0 
+  def ==(that: T) = compareTo(that) == 0 
+  def <(that: T) = compareTo(that) < 0 
+  def <=(that: T) = compareTo(that) <= 0
+}
+class Fraction(num: Int, denom: Int) extends Comparable[Fraction] { 
+  def compareTo(that: Fraction) = this.num * that.denom - that.num * this.denom
+} 
+new Fraction(3, 4) > new Fraction(1, 2) // возвращает true
+{% endhighlight %}
+
+# <strong>Mixin</strong>:
+
+{% highlight scala %}
+object Pets {
+  def main(arg: Array[String]) {
+    println(new Pet("Martin")) //Martin
+    println(new Pet("Martin") with PetName) //Name: Martin
+  }
+}
+class Pet(val name:String) {
+  override def toString = name
+}
+trait PetName {
+  override def toString = "Name: " + super.toString
+}
+{% endhighlight %}
+
+h4. Небольшой пример
+
+На <strong>Java</strong>:
+
+{% highlight scala %}
+public class QuicksortJava {
+    private static void doSort(int start, int end, int[] array) {
+        if (start >= end)
+            return;
+        int i = start, j = end;
+        int cur = i - (i - j) / 2;
+        while (i < j) {
+            while (i < cur && (array[i] <= array[cur])) {
+                i++;
+            }
+            while (j > cur && (array[cur] <= array[j])) {
+                j--;
+            }
+            if (i < j) {
+                int temp = array[i];
+                array[i] = array[j];
+                array[j] = temp;
+                if (i == cur)
+                    cur = j;
+                else if (j == cur)
+                    cur = i;
+            }
+        }
+        doSort(start, cur, array);
+        doSort(cur + 1, end, array);
+    }
+
+    public void sort(int[] xs) {
+        doSort(0, xs.length - 1, xs);
+    }
+
+    public static void main(String[] arg) {
+        int[] xs = new int[]{5, 4, 3, 2, 1, 0};
+        new QuicksortJava().sort(xs);
+        System.out.println(Arrays.toString(xs));
+    }
+}
+{% endhighlight %}
+
+и <strong>Scala</strong>:
+
+{% highlight scala %}
+object Quicksort {
+  def sort(xs: Array[Int]): Array[Int] = {
+    if (xs.length <= 1) xs
+    else {
+      val pivot = xs(xs.length / 2)
+      Array.concat(
+        sort(xs filter (pivot >)),
+        xs filter (pivot ==),
+        sort(xs filter (pivot <)))
+    }
+  }
+
+  def main(arg:Array[String]) = {
+    val xs = Array(5, 4, 3, 2, 1, 0)
+    println(sort(xs).toString)
+  }
+}
+{% endhighlight %}
