@@ -116,7 +116,7 @@ div.post h3,div.post p {
 
 div#slide_bar {
   	position:absolute;
-  	top: 110px;
+  	top: 10px;
   	right: -210px;
 }
 
@@ -132,6 +132,10 @@ div#slide_bar, div#slide_bar a {
 
 div#slide_bar p {
   	margin:10px 0 0 0;
+}
+
+div#subscribe {
+	text-align: center;
 }
 
 div#cloud_tag {
