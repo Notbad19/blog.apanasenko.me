@@ -55,10 +55,15 @@ div#inner{
   	position:relative;
 }
 
-img#header {
+img.header {
   	-moz-border-radius:5px;
   	-webkit-border-radius:5px;
   	margin:20px 0px -30px;
+}
+
+div.center {
+	clear: both; 
+	text-align: center;
 }
 
 div#container {
