@@ -1,0 +1,27 @@
+---
+layout: post
+title: GitHub + Jekyll = Blog engine
+excerpt: Недавно увидев сайт визитку одного разработчика, захотелось и себе сделать нечто подобное. Первом делом начал искать где это все захостить, покупать что то серьезное не хотелось, а посмотрев популярные проекты для этих целей, не нашел ничего подходящего. Большинство из них не дает большой гибкости, кто то не имеет достаточной кастомизации html и css, кто то не умеет работать с доменами 2рого уровня и т.д. И тут мой взор упал на GitHub Pages.
+published: false
+categories:
+- git
+- github
+- jekyll
+- ruby
+- blog
+---
+
+Недавно увидев сайт визитку одного разработчика, захотелось и себе сделать нечто подобное. Первом делом начал искать где это все захостить, покупать что то серьезное не хотелось, а посмотрев популярные проекты для этих целей, не нашел ничего подходящего. Большинство из них не дает большой гибкости, кто то не имеет достаточной кастомизации html и css, кто то не умеет работать с доменами 2рого уровня и т.д. И тут мой взор упал на "GitHub Pages":http://pages.github.com/.
+
+h4. Что это?
+
+Документация нам говорит:
+
+bq. The GitHub Pages feature allows you to publish content to the web by simply pushing content to one of your GitHub hosted repositories. There are two different kinds of Pages that you can create: User Pages and Project Pages.
+
+На первый взгляд не плохо да? Остается выяснить что же там внутри и как это готовить. Внутри у Pages клауд от "RackSpace":http://www.rackspace.com/index.php и Ruby c "Jekyll":http://jekyllrb.com/ для рендеринга контента, своеобразный PaaS(Platform as a service) для простых статичных сайтов.
+
+h3. Jekyll (transform your text into a monster)
+
+bq. Jekyll is a simple, blog aware, static site generator. It takes a template directory (representing the raw form of a website), runs it through Textile or Markdown and Liquid converters, and spits out a complete, static website suitable for serving with Apache or your favorite web server. This is also the engine behind GitHub Pages, which you can use to host your project’s page or blog right here from GitHub
+
