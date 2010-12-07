@@ -2,7 +2,7 @@
 layout: post
 title: GitHub + Jekyll = Blog engine
 excerpt: Недавно увидев сайт визитку одного разработчика, захотелось и себе сделать нечто подобное. Первом делом начал искать где это все захостить, покупать что то серьезное не хотелось, а посмотрев популярные проекты для этих целей, не нашел ничего подходящего. Большинство из них не дает большой гибкости, кто то не имеет достаточной кастомизации html и css, кто то не умеет работать с доменами 2рого уровня и т.д. И тут мой взор упал на GitHub Pages.
-published: false
+published: true
 categories:
 - git
 - github
@@ -10,6 +10,8 @@ categories:
 - ruby
 - blog
 ---
+
+<div class="center"><img src="http://github.com/images/modules/header/logo_pages.png" alt="GitHub Pages"/></div>
 
 Недавно увидев сайт визитку одного разработчика, захотелось и себе сделать нечто подобное. Первом делом начал искать где это все захостить, покупать что то серьезное не хотелось, а посмотрев популярные проекты для этих целей, не нашел ничего подходящего. Большинство из них не дает большой гибкости, кто то не имеет достаточной кастомизации html и css, кто то не умеет работать с доменами 2рого уровня и т.д. И тут мой взор упал на "GitHub Pages":http://pages.github.com/.
 
@@ -21,7 +23,37 @@ bq. The GitHub Pages feature allows you to publish content to the web by simply 
 
 На первый взгляд не плохо да? Остается выяснить что же там внутри и как это готовить. Внутри у Pages клауд от "RackSpace":http://www.rackspace.com/index.php и Ruby c "Jekyll":http://jekyllrb.com/ для рендеринга контента, своеобразный PaaS(Platform as a service) для простых статичных сайтов.
 
-h3. Jekyll (transform your text into a monster)
-
 bq. Jekyll is a simple, blog aware, static site generator. It takes a template directory (representing the raw form of a website), runs it through Textile or Markdown and Liquid converters, and spits out a complete, static website suitable for serving with Apache or your favorite web server. This is also the engine behind GitHub Pages, which you can use to host your project’s page or blog right here from GitHub
 
+В итоге мы имеем достаточно просто и мощный шаблонизатор для построения сайта. Динамику построить конечно не удастся, но для большинства задач(блог, сайт визитку и т.д.), то что доктор прописал. Поддерживаемые форматы из коробки:
+
+# Textile
+# Markdown
+
+плюс Liquid для преобразований текста. Вообщем годный инструмент.
+
+Дальше для сайта хотелось бы прикрутить свой домейн. Тут все очень просто, вам не обходимо перенаправить днс на IP: 207.97.227.245 и создать в корне репозитория файл CNAME с именем домена. Тут есть нюансы по моему опыту, а именно приходится хранить весь контент в ветке gh-pages для внешних сайтов.
+
+h4. Примеры
+
+Примером может выступать этот блог ("source":https://github.com/dieu/blog.apanasenko.me/tree/gh-pages) и еще "множество других":https://github.com/mojombo/jekyll/wiki/Sites . Так же уже появились "сервисы":http://gitwrite.com/ (странно что уже не доступен), которые упрощают всю работу и превращают из чисто гиковского блоггинга, обычный блог енжин. 
+
+Подытожить можно кратким мануалом:
+
+# Регистрируемся на "github.com":https://github.com/
+# Создаем репозиторий с нужным именем (с именем домена либо с project_name.github.com)
+
+{% highlight bash %}
+mkdir test
+cd test/
+git init 
+git remote add template git://github.com/dieu/template.pages.git
+git fetch template 
+touch README
+git add README
+git commit -m "first commit"
+git rebase template/master 
+git push origin master
+{% endhighlight %}
+
+# пользуемся :)
