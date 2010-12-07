@@ -4,6 +4,14 @@ title: 404
 excerpt: Ouch. The page you were looking for is gone.
 ---
 
+<script type="text/javascript">
+	var page = document.location.href;
+	var indexDotHtml = page.indexOf('.html');
+	if (indexDotHtml > 0 && (page.length - 5) == indexDotHtml) {
+		document.location.href = page.replace('.html', '');
+	}
+</script>
+
 <h4>Ouch. The page you were looking for is gone.</h4>
 
 <p>Somehow the page you're looking for vanished. You can go to the <a href="/">homepage</a> or check the recent articles below to try to find what you're looking for.</p>
