@@ -1,0 +1,125 @@
+---
+layout: post
+title: Runtime record_info() by parse_transform 
+excerpt: На прошлом проекте стояла задача связать распределенные узлы системы, с помощью общей шины, по которой гоняются эвенты о событиях. Задача осложнялась гетерогенностью системы (узлы были написаны на разных языках), по этому было принято решение взять за основу json и в нем гонять сообщения по шине. Одним из главных языков был Erlang, в нем есть поддержка record'ов на уровне языка, которые очень хорошо ложатся на парадигму формирования эвентов. 
+published: false
+categories:
+- erlang
+- compile
+---
+
+На прошлом проекте стояла задача связать распределенные узлы системы, с помощью общей шины, по которой гоняются эвенты о событиях. Задача осложнялась гетерогенностью системы (узлы были написаны на разных языках), по этому было принято решение взять за основу json и в нем гонять сообщения по шине. Одним из главных языков был Erlang, в нем есть поддержка record'ов на уровне языка, которые очень хорошо ложатся на парадигму формирования эвентов. 
+
+Сказали сделали. Появилась только одна маленькая проблема, в runtime Erlang'а не возможно узнать информацию о имени поля рекорда, там существует функция record_info/2, которая возвращает список имен полей рекорда, но она существует только в compile time, что в свою очередь накладывает существенные ограничения на возможность манипуляции нужными данными. Т.е. не возможно вызвать record_info с динамическими параметрами.
+
+bq. To each module using records, a pseudo function is added during compilation to obtain information about records.
+
+Давайте рассмотрим простой пример:
+
+{% highlight erlang %}
+-module(example).
+
+-record(test1, {one, two})
+-record(test2, {one, two}).
+
+event(#test1{}) -> 
+	send(#test1{one = "one", two = "two"}).
+	
+event(#test2{}) -> 
+	send(#test2{one = "one", two = "two"}).
+	
+send(T) ->
+	...
+{% endhighlight %}
+
+тут у нас есть два record'a, которые мы принимаем в event/1 (тут не важно как они к нам приходитят) и отправляем в send/1. Самое интересное в send/1 это сериализация аргумента, для того, что бы превратить record в json object нам нужно узнать какой именно рекорд к нам пришел (рекорд это {Name,Value1,...,ValueN}), мы это делаем с помощью element(1, T). Далее мы хотим узнать имена полей, но мы не можем вызвать record_info(fields, element(1, T)), так как компилятор нам выдаст ошибку. Выход который приходит на ум это написать макрос как в "rfc4627":http://piro.develer.com/rabbitmq-public-umbrella/erlang-rfc4627/include/rfc4627.hrl либо функции, которые будут принимать рекорды и вызывать внутри record_info/2:
+
+{% highlight erlang %}
+-module(example).
+
+-record(test1, {one, two})
+-record(test2, {one, two}).
+
+event(#test1{}) -> 
+	send(#test1{one = "one", two = "two"}).
+	
+event(#test2{}) -> 
+	send(#test2{one = "one", two = "two"}).
+	
+send(T) ->
+	...
+	
+record_fields(#test1{}) ->
+	record_info(fields, test1).
+	
+record_fields(#test2{}) ->
+	record_info(fields, test2).
+{% endhighlight %}
+
+Но это видеться достаточно не удобно, так как функции не несут какой то бизнес логики, их надо не забывать писать и экспортировать из модуля. Вообщем не удобно. Не много покурив документацию, нашлось оптимальное решение требующее мнимум внимания. 
+
+bq. Parse transformations are used if a programmer wants to use Erlang syntax, but with different semantics. The original Erlang code is then transformed into other Erlang code.
+
+{% highlight erlang %}
+-module(record_info).
+
+-export([parse_transform/2]).
+
+parse_transform(AST, _Option) ->
+	records(exports(records, 0, AST)).
+
+exports(Name, Arty, AST) ->
+	{attribute, N, export, Export} = lists:keyfind(export, 3, AST),
+	lists:keyreplace(export, 3, AST, {attribute, N, export, lists:append(Export, [{Name, Arty}])}).
+
+records(AST) ->
+ 	{eof, N} = lists:last(AST),
+	FunPos = N + 1,
+	BodyPos = FunPos + 1,
+	Tuples = lists:foldl(fun({attribute, _, record, {Name, Fields}}, Acc) ->
+		Acc ++ [tuple(atom(Name, BodyPos), cons(lists:map(fun
+			({record_field, _, {_, _, Field}}) ->
+				atom(Field, BodyPos);
+			({record_field, _, {_, _, Field}, _}) ->			
+				atom(Field, BodyPos)
+		end, Fields), BodyPos), BodyPos)];
+				 (_, Acc) -> Acc
+	end, [], AST),
+	Fun = function(records, cons(Tuples, BodyPos), FunPos),
+	Eof = {eof, BodyPos},
+	put(AST, [Fun, Eof], N).
+
+atom(Atom, Pos) ->
+	{atom, Pos, Atom}.
+
+tuple(One, Two, Pos) ->
+	{tuple, Pos, [One, Two]}.
+
+cons(List, Pos) ->
+	case tl(List) of
+		[] ->
+			{cons, Pos, hd(List), {nil, Pos}};
+		_ ->
+			{cons, Pos, hd(List), cons(tl(List), Pos)}
+	end.
+
+function(Name, Body, Pos) ->
+	{function, Pos, Name, 0, [{clause, Pos, [], [], [Body]}]}.
+	
+put(AST, Elem, Pos) ->
+	lists:append(lists:delete({eof, Pos}, AST), Elem).
+{% endhighlight %}
+
+Использовать этот модуль очень просто, достаточно подключить его:
+
+{% highlight erlang %}
+-compile({parse_transform, record_info}).
+{% endhighlight %}
+
+и у вас появится функция records/0, которая возвращает список всех рекордов в модуле. 
+
+{% highlight erlang %}
+[{test1,[one,two]},{test2,[one,two]}]
+{% endhighlight %}
+
+На основе этой информации вы уже можете работать как вам удобно.
