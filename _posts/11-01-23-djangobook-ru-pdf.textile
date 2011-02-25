@@ -1,0 +1,36 @@
+---
+layout: post
+title: DjangoBook (RU) in PDF
+excerpt: Появилась нужда разобраться с Django фреймворком и сразу же озадачился поиском хорошей литературы. Первым делом нашел замечательный проект по переводу djangobook на русский, но автор по каким-то своим причинам не захотел отдавать билд систему для сборки в каком нибудь вменяемом формате (читать с сайта, не очень удобно). Хотя исходники кники в DocBook формате выложил, за что ему спасибо. По этому пришлось самому разбираться с этим форматом (как, чем можно скомпилировать книгу в pdf).
+published: true
+categories:
+- django
+- python
+- book
+---
+
+<div class="center"><img src="http://www.loggly.com/wp-content/uploads/2010/05/django-logo-positive.png" alt="Django" height="240"/></div>
+
+Появилась нужда разобраться с Django фреймворком и сразу же озадачился поиском хорошей литературы. Первым делом нашел замечательный "проект по переводу":http://djbook.ru/ "djangobook":http://djangobook.com/ на русский, но автор по каким-то своим причинам не захотел отдавать билд систему для сборки в каком нибудь вменяемом формате (читать с сайта, не очень удобно). Хотя "исходники книги":https://github.com/RaD/djangobook в DocBook формате выложил, за что ему спасибо. По этому пришлось самому разбираться с этим форматом (как, чем можно скомпилировать книгу в pdf).
+
+Так появился "форк":https://github.com/dieu/djangobook (хотя по хорошему надо выделить в отдельный проект, так как уже есть зависимость на оригинальный репозиторий), которым достаточно просто пользоваться.
+
+Клонируем репозиторий и инициализируем субмодули
+
+{% highlight bash %}
+git clone git://github.com/dieu/djangobook.git
+git submodule update --init
+{% endhighlight %}
+
+Далее увеличиваем размер хипа для maven сборки и собираем с нужным профилем (pdf by default)
+
+{% highlight bash %}
+export MAVEN_OPTS="-Xmx512m"
+mvn clean package  (-P pdf/html/epub)
+{% endhighlight %}
+
+В сборке прописаны пока 3 профиля (больше я думаю и не надо), которые собирают файлы в нужном формате в папку target/docbx/[pdf|html|epub].
+
+Сборка основана на "docbkx-maven-plugin":http://code.google.com/p/docbkx-tools/, который поддерживает сборку в pdf, html, epub, eclipse, javahelp, etc.
+
+Скачать "DjangoBook в pdf":https://github.com/downloads/dieu/djangobook/djangobook-22.01.2011.pdf.
