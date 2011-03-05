@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="google-site-verification" content="bb8epm6suyHfvYU-yFKhhYMyg3SQ__QndlyH-vBmiAk" />
+  <meta name='yandex-verification' content='74e7c4ae6d68c097' />
+  <meta name="viewport" content="width=950, maximum-scale=1.0" />
+  <meta name="description" content="Есть большой пласт технологий для создания распределенных систем: создание железных решений, распределенного ПО для управления системой, распределенных хранилищь, etc. Все это двигает grid  технологии и cloud computing, и при разработки всего этого люди встречаются со множеством проблем. Так как проблем много мне хотелось бы остановиться на одной конкретной проблеме: хранение данных в распределенных системах, а именно на способе создания ключей, так как распределенные хранилища строиться из нескольких серверов и традиционной парадигмой хранения данных являеться Key-Value. Т.е. каждому элементу ставится в соответствие какой-либо ключ. Этот ключ выступает средством однозначного соответствия сервера и данных, и  с помощью него всегда можно достатать те данные, которые тебе нужны." />
+  <meta http-equiv="description" content="Есть большой пласт технологий для создания распределенных систем: создание железных решений, распределенного ПО для управления системой, распределенных хранилищь, etc. Все это двигает grid  технологии и cloud computing, и при разработки всего этого люди встречаются со множеством проблем. Так как проблем много мне хотелось бы остановиться на одной конкретной проблеме: хранение данных в распределенных системах, а именно на способе создания ключей, так как распределенные хранилища строиться из нескольких серверов и традиционной парадигмой хранения данных являеться Key-Value. Т.е. каждому элементу ставится в соответствие какой-либо ключ. Этот ключ выступает средством однозначного соответствия сервера и данных, и  с помощью него всегда можно достатать те данные, которые тебе нужны.�"> 
+  <meta name="robots" content="all"> 
+  <meta name="resourse-type" content="document"> 
+  <meta name="document-state" content="dynamic"> 
+  <meta name="revisit-after" content="1 days"> 
+  <meta http-equiv="author" content="Anton Panasenko">
+  <meta name="copyright" content="Copyright (C) 2011 "> 
+  <meta name="document-state" content="dynamic"> 
+  <link rev="made" href="anton.panasenko@gmail.com"> 
+  <meta http-equiv="reply-to" content="anton.panasenko@gmail.com"> 
+  <meta name="site-created" content="Anton Panasenko - blog.apanasenko.me"> 
+  <meta name="addres" content="blog.apanasenko.me"> 
+  <meta name="distribution" content="global"> 
+  <title>
+    Consistent hashing -  Anton Panasenko
+  </title>
+  <link rel="stylesheet" href="/css/reset.css" type="text/css" />
+  
+  <link rel="stylesheet" href="/css/screen.css" type="text/css" />
+  <link rel="stylesheet" href="/css/syntax.css" type="text/css" />
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="/css/iphone.css" type="text/css" />
+  <link rel="stylesheet" media="only screen and (max-device-width: 1024px)" href="/css/ipad.css" type="text/css" />
+  <link rel="alternate" type="application/atom+xml" href="http://feeds.feedburner.com/apanasenko" />
+  <link href="/images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+  <link href="/images/icon.jpg" rel="apple-touch-icon" />
+</head>
+<body>
+  <div id="wrapper">
+    <div class="center"><a href="http://blog.apanasenko.me/"><img class="header" alt="header image" src="/images/header.jpg"/></a></div>
+    <div id="inner">
+      <div id="container">
+        <div id="header">
+          <h1>
+            
+              <a href="/">&larr; Anton Panasenko</a>
+            
+          </h1>
+          <ul class="header">
+            <li>
+              <a href="/archive">Archive</a>
+            </li>
+	    <li>
+		<a href="http://ru.linkedin.com/in/apanasenko/">LinkedIn <span class="arrow">&rarr;</span></a>
+	    </li>
+            <li>
+		<a href="http://github.com/dieu">Github <span class="arrow">&rarr;</span>
+            </li>
+            <li>
+              <a href="http://twitter.com/apanasenko">Twitter <span class="arrow">&rarr;</span></a>
+            </li>
+          </ul>
+          <hr class="right"/>
+        </div>
+        <h2>Consistent hashing</h2>
+        
+
+<span id="article_buttons">
+  <a id="tweet">
+    <span class="balloon">tweet!</span> <img src="/images/tweet.png"/ alt="tweet"/>
+  </a>
+  <a href="http://feeds.feedburner.com/apanasenko">
+    <span class="balloon">subscribe!</span> <img src="/images/feed.png" alt="feed"/> 
+  </a>
+</span>
+
+<hr/>
+
+<div id="content">
+	<div style="width:425px;text-align:left" id="__ss_2608110">
+<p><object style="margin:0px" width="425" height="355"><param name="movie" value="http://static.slidesharecdn.com/swf/ssplayer2.swf?doc=hash-091129130633-phpapp01&stripped_title=ss-2608110" /><br />
+<param name="allowFullScreen" value="true"/><br />
+<param name="allowScriptAccess" value="always"/><br />
+<embed src="http://static.slidesharecdn.com/swf/ssplayer2.swf?doc=hash-091129130633-phpapp01&stripped_title=ss-2608110" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="425" height="355"></embed></object><div style="font-size:11px;font-family:tahoma,arial;height:26px;padding-top:2px;"><br />
+View more <a style="text-decoration:underline;" href="http://www.slideshare.net/">presentations</a> from <a style="text-decoration:underline;" href="http://www.slideshare.net/DieuMort">Anton</a>. Download <a style="text-decoration:underline;" href="http://www.slideshare.net/DieuMort/ss-2608110" title="Консистентные хеши">here</a>.</div></p>
+</div>
+<h4>Зачем?</h4>
+<p>Есть большой пласт технологий для создания распределенных систем: создание железных решений, распределенного ПО для управления системой, распределенных хранилищь, etc. Все это двигает grid  технологии и cloud computing, и при разработки всего этого люди встречаются со множеством проблем. Так как проблем много мне хотелось бы остановиться на одной конкретной проблеме: хранение данных в распределенных системах, а именно на способе создания ключей, так как распределенные хранилища строиться из нескольких серверов и традиционной парадигмой хранения данных являеться Key-Value. Т.е. каждому элементу ставится в соответствие какой-либо ключ. Этот ключ выступает средством однозначного соответствия сервера и данных, и  с помощью него всегда можно достатать те данные, которые тебе нужны.</p>
+<h4>Традиционные подходы</h4>
+<ol>
+	<li><strong>Необходима функция</strong>:</li>
+</ol>
+<div>
+<pre>
+<code class='scala'>f(ключ)= номер_сервера</code>
+</pre>
+</div>
+<p>У данного подхода есть очевидные проблемы, в том что мы не знаем заранее значение ключей и в любом случае данная функция сводиться к следующему подходу.</p>
+<ol>
+	<li><strong>«Стандартный вариант» по модулю</strong>:</li>
+</ol>
+<div>
+<pre>
+<code class='scala'>f(ключ)= crc32(ключ) % кол-во_серверов</code>
+</pre>
+</div>
+<p>При этом подходе проблемы возникают когда изменяться структура системы, каждый раз когда у нас удаляется или добавляется сервер нам необходимо перераспределять данные, при чем этих данных будет очень много. Для примера пусть у нас есть 100 ключей, по 25 на каждом (4 сервера), пусть хэш каждого ключа соответствует его номеру. Тогда ключи 0, 4, 8,… лежат на 1-м сервере, 1, 5, 9,… — на 2-м, 2, 6, 10,… — на 3-м и 3, 7, 11,… — на 4-м. Вдруг случается, что 4-й сервер выходит из строя, и теперь функция распределения ключей меняется на: ключ % 3. И в этоге ключи 3, 7, 11,… и их значения потеряны (т. к. лежали на упавшем сервере), это 25% потерянных данных. Далее получается что на надо перераспределить ключи так как, ключ 6 — лежал на 3-м сервере, теперь он лежит на 1-м, ключ 5 — раньше лежал на 1-м, теперь он на 3-м сервере и т. д. Сколько ключей сохранили своё расположение? Те, для которых k % 3 = k % 4. Сколько таких?</p>
+<h3>Consistent hashing</h3>
+<p>Где же выход? А он где то рядом, а именно в <strong>консистентные хэшах</strong>. <br />
+<div style="text-align: center;"><br />
+<img src="http://lh6.ggpht.com/_wN3Yn5K_LYs/SxK8cBAXzXI/AAAAAAAAADo/z5-W6YJPU4c/consistent_hashing_1.png?imgmax=800" alt="consistent_hashing_1.png" width="237" height="239" align="center" /><img src="http://lh4.ggpht.com/_wN3Yn5K_LYs/SxK8i-eCrxI/AAAAAAAAADs/Et4jmQ9NbOM/consistent_hashing_2.png?imgmax=800" alt="consistent_hashing_2.png" width="237" height="239" align="center" /></div><br />
+Суть алгоритма заключается в следующем: мы рассматриваем набор целых чисел от 0 до 2^32, «закручивая» числовую ось в кольцо (склеиваем 0 и 2^32). Каждому сервера из пула серверов мы сопоставляем число на кольце (рисунок слева, сервера A, B и C). Ключ хэшируется в число в том же диапазоне (на рисунке – синие точки 1-4), в качестве сервера для хранения ключа мы выбираем сервер в точке, ближайшей к точке ключа в направлении по часовой стрелке. Если сервер удаляется из пула или добавляется в пул, на оси появляется или исчезает точка сервера, в результате чего лишь часть ключей перемещается на другой сервер. На рисунке 2 справа показана ситуация, когда сервер C был удалён из пула серверов и добавлен новый сервер D. Легко заметить, что ключи 1 и 2 не поменяли привязки к серверам, а ключи 3 и 4 переместились на другие сервера. На самом деле одному серверу ставится в соответствие 100-200 точек на оси (пропорционально его весу в пуле), что улучшает равномерность распределения ключей по серверам в случае изменения их конфигурации. <br />
+В случае консистентного хэширования ключей ранее рассмотренный пример будет выглядеть так, что ключи которые были на 3х серверах и остались в рабочем состоянии, на них же и останутся. А ключи с 4-го сервера равномерно распределяться по 3-м оставшимся, мы потеряли ровно 25% ключей — возможный минимум.</p>
+<h4>Применение</h4>
+<div style="text-align:center;">
+<p><img src="http://lh3.ggpht.com/_wN3Yn5K_LYs/SxLDHP00vbI/AAAAAAAAAD4/HrKkDhOB468/Picture%2024.png?imgmax=800" alt="Picture 24.png" width="394" height="414" align="center" /><img src="http://lh4.ggpht.com/_wN3Yn5K_LYs/SxLDL2ou0sI/AAAAAAAAAD8/87ai2-ADjUE/Picture%2027.png?imgmax=800" alt="Picture 27.png" width="394" height="414" align="center" /></div></p>
+
+	
+		<h4>Posted 29 Nov 2009 by Anton Panasenko | tags:
+		 
+			
+				<a href="/search/label/grid">grid</a>,
+			 
+		 
+					
+				<a href="/search/label/hash">hash</a>
+			 
+		 
+			
+				and <a href="/search/label/consistent">consistent</a>.
+			 
+		
+	</h4>
+</div>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  (function() {
+   var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+   dsq.src = 'http://dieu.disqus.com/embed.js';
+   (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+<!--
+
+-->
+
+      </div>
+
+      <div id="slide_bar">
+		<div id="subscribe">
+			<a href="http://feeds.feedburner.com/apanasenko" rel="alternate" title="Подписаться на мой фид" type="application/rss+xml"><img alt="" src="http://lh3.ggpht.com/_wN3Yn5K_LYs/SviFaWzVaAI/AAAAAAAAACE/t5QGxBDsiMs/rss.png"/></a>
+		</div>	
+        <div id="cloud_tag">
+          <div id="cloud_tag_div">
+                <ol id="tag-cloud"><li title="1 post"><a href="/search/label/actors">actors</a></li> <li title="1 post"><a href="/search/label/alice">alice</a></li> <li title="2 posts"><a href="/search/label/amazon">amazon</a></li> <li title="1 post"><a href="/search/label/apple">apple</a></li> <li title="1 post"><a href="/search/label/aws">aws</a></li> <li title="1 post"><a href="/search/label/azure">azure</a></li> <li title="1 post"><a href="/search/label/blog">blog</a></li> <li title="1 post"><a href="/search/label/book">book</a></li> <li title="1 post"><a href="/search/label/build">build</a></li> <li title="1 post"><a href="/search/label/cassandra">cassandra</a></li> <li title="1 post"><a href="/search/label/chef">chef</a></li> <li title="1 post"><a href="/search/label/client">client</a></li> <li title="1 post"><a href="/search/label/clips">clips</a></li> <li title="1 post"><a href="/search/label/clojure">clojure</a></li> <li title="1 post"><a href="/search/label/cloud">cloud</a></li> <li title="1 post"><a href="/search/label/consistent">consistent</a></li> <li title="1 post"><a href="/search/label/db">db</a></li> <li title="1 post"><a href="/search/label/deploy">deploy</a></li> <li title="1 post"><a href="/search/label/django">django</a></li> <li title="2 posts"><a href="/search/label/dvcs">dvcs</a></li> <li title="2 posts"><a href="/search/label/ec2">ec2</a></li> <li title="4 posts"><a href="/search/label/erlang">erlang</a></li> <li title="5 posts"><a href="/search/label/fl">fl</a></li> <li title="5 posts"><a href="/search/label/fp">fp</a></li> <li title="1 post"><a href="/search/label/gen_server">gen_server</a></li> <li title="1 post"><a href="/search/label/gfs">gfs</a></li> <li title="1 post"><a href="/search/label/git">git</a></li> <li title="1 post"><a href="/search/label/github">github</a></li> <li title="2 posts"><a href="/search/label/google">google</a></li> <li title="2 posts"><a href="/search/label/grid">grid</a></li> <li title="1 post"><a href="/search/label/hash">hash</a></li> <li title="2 posts"><a href="/search/label/hg">hg</a></li> <li title="1 post"><a href="/search/label/ipad">ipad</a></li> <li title="2 posts"><a href="/search/label/java">java</a></li> <li title="1 post"><a href="/search/label/jekyll">jekyll</a></li> <li title="3 posts"><a href="/search/label/jvm">jvm</a></li> <li title="1 post"><a href="/search/label/mac os">mac os</a></li> <li title="1 post"><a href="/search/label/mapreduce">mapreduce</a></li> <li title="1 post"><a href="/search/label/mercurial">mercurial</a></li> <li title="2 posts"><a href="/search/label/nosql">nosql</a></li> <li title="1 post"><a href="/search/label/objective-c">objective-c</a></li> <li title="1 post"><a href="/search/label/osgi">osgi</a></li> <li title="1 post"><a href="/search/label/pax">pax</a></li> <li title="1 post"><a href="/search/label/python">python</a></li> <li title="2 posts"><a href="/search/label/rabbitmq">rabbitmq</a></li> <li title="1 post"><a href="/search/label/ruby">ruby</a></li> <li title="3 posts"><a href="/search/label/scala">scala</a></li> <li title="1 post"><a href="/search/label/scheme">scheme</a></li> <li title="1 post"><a href="/search/label/server">server</a></li></ol>
+
+          </div>
+        </div>
+		<br/>
+		<div id="iready">
+	    	<ol>
+<li><a href="http://alenacpp.blogspot.com/">Алена С++</a></li>
+<li></li>
+<li><a href="http://samolisov.blogspot.com/">Челябинский Программист</a></li>
+</ol>
+        </div>
+        <br/>
+      </div> 
+    </div>
+  </div>
+
+  <script src="/js/jquery.js" type="text/javascript"></script>
+  <script src="/js/twitter.js" type="text/javascript"></script>
+  <script type="text/javascript">
+	var disqus_shortname = 'dieu';
+	(function () {
+	    var s = document.createElement('script'); s.async = true;
+	    s.src = 'http://disqus.com/forums/dieu/count.js';
+	    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+	}());
+  </script>
+
+  
+<!-- Yandex.Metrika -->
+<div style="display:none;"><script type="text/javascript">
+(function(w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter445478 = new Ya.Metrika(445478);
+             yaCounter445478.clickmap(true);
+             yaCounter445478.trackLinks(true);
+
+        } catch(e) {}
+    });
+})(window, 'yandex_metrika_callbacks');
+</script></div>
+<script src="//mc.yandex.ru/metrika/watch.js" type="text/javascript" defer="defer"></script>
+<noscript><div style="position:absolute"><img src="//mc.yandex.ru/watch/445478" alt="" /></div></noscript>
+<!-- /Yandex.Metrika -->
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-6891853-5']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</body>
+</html>
