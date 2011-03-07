@@ -1,0 +1,498 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="google-site-verification" content="bb8epm6suyHfvYU-yFKhhYMyg3SQ__QndlyH-vBmiAk"/>
+  <meta name='yandex-verification' content='74e7c4ae6d68c097'/>
+  <meta name="viewport" content="width=950, maximum-scale=1.0" />
+  <meta name="description" content="Опять ударила пуля в голову и захотелось на домашнем сервере держать <strong>Mercurial</strong> репозиторий, который был бы доступен по http. Для этого нам понадобится <strong>Mercurial</strong>, <strong>Python</strong>, <strong>Apache2</strong>, все производиться на Ubuntu, но и для других OS принцип будет тот же." />
+  <meta http-equiv="description" content="Опять ударила пуля в голову и захотелось на домашнем сервере держать <strong>Mercurial</strong> репозиторий, который был бы доступен по http. Для этого нам понадобится <strong>Mercurial</strong>, <strong>Python</strong>, <strong>Apache2</strong>, все производиться на Ubuntu, но и для других OS принцип будет тот же."/> 
+  <meta name="robots" content="all"/> 
+  <meta name="resourse-type" content="document"/> 
+  <meta name="document-state" content="dynamic"/> 
+  <meta name="revisit-after" content="1 days"/> 
+  <meta http-equiv="author" content="Anton Panasenko"/>
+  <meta name="copyright" content="Copyright (C) 2011 "/> 
+  <meta name="document-state" content="dynamic"/> 
+  <link rev="made" href="anton.panasenko@gmail.com"/> 
+  <meta http-equiv="reply-to" content="anton.panasenko@gmail.com"/> 
+  <meta name="site-created" content="Anton Panasenko - blog.apanasenko.me"/> 
+  <meta name="addres" content="blog.apanasenko.me"/> 
+  <meta name="distribution" content="global"/> 
+  <title>
+    Hg server install -  Anton Panasenko
+  </title>
+  <link rel="stylesheet" href="/css/reset.css" type="text/css"/>
+  
+  <link rel="stylesheet" href="/css/screen.css" type="text/css"/>
+  <link rel="stylesheet" href="/css/syntax.css" type="text/css"/>
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="/css/iphone.css" type="text/css"/>
+  <link rel="stylesheet" media="only screen and (max-device-width: 1024px)" href="/css/ipad.css" type="text/css"/>
+  <link rel="alternate" type="application/atom+xml" href="http://feeds.feedburner.com/apanasenko"/>
+  <link href="/images/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+  <link href="/images/icon.jpg" rel="apple-touch-icon"/>
+</head>
+<body>
+  <div id="wrapper">
+    <div class="center"><a href="http://blog.apanasenko.me/"><img class="header" alt="header image" src="/images/header.jpg"/></a></div>
+    <div id="inner">
+      <div id="container">
+        <div id="header">
+          <h1>
+            
+              <a href="/">&larr; Anton Panasenko</a>
+            
+          </h1>
+          <ul class="header">
+            <li>
+              <a href="/archive">Archive</a>
+            </li>
+	    <li>
+		<a href="http://ru.linkedin.com/in/apanasenko/">LinkedIn <span class="arrow">&rarr;</span></a>
+	    </li>
+            <li>
+		<a href="http://github.com/dieu">Github <span class="arrow">&rarr;</span></a>
+            </li>
+            <li>
+              <a href="http://twitter.com/apanasenko">Twitter <span class="arrow">&rarr;</span></a>
+            </li>
+          </ul>
+          <hr class="right"/>
+        </div>
+        <h2>Hg server install</h2>
+        
+
+<span id="article_buttons">
+  <a id="tweet">
+    <span class="balloon">tweet!</span> <img src="/images/tweet.png"/ alt="tweet"/>
+  </a>
+  <a href="http://feeds.feedburner.com/apanasenko">
+    <span class="balloon">subscribe!</span> <img src="/images/feed.png" alt="feed"/> 
+  </a>
+</span>
+
+<hr/>
+
+<div id="content">
+	<div style="text-align:center;">
+<p><img src="http://lh6.ggpht.com/_wN3Yn5K_LYs/Sv9RZPG2API/AAAAAAAAACs/I0Qq9icgvCA/Mercurial_logo.png?imgmax=800" alt="Mercurial_logo.png" border="0" width="200" height="240" /></div></p>
+<p>Опять ударила пуля в голову и захотелось на домашнем сервере держать <strong>Mercurial</strong> репозиторий, который был бы доступен по http. Для этого нам понадобится <strong>Mercurial</strong>, <strong>Python</strong>, <strong>Apache2</strong>, все производиться на Ubuntu, но и для других OS принцип будет тот же.</p>
+<div>
+<pre>
+<code class='bash'>sudo su -
+<p>apt-get install mercurial apache2 libapache2-mod-python<br />
+a2enmod python<br />
+/etc/init.d/apache2 reload<br />
+mkdir /home/hg<br />
+chown www-data:www-data /home/hg<br />
+cd /home/hg</code><br />
+  </pre></p>
+</div>
+<p>Потом создаем файл <strong>modpython_gateway.py</strong> с содержанием:</p>
+<div>
+<pre>
+<code class='python'>import traceback
+<p>from mod_python import apache</p>
+<p>class InputWrapper(object):</p>
+<p>def <i>init</i>(self, req):<br />
+self.req = req</p>
+<p>def close(self):<br />
+pass</p>
+<p>def read(self, size=-1):<br />
+return self.req.read(size)</p>
+<p>def readline(self, size=-1):<br />
+return self.req.readline(size)</p>
+<p>def readlines(self, hint=-1):<br />
+return self.req.readlines(hint)</p>
+<p>def <i>iter</i>(self):<br />
+line = self.readline()<br />
+while line:<br />
+yield line</p>
+<ol>
+	<li>Notice this won&#8217;t prefetch the next line; it only</li>
+	<li>gets called if the generator is resumed.<br />
+line = self.readline()</li>
+</ol>
+<p>class ErrorWrapper(object):</p>
+<p>def <i>init</i>(self, req):<br />
+self.req = req</p>
+<p>def flush(self):<br />
+pass</p>
+<p>def write(self, msg):<br />
+self.req.log_error(msg)</p>
+<p>def writelines(self, seq):<br />
+self.write(&#8217;&#8217;.join(seq))</p>
+<p>bad_value = (&quot;You must provide a PythonOption &#8216;%s&#8217;, either &#8216;on&#8217; or &#8216;off&#8217;, &quot;<br />
+&quot;when running a version of mod_python &lt; 3.1&quot;)</p>
+<p>class Handler:</p>
+<p>def <i>init</i>(self, req):<br />
+self.started = False</p>
+<p>options = req.get_options()</p>
+<ol>
+	<li>Threading and forking<br />
+try:<br />
+q = apache.mpm_query<br />
+threaded = q(apache.AP_MPMQ_IS_THREADED)<br />
+forked = q(apache.AP_MPMQ_IS_FORKED)<br />
+except AttributeError:<br />
+threaded = options.get(&#8216;multithread&#8217;, &#8216;&#8217;).lower()<br />
+if threaded == &#8217;on&#8217;:<br />
+threaded = True<br />
+elif threaded == &#8216;off&#8217;:<br />
+threaded = False<br />
+else:<br />
+raise ValueError(bad_value % &quot;multithread&quot;)</li>
+</ol>
+<p>forked = options.get(&#8216;multiprocess&#8217;, &#8216;&#8217;).lower()<br />
+if forked == &#8217;on&#8217;:<br />
+forked = True<br />
+elif forked == &#8216;off&#8217;:<br />
+forked = False<br />
+else:<br />
+raise ValueError(bad_value % &quot;multiprocess&quot;)</p>
+<p>env = self.environ = dict(apache.build_cgi_env(req))</p>
+<p>if &#8216;SCRIPT_NAME&#8217; in options:</p>
+<ol>
+	<li>Override SCRIPT_NAME and PATH_INFO if requested.<br />
+env[&#8216;SCRIPT_NAME&#8217;] = options[&#8216;SCRIPT_NAME&#8217;]<br />
+env[&#8216;PATH_INFO&#8217;] = req.uri[len(options[&#8216;SCRIPT_NAME&#8217;]):]</li>
+</ol>
+<p>env[&#8216;wsgi.input&#8217;] = InputWrapper(req)<br />
+env[&#8216;wsgi.errors&#8217;] = ErrorWrapper(req)<br />
+env[&#8216;wsgi.version&#8217;] = (1,0)<br />
+env[&#8216;wsgi.run_once&#8217;] = False<br />
+if env.get(&quot;<span class="caps">HTTPS</span>&quot;) in (&#8216;yes&#8217;, &#8216;on&#8217;, &#8216;1&#8217;):<br />
+env[&#8216;wsgi.url_scheme&#8217;] = &#8216;https&#8217;<br />
+else:<br />
+env[&#8216;wsgi.url_scheme&#8217;] = &#8216;http&#8217;<br />
+env[&#8216;wsgi.multithread&#8217;]  = threaded<br />
+env[&#8216;wsgi.multiprocess&#8217;] = forked</p>
+<p>self.request = req</p>
+<p>def run(self, application):<br />
+try:<br />
+result = application(self.environ, self.start_response)<br />
+for data in result:<br />
+self.write(data)<br />
+if not self.started:<br />
+self.request.set_content_length(0)<br />
+if hasattr(result, &#8216;close&#8217;):<br />
+result.close()<br />
+except:<br />
+traceback.print_exc(None, self.environ[&#8216;wsgi.errors&#8217;])<br />
+if not self.started:<br />
+self.request.status = 500<br />
+self.request.content_type = &#8216;text/plain&#8217;<br />
+data = &quot;A server error occurred. Please contact the administrator.&quot;<br />
+self.request.set_content_length(len(data))<br />
+self.request.write(data)</p>
+<p>def start_response(self, status, headers, exc_info=None):<br />
+if exc_info:<br />
+try:<br />
+if self.started:<br />
+raise exc_info<sup class="footnote" id="fnr0"><a href="#fn0">0</a></sup>, exc_info<sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup>, exc_info<sup class="footnote" id="fnr2"><a href="#fn2">2</a></sup><br />
+finally:<br />
+exc_info = None</p>
+<p>self.request.status = int(status[:3])</p>
+<p>for key, val in headers:<br />
+if key.lower() == &#8216;content-length&#8217;:<br />
+self.request.set_content_length(int(val))<br />
+elif key.lower() == &#8216;content-type&#8217;:<br />
+self.request.content_type = val<br />
+else:<br />
+self.request.headers_out.add(key, val)</p>
+<p>return self.write</p>
+<p>def write(self, data):<br />
+if not self.started:<br />
+self.started = True<br />
+self.request.write(data)</p>
+<p>startup = None<br />
+cleanup = None</p>
+<p>def handler(req):</p>
+<ol>
+	<li>Run a startup function if requested.<br />
+global startup<br />
+if not startup:<br />
+func = req.get_options().get(&#8216;wsgi.startup&#8217;)<br />
+if func:<br />
+module_name, object_str = func.split(&#8216;::&#8217;, 1)<br />
+module = <i>import</i>(module_name, globals(), locals(), [&#8217;&#8217;])<br />
+startup = apache.resolve_object(module, object_str)<br />
+startup(req)</li>
+</ol>
+<ol>
+	<li>Register a cleanup function if requested.<br />
+global cleanup<br />
+if not cleanup:<br />
+func = req.get_options().get(&#8216;wsgi.cleanup&#8217;)<br />
+if func:<br />
+module_name, object_str = func.split(&#8216;::&#8217;, 1)<br />
+module = <i>import</i>(module_name, globals(), locals(), [&#8217;&#8217;])<br />
+cleanup = apache.resolve_object(module, object_str)<br />
+def cleaner(data):<br />
+cleanup()<br />
+try:</li>
+	<li>apache.register_cleanup wasn&#8217;t available until 3.1.4.<br />
+apache.register_cleanup(cleaner)<br />
+except AttributeError:<br />
+req.server.register_cleanup(req, cleaner)</li>
+</ol>
+<ol>
+	<li>Import the wsgi &#8216;application&#8217; callable and pass it to Handler.run<br />
+modname, objname = req.get_options()[&#8216;wsgi.application&#8217;].split(&#8216;::&#8217;, 1)<br />
+module = <i>import</i>(modname, globals(), locals(), [&#8217;&#8217;])<br />
+app = getattr(module, objname)<br />
+Handler(req).run(app)</li>
+</ol>
+<ol>
+	<li>status was set in Handler; always return apache.OK<br />
+return apache.OK</code><br />
+  </pre><br />
+</div></li>
+</ol>
+<p>или скачать <a href="http://www.aminus.net/browser/modpython_gateway.py?format=txt">отсюда</a>. Затем создаем тестовый репозиторий:</p>
+<div>
+<pre>
+<code class='bash'>cd /home/hg
+<p>mkdir hgtest; cd hgtest<br />
+hg init<br />
+echo &#8216;Hello World!&#8217; &gt;&gt; <span class="caps">README</span>.txt<br />
+hg add <span class="caps">README</span>.txt<br />
+hg commit -m &#8216;this is the first change to my test repository&#8217;</code><br />
+  </pre></p>
+</div>
+<p>Затем создаем файл <strong>hgwebdir.py</strong> с содержанием:</p>
+<div>
+<pre>
+<code class='python'>#!/usr/bin/env python
+<p>#</p>
+<ol>
+	<li>$Id: hgwebdir.py 1478 2008-11-21 11:09:22Z matthew $<br />
+#</li>
+	<li>An example <span class="caps">CGI</span> script to export multiple hgweb repos, edit as necessary</li>
+</ol>
+<ol>
+	<li>adjust python path if not a system-wide install:<br />
+#import sys<br />
+#sys.path.insert(0, &quot;/path/to/python/lib&quot;)</li>
+</ol>
+<ol>
+	<li>Uncomment to send python tracebacks to the browser if an error occurs:<br />
+import cgitb<br />
+cgitb.enable()</li>
+</ol>
+<ol>
+	<li>enable importing on demand to reduce startup time</li>
+	<li>from mercurial import demandimport; demandimport.enable()</li>
+	<li>from mercurial import demandload; demandload.enable()</li>
+</ol>
+<ol>
+	<li>If you&#8217;d like to serve pages with <span class="caps">UTF</span>-8 instead of your default</li>
+	<li>locale charset, you can do so by uncommenting the following lines.</li>
+	<li>Note that this will cause your .hgrc files to be interpreted in</li>
+	<li><span class="caps">UTF</span>-8 and all your repo files to be displayed using <span class="caps">UTF</span>-8.<br />
+#<br />
+#import os<br />
+#os.environ[&quot;<span class="caps">HGENCODING</span>&quot;] = &quot;<span class="caps">UTF</span>-8&quot;</li>
+</ol>
+<p>from mercurial.hgweb.hgweb_mod import hgweb<br />
+from mercurial.hgweb.hgwebdir_mod import hgwebdir<br />
+from mercurial.hgweb.request import wsgiapplication</p>
+<ol>
+	<li>The config file looks like this.  You can have paths to individual</li>
+	<li>repos, collections of repos in a directory tree, or both.<br />
+#</li>
+	<li>[paths]</li>
+	<li>virtual/path = /real/path</li>
+	<li>virtual/path = /real/path<br />
+#</li>
+	<li>[collections]</li>
+	<li>/prefix/to/strip/off = /root/of/tree/full/of/repos<br />
+#</li>
+	<li>collections example: say directory tree /foo contains repos /foo/bar,</li>
+	<li>/foo/quux/baz.  Give this config section:</li>
+	<li>[collections]</li>
+	<li>/foo = /foo</li>
+	<li>Then repos will list as bar and quux/baz.<br />
+#</li>
+	<li>Alternatively you can pass a list of (&#8216;virtual/path&#8217;, &#8216;/real/path&#8217;) tuples</li>
+	<li>or use a dictionary with entries like &#8216;virtual/path&#8217;: &#8216;/real/path&#8217;</li>
+</ol>
+<ol>
+	<li>application = hgwebdir(&#8216;hgweb.config&#8217;)</li>
+	<li>wsgicgi.launch(application)</li>
+</ol>
+<p>def make_web_app():<br />
+return hgwebdir(&quot;/home/hg/hgweb.config&quot;)</p>
+<p>def gateway(environ, start_response):<br />
+app = wsgiapplication(make_web_app)<br />
+return app(environ, start_response)</code><br />
+  </pre></p>
+</div>
+<p>или качаем <a href="http://www.aventinesolutions.nl/code-samples/hgwebdir.py">отсюда</a>, но в нем надо изменить функцию:</p>
+<div>
+<pre>
+<code class='python'>def make_web_app():
+<p>return hgwebdir(&quot;/export/home/hg/hgweb.config&quot;)</code><br />
+  </pre></p>
+</div>
+<p>и заменить на правильный путь до файла <strong>hgweb.config</strong>, который состоит из:</p>
+<div>
+<pre>
+<code class='bash'>[collections]
+<p>/home/hg = /home/hg</code><br />
+  </pre></p>
+</div>
+<p>в нем указываются пути до папки где хранятся репозитории. Далее настроим конфигурацию нашего тестового репозитория, она храниться в файле <strong>$REPO_PATH/.hg/hgrc</strong>:</p>
+<div>
+<pre>
+<code class='bash'>[web]
+<p>contact = Anton Panasenko<br />
+description = testing Mercurial Web<br />
+style = coal<br />
+allow_read = *<br />
+allow_push = *<br />
+push_ssl = false<br />
+allow_archive = bz2 gz zip</code><br />
+  </pre></p>
+</div>
+<p>поля <strong>allow_read = *</strong> и <strong>allow_push = *</strong> разграничивают доступ к репозиторию. В них можно указать имена пользователей, если вы будете использовать через Apache. Далее даем права Apache на папку и делаем скрипты исполняемыми:</p>
+<div>
+<pre>
+<code class='bash'>cd /home/
+<p>chown -R www-data:www-data hg/<br />
+chmod 755 hg/hgwebdir.py hg/modpython_gateway.py</code><br />
+  </pre></p>
+</div>
+<p>В завершении нам осталось только сконфигурировать Apache, а именно создать файл hg.conf:</p>
+<div>
+<pre>
+<code class='bash'>&amp;lt;Location /hg&amp;gt;
+<p>PythonPath &quot;sys.path + [ &#8216;/home/hg&#8217; ]&quot;<br />
+PythonDebug On<br />
+SetHandler mod_python<br />
+PythonHandler modpython_gateway::handler<br />
+PythonOption SCRIPT_NAME /hg<br />
+PythonOption wsgi.application hgwebdir::gateway<br />
+AuthType Basic<br />
+AuthName &quot;Aventine Solutions&quot;<br />
+AuthUserFile conf/httpd.passwd<br />
+&amp;lt LimitExcept <span class="caps">GET</span>&gt;<br />
+require user matthew<br />
+&lt;/LimitExcept&gt;<br />
+&lt;/Location&gt;</code><br />
+  </pre></p>
+</div>
+<p>затем подключим этот файл в главный конфиг Apache <strong>/etc/apache2/apache2.conf</strong> добавив строчку:</p>
+<div>
+<pre>
+<code class='bash'>Include /etc/apache2/hg.conf</code>
+</pre>
+</div>
+<p>или сохранить его в папке <strong>/etc/apache2/conf.d</strong>. Последняя команда:</p>
+<div>
+<pre>
+<code class='bash'>/etc/init.d/apache2 restart</code>
+</pre>
+</div>
+<p>и сервер готов к работе.</p>
+
+	
+		<h4>Posted 21 Nov 2009 by Anton Panasenko | tags:
+		 
+			
+				<a href="/search/label/hg">hg</a>,
+			 
+		 
+					
+				<a href="/search/label/server">server</a>
+			 
+		 
+			
+				and <a href="/search/label/dvcs">dvcs</a>.
+			 
+		
+	</h4>
+</div>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  (function() {
+   var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+   dsq.src = 'http://dieu.disqus.com/embed.js';
+   (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+<!--
+
+-->
+
+      </div>
+
+      <div id="slide_bar">
+		<div id="subscribe">
+			<a href="http://feeds.feedburner.com/apanasenko" rel="alternate" title="feed" type="application/rss+xml"><img alt="rss" src="http://lh3.ggpht.com/_wN3Yn5K_LYs/SviFaWzVaAI/AAAAAAAAACE/t5QGxBDsiMs/rss.png"/></a>
+		</div>	
+        <div id="cloud_tag">
+          <div id="cloud_tag_div">
+                <ol id="tag-cloud"><li title="1 post"><a href="/search/label/actors">actors</a></li> <li title="1 post"><a href="/search/label/alice">alice</a></li> <li title="2 posts"><a href="/search/label/amazon">amazon</a></li> <li title="1 post"><a href="/search/label/apple">apple</a></li> <li title="1 post"><a href="/search/label/aws">aws</a></li> <li title="1 post"><a href="/search/label/azure">azure</a></li> <li title="1 post"><a href="/search/label/blog">blog</a></li> <li title="1 post"><a href="/search/label/book">book</a></li> <li title="1 post"><a href="/search/label/build">build</a></li> <li title="1 post"><a href="/search/label/cassandra">cassandra</a></li> <li title="1 post"><a href="/search/label/chef">chef</a></li> <li title="1 post"><a href="/search/label/client">client</a></li> <li title="1 post"><a href="/search/label/clips">clips</a></li> <li title="1 post"><a href="/search/label/clojure">clojure</a></li> <li title="1 post"><a href="/search/label/cloud">cloud</a></li> <li title="1 post"><a href="/search/label/consistent">consistent</a></li> <li title="1 post"><a href="/search/label/db">db</a></li> <li title="1 post"><a href="/search/label/deploy">deploy</a></li> <li title="1 post"><a href="/search/label/django">django</a></li> <li title="2 posts"><a href="/search/label/dvcs">dvcs</a></li> <li title="2 posts"><a href="/search/label/ec2">ec2</a></li> <li title="4 posts"><a href="/search/label/erlang">erlang</a></li> <li title="5 posts"><a href="/search/label/fl">fl</a></li> <li title="5 posts"><a href="/search/label/fp">fp</a></li> <li title="1 post"><a href="/search/label/gen_server">gen_server</a></li> <li title="1 post"><a href="/search/label/gfs">gfs</a></li> <li title="1 post"><a href="/search/label/git">git</a></li> <li title="1 post"><a href="/search/label/github">github</a></li> <li title="2 posts"><a href="/search/label/google">google</a></li> <li title="2 posts"><a href="/search/label/grid">grid</a></li> <li title="1 post"><a href="/search/label/hash">hash</a></li> <li title="2 posts"><a href="/search/label/hg">hg</a></li> <li title="1 post"><a href="/search/label/ipad">ipad</a></li> <li title="2 posts"><a href="/search/label/java">java</a></li> <li title="1 post"><a href="/search/label/jekyll">jekyll</a></li> <li title="3 posts"><a href="/search/label/jvm">jvm</a></li> <li title="1 post"><a href="/search/label/mac os">mac os</a></li> <li title="1 post"><a href="/search/label/mapreduce">mapreduce</a></li> <li title="1 post"><a href="/search/label/mercurial">mercurial</a></li> <li title="2 posts"><a href="/search/label/nosql">nosql</a></li> <li title="1 post"><a href="/search/label/objective-c">objective-c</a></li> <li title="1 post"><a href="/search/label/osgi">osgi</a></li> <li title="1 post"><a href="/search/label/pax">pax</a></li> <li title="1 post"><a href="/search/label/python">python</a></li> <li title="2 posts"><a href="/search/label/rabbitmq">rabbitmq</a></li> <li title="1 post"><a href="/search/label/ruby">ruby</a></li> <li title="3 posts"><a href="/search/label/scala">scala</a></li> <li title="1 post"><a href="/search/label/scheme">scheme</a></li> <li title="1 post"><a href="/search/label/server">server</a></li></ol>
+
+          </div>
+        </div>
+		<br/>
+		<div id="iready">
+	    	<ol>
+<li><a href="http://alenacpp.blogspot.com/">Алена С++</a></li>
+<li></li>
+<li><a href="http://samolisov.blogspot.com/">Челябинский Программист</a></li>
+</ol>
+        </div>
+        <br/>
+      </div> 
+    </div>
+  </div>
+
+  <script src="/js/jquery.js" type="text/javascript"></script>
+  <script src="/js/twitter.js" type="text/javascript"></script>
+  <script type="text/javascript">
+	var disqus_shortname = 'dieu';
+	(function () {
+	    var s = document.createElement('script'); s.async = true;
+	    s.src = 'http://disqus.com/forums/dieu/count.js';
+	    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+	}());
+  </script>
+
+  
+<!-- Yandex.Metrika counter -->
+<div style="display:none;"><script type="text/javascript">
+(function(w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter445478 = new Ya.Metrika(445478);
+             yaCounter445478.clickmap(true);
+             yaCounter445478.trackLinks(true);
+        
+        } catch(e) { }
+    });
+})(window, 'yandex_metrika_callbacks');
+</script></div>
+<script src="//mc.yandex.ru/metrika/watch.js" type="text/javascript" defer="defer"></script>
+<noscript><img src="//mc.yandex.ru/watch/445478" style="position:absolute; left:-9999px;" alt="" /></noscript>
+<!-- /Yandex.Metrika counter -->
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-6891853-5']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</body>
+</html>

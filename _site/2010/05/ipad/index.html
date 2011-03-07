@@ -1,0 +1,224 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="google-site-verification" content="bb8epm6suyHfvYU-yFKhhYMyg3SQ__QndlyH-vBmiAk"/>
+  <meta name='yandex-verification' content='74e7c4ae6d68c097'/>
+  <meta name="viewport" content="width=950, maximum-scale=1.0" />
+  <meta name="description" content="Ни для кого не секрет, что мобильные платформы становятся все популярнее и популярнее. С начала iPhone (мобильные OS были и раньше такие как WM, Symbian и другие, но именно массовость коммуникаторам и смартфонам принесла iPhone OS) со своим революционными новшествами, потом Android, WebOS, RIM, Maemo (MeeGo), Windows Phone 7 и другие начали ориентироваться на массового пользователя." />
+  <meta http-equiv="description" content="Ни для кого не секрет, что мобильные платформы становятся все популярнее и популярнее. С начала iPhone (мобильные OS были и раньше такие как WM, Symbian и другие, но именно массовость коммуникаторам и смартфонам принесла iPhone OS) со своим революционными новшествами, потом Android, WebOS, RIM, Maemo (MeeGo), Windows Phone 7 и другие начали ориентироваться на массового пользователя."/> 
+  <meta name="robots" content="all"/> 
+  <meta name="resourse-type" content="document"/> 
+  <meta name="document-state" content="dynamic"/> 
+  <meta name="revisit-after" content="1 days"/> 
+  <meta http-equiv="author" content="Anton Panasenko"/>
+  <meta name="copyright" content="Copyright (C) 2011 "/> 
+  <meta name="document-state" content="dynamic"/> 
+  <link rev="made" href="anton.panasenko@gmail.com"/> 
+  <meta http-equiv="reply-to" content="anton.panasenko@gmail.com"/> 
+  <meta name="site-created" content="Anton Panasenko - blog.apanasenko.me"/> 
+  <meta name="addres" content="blog.apanasenko.me"/> 
+  <meta name="distribution" content="global"/> 
+  <title>
+    iPad -  Anton Panasenko
+  </title>
+  <link rel="stylesheet" href="/css/reset.css" type="text/css"/>
+  
+  <link rel="stylesheet" href="/css/screen.css" type="text/css"/>
+  <link rel="stylesheet" href="/css/syntax.css" type="text/css"/>
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="/css/iphone.css" type="text/css"/>
+  <link rel="stylesheet" media="only screen and (max-device-width: 1024px)" href="/css/ipad.css" type="text/css"/>
+  <link rel="alternate" type="application/atom+xml" href="http://feeds.feedburner.com/apanasenko"/>
+  <link href="/images/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+  <link href="/images/icon.jpg" rel="apple-touch-icon"/>
+</head>
+<body>
+  <div id="wrapper">
+    <div class="center"><a href="http://blog.apanasenko.me/"><img class="header" alt="header image" src="/images/header.jpg"/></a></div>
+    <div id="inner">
+      <div id="container">
+        <div id="header">
+          <h1>
+            
+              <a href="/">&larr; Anton Panasenko</a>
+            
+          </h1>
+          <ul class="header">
+            <li>
+              <a href="/archive">Archive</a>
+            </li>
+	    <li>
+		<a href="http://ru.linkedin.com/in/apanasenko/">LinkedIn <span class="arrow">&rarr;</span></a>
+	    </li>
+            <li>
+		<a href="http://github.com/dieu">Github <span class="arrow">&rarr;</span></a>
+            </li>
+            <li>
+              <a href="http://twitter.com/apanasenko">Twitter <span class="arrow">&rarr;</span></a>
+            </li>
+          </ul>
+          <hr class="right"/>
+        </div>
+        <h2>iPad</h2>
+        
+
+<span id="article_buttons">
+  <a id="tweet">
+    <span class="balloon">tweet!</span> <img src="/images/tweet.png"/ alt="tweet"/>
+  </a>
+  <a href="http://feeds.feedburner.com/apanasenko">
+    <span class="balloon">subscribe!</span> <img src="/images/feed.png" alt="feed"/> 
+  </a>
+</span>
+
+<hr/>
+
+<div id="content">
+	<p>Ни для кого не секрет, что мобильные платформы становятся все популярнее и популярнее. С начала iPhone (мобильные OS были и раньше такие как WM, Symbian и другие, но именно массовость коммуникаторам и смартфонам принесла iPhone OS) со своим революционными новшествами, потом Android, WebOS, <span class="caps">RIM</span>, Maemo (MeeGo), Windows Phone 7 и другие начали ориентироваться на массового пользователя. По этому каждое новое мобильное устройство вызывает интерес как со стороны пользователей, так и со стороны разработчиков. Оглядываясь на недавнюю историю успеха iPhone и разработчиков приложений для него, можно с уверенностью сказать, что на качественных и интересных приложениях, под новое устройство от Apple, можно и нужно зарабатывать деньги. По этому сегодня хотелось бы рассмотреть процесс разработки под iPad с нуля.</p>
+<p>Так же как и под iPhone разработка происходит только на операционной системе Mac OS X 10.6 Snow Leopard (существуют проекты компиляции приложений под альтернативными OS) с помощью официального iPhone <span class="caps">SDK</span> 3.2, которое можно скачать пройдя бесплатную (кроме бета версий <span class="caps">SDK</span>, они доступны только подписчикам) регистрацию на сайте <a href="https://developer.apple.com/iphone/index.action">Apple</a>. Для полноценной разработки (тестирование на реальном устройстве, показ заказчику/друзьям, отправку в App Store) вам потребуется купить <a href="http://developer.apple.com/programs/iphone/">подписку</a> (минимальная стоимость $99 за год) и стать полноправным разработчиком под iPhone/iPad. iPhone <span class="caps">SDK</span> доступно для трех языков Objective-C, C, C++, так же существует поддержка JavaScript через движок мобильного Safari, а после анонса iPhone OS 4.0 была запрещена какая либо кросс компиляция и использование сторонних языков для разработки приложений продаваемых в App Store (но для некоторых проектов были сделаны &#8220;исключения&#8221;, по крайней мере по их же заявлениям <a href="http://blogs.unity3d.com/2010/05/11/unity-and-the-iphone-os-4-0-update-ii/">Unity 3D</a>, <a href="http://www.phonegap.com/2010/04/14/phonegap-and-the-apple-developer-license-agreement/">PhoneGap</a>). Из трех доступных языков для нативных приложений самым &#8220;православным&#8221; является Objective-C, если вы ранее имели дело с Unmanagement языками, то освоение Objective-C по мануалам от Apple не составит для вас труда, если же вы разрабатывали ранее только на языках со сборщиком мусора я вам советую прочитать какую нибудь книгу по введению в язык.</p>
+<h2>Objective-C</h2>
+<p><a href="http://en.wikipedia.org/wiki/Objective-C">Objective-C</a> &#8211; это слаботипизированный, объектно-ориентируемый, компилируемый, native язык. В большинстве книгах, статьях и других материалах по Objective-C, его называют все тем же С с дополнительными возможностями и надстройками, которые не нарушают совместимости (в отличии от С++, он все таки уже другой язык). По этому все правила работающие в С работают и в Objective-C, весь код работает и там и там. При этом у вас в наличии объектно-ориентированная парадигма заимствованная у <a href="http://en.wikipedia.org/wiki/Smalltalk">Smalltalk</a>. В следствие этого одной из особенностей языка является то, что он message-oriented в то время как С++ — function-oriented. Это значит, что в нём вызовы метода интерпретируются не как вызов функции (хотя к этому обычно все сводится), а именно как посылка сообщения (с именем и аргументами) объекту, подобно тому, как это происходит в Smalltalk-е. Такой подход имеет своих почитателей и своих ненавистников, я могу сказать, что к этому привыкаешь и если проникаешься данным подходов, сразу же находятся плюсы. А именно любому объекту можно послать любое сообщение. Объект может вместо обработки сообщения просто переслать его другому объекту для обработки (так называемое делегирование), в частности именно так можно легко реализовать распределенные объекты (то есть объекты находящиеся в различных адресных пространствах и даже на разных компьютерах). Привязка сообщения к соответствующей функции происходит непосредственно на этапе выполнения.<br />
+В языке есть нормальная поддержка протоколов (то есть понятие интерфейса объекта и протокола четко разделены). Для объектов поддерживается наследование (не множественное), для протоколов поддерживается множественное наследование. Объект может быть унаследован от другого объекта и сразу нескольких протоколов (хотя это скорее не наследование протокола, а его поддержка).<br />
+Так как это расширенный С и в программирование под iPhone/iPad у Objective-C нету GC (под старшего брата iPhone OS, существует GC с версии 10.5+), то и вся ответственность по управлению памятью лежит на программисте. За не большой опыт программирования под iPhone <span class="caps">SDK</span> для управления памяти существуют несколько правил:</p>
+<p>Управ­ле­ние па­мя­тью в Objective-C ба­зи­ру­ет­ся на прин­ци­пе &#8220;вла­де­ния объ­ек­том&#8221;. <a href="http://developer.apple.com/iPhone/library/documentation/Cocoa/Conceptual/MemoryMgmt/MemoryMgmt.html">Ос­нов­ные пра­ви­ла управ­ле­ния па­мя­тью</a> в Objective-C мож­но за­пи­сать так:</p>
+<ol>
+	<li>Для по­лу­че­ния объ­ек­та во вла­де­ние необ­хо­ди­мо вы­звать ме­тод, называющийся &#8220;alloc&#8221;, начинающийся с &#8220;new&#8221; ли­бо со­дер­жа­щий &#8220;copy&#8221;. На­при­мер, alloc, newObject, mutableCopy;</li>
+	<li>Для осво­бож­де­ния объ­ек­та, который был по­лу­чен при по­мо­щи перечисленных вы­ше функций, необ­хо­ди­мо вы­звать функцию &#8220;release&#8221; ли­бо &#8220;autorelease&#8221;. Во всех остальных случаях осво­бож­де­ние объ­ек­та не требуется;</li>
+	<li>Ес­ли по­лу­че­ный объ­ект дол­жен быть сохранен, необ­хо­ди­мо ли­бо стать его вла­дель­цем (пе­ре­дав со­об­ще­ние retain), ли­бо создать его копию (сохранив зна­че­ние, ко­то­рое воз­вра­ща­ет об­ра­бот­ка со­об­ще­ния, со­дер­жа­ще­го в на­зва­нии &#8220;copy&#8221;).</li>
+</ol>
+<p>Дан­ные правила базируются на со­гла­ше­нии по име­но­ва­нию в Objective-C и, в то же вре­мя, са­ми являются ос­но­вой это­го со­гла­ше­ния.</p>
+<h2>XCode</h2>
+<p>Далее хотелось бы не много рассказать про основную <span class="caps">IDE</span> <a href="http://en.wikipedia.org/wiki/Xcode">Xcode</a> для программирование на продуктах Apple, под них же.<br />
+<a href="http://upload.wikimedia.org/wikipedia/en/2/2d/Xcode_3.2_project_window.png" title="View 'Xcode_3.2_project_window' on Flickr.com"><img alt="Xcode_3.2_project_window" border="0" height="414" src="http://upload.wikimedia.org/wikipedia/en/2/2d/Xcode_3.2_project_window.png" style="display: block; margin-left: auto; margin-right: auto;" width="500" /></a><br />
+Xcode это <span class="caps">IDE</span> в полном смысле этого слова, в нем есть полноценный редактор кода, есть прозрачная интеграция между компилятором/дебагером/эмулятором и редактором кода по одному клику мыши, есть средства рефакторинга, интеграции с <span class="caps">VCS</span> и т.д. Но всегда есть &#8220;но&#8221;. В XСode нету такого большого минуса, но есть много маленьких (тормозной рефакторинг, глюченная интеграция дебагера и редактора кода, редактор кода часто глючит, отсутствие интеграции с <span class="caps">DVCS</span> вернее со всеми <span class="caps">VCS</span> кроме <span class="caps">SVN</span> и <span class="caps">CVS</span>, etc).<br />
+Об XСode я думаю больше нечего рассказать (ниже еще покажу как установить иконку для проекта), в википедии достаточно информации.</p>
+<h2>&#8220;iPad&#8221; <span class="caps">SDK</span></h2>
+<p>Для iPad небыло отдельного <span class="caps">SDK</span> со своим именем, он просто получил новую версию iPhone OS, а именно 3.2, тем самым Apple сохранила бинарную совместимость между iPhone приложениями и iPad. Но <a href="http://developer.apple.com/iphone/library/releasenotes/General/iPhone32APIDiffs/">iPhone OS 3.2 получила несколько изменений</a> в <span class="caps">API</span>:</p>
+<ol>
+	<li>CoreText &#8211; новый богатый фреймворк для работы с текстом (шрифтами, размером, etc);</li>
+	<li>Split View Controller &#8211; новый контролер который позволяет разделить данные, которые в iPhone разделялись переходом на новый экран. Теперь мы можем создавать приложения, которые доносят до пользователя максимум информации. Стандартный пример использования этого контролера, это таблица возможного выбора и отображение информации соответствующей колонки;</li>
+	<li><a href="http://developer.apple.com/iphone/library/documentation/General/Conceptual/iPadProgrammingGuide/GestureSupport/GestureSupport.html">UIGestureRecognizer</a> &#8211; новый <span class="caps">API</span> для управлением жестами, очень удобен и прост. Включает в себя несколько жестов: <a href="http://developer.apple.com/iphone/library/documentation/UIKit/Reference/UITapGestureRecognizer_Class/Reference/Reference.html#//apple_ref/occ/cl/UITapGestureRecognizer" title="any number of taps">Tapping</a>, <a href="http://developer.apple.com/iphone/library/documentation/UIKit/Reference/UIPinchGestureRecognizer_Class/Reference/Reference.html#//apple_ref/occ/cl/UIPinchGestureRecognizer" title="for zooming a view">Pinching in and out</a>, <a href="http://developer.apple.com/iphone/library/documentation/UIKit/Reference/UIPanGestureRecognizer_Class/Reference/Reference.html#//apple_ref/occ/cl/UIPanGestureRecognizer">Panning or dragging</a>,  <a href="http://developer.apple.com/iphone/library/documentation/UIKit/Reference/UISwipeGestureRecognizer_Class/Reference/Reference.html#//apple_ref/occ/cl/UISwipeGestureRecognizer" title="in any direction">Swiping</a>, <a href="http://developer.apple.com/iphone/library/documentation/UIKit/Reference/UIRotateGestureRecognizer_Class/Reference/Reference.html#//apple_ref/occ/cl/UIRotationGestureRecognizer" title="fingers moving in opposite directions">Rotating</a>, <a href="http://developer.apple.com/iphone/library/documentation/UIKit/Reference/UILongPressGestureRecognizer_Class/Reference/Reference.html#//apple_ref/occ/cl/UILongPressGestureRecognizer" title="also known as touch and hold">Long press</a>.</li>
+	<li>Popovers и Modal Dialogs &#8211; это еще один новый способ представления информации, тесно связанный с UISplitViewController&#8217;ом;</li>
+	<li>Custom Keyboards &#8211; теперь нам дали возможность создавать собственные варианты клавиатуры;</li>
+	<li>File and Document Support &#8211; теперь вы можете распространять и генерировать различные документы в своих программах;</li>
+	<li><a href="http://developer.apple.com/iphone/library/documentation/MediaPlayer/Reference/MediaPlayer_Framework/MediaPlayer_Framework.pdf">Movie Player</a> &#8211; расширили функционал проигрывателя, добавили контролер и много разных фич.</li>
+</ol>
+<h2>Распространение</h2>
+<p>Во время и после написания продукта, возникает необходимость как распространять, так и тестировать продукт на реальном устройстве. Apple нам за $99 в год предлагает несколько способов решение данной задачи:</p>
+<ol>
+	<li>Прямое тестирование при разработке. Вы подписываете свой девайс для разработке и продукт при сборке добавив профайл в сборку в Xcode, заливаете на устройство профайл и у вас появляется возможность дебажить/профилировать/устанавливать свой продукт на ваш девайс;</li>
+	<li>Распространение на ограниченное число устройств. В год вы можете добавить 100 устройств (удаление устройства не увеличивает счетчик) к вашей подписке, на которых вы можете как тестировать, так и распространять свой продукт. Вы так же создаете профайл и добавляете его к проекту в Xcode. Так же создав Entitlements.info файл.<br />
+<a href="http://www.flickr.com/photos/49964984@N03/4624826278" title="View 'Screen shot 2010-05-20 at 21.12.23' on Flickr.com"><img alt="Screen shot 2010-05-20 at 21.12.23" border="0" height="181" src="http://farm5.static.flickr.com/4022/4624826278_221af184e5.jpg" style="display: block; margin-left: auto; margin-right: auto;" width="500" /></a><br />
+Собрав с нужным профайлом, вы можете без проблем отсылать подписанным девайсам свой *.app архив, который легко устанавливается простым перетаскиванием в iTunes;</li>
+</ol>
+<ol>
+	<li>И последний (и самый экстремальный :) ) тестировать на своих пользователях, т.е. оправлять приложение в AppStore. Вы создаете такой же профайл как и для ограниченного распространения, только указываете что будете отсылать в AppStore.</li>
+</ol>
+<h2>Hints</h2>
+<p>Несколько маленьких, но полезных (по моему мнению) советов:</p>
+<ol>
+	<li>Добавление матовой иконки в приложение<br />
+<a href="http://www.flickr.com/photos/49964984@N03/4624080647" title="View 'Xcode1' on Flickr.com"><img alt="Xcode1" border="0" height="404" src="http://farm5.static.flickr.com/4009/4624080647_32ca7efd37.jpg" style="display: block; margin-left: auto; margin-right: auto;" width="500" /></a></li>
+	<li>Что бы добавить какой либо проект поверх нескольких UIViewController, не обходимо добавлять его в UIWindow, который настраивается в AppDelegate. В последствие вам будет необходимо самому разбираться с ориентацией экрана для этих объектов, самому убирать/добавлять хендлеры событий в каждом контролере (в котором контрол используется), но зато вам удастся построить не обычный интерфейс на достаточно большом экране iPad&#8217;a в отличии от iPhon&#8217;a</li>
+</ol>
+
+	
+		<h4>Posted 20 May 2010 by Anton Panasenko | tags:
+		 
+			
+				<a href="/search/label/apple">apple</a>,
+			 
+		 
+					
+				<a href="/search/label/ipad">ipad</a>
+			 
+		 
+			
+				and <a href="/search/label/objective-c">objective-c</a>.
+			 
+		
+	</h4>
+</div>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  (function() {
+   var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+   dsq.src = 'http://dieu.disqus.com/embed.js';
+   (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+<!--
+
+-->
+
+      </div>
+
+      <div id="slide_bar">
+		<div id="subscribe">
+			<a href="http://feeds.feedburner.com/apanasenko" rel="alternate" title="feed" type="application/rss+xml"><img alt="rss" src="http://lh3.ggpht.com/_wN3Yn5K_LYs/SviFaWzVaAI/AAAAAAAAACE/t5QGxBDsiMs/rss.png"/></a>
+		</div>	
+        <div id="cloud_tag">
+          <div id="cloud_tag_div">
+                <ol id="tag-cloud"><li title="1 post"><a href="/search/label/actors">actors</a></li> <li title="1 post"><a href="/search/label/alice">alice</a></li> <li title="2 posts"><a href="/search/label/amazon">amazon</a></li> <li title="1 post"><a href="/search/label/apple">apple</a></li> <li title="1 post"><a href="/search/label/aws">aws</a></li> <li title="1 post"><a href="/search/label/azure">azure</a></li> <li title="1 post"><a href="/search/label/blog">blog</a></li> <li title="1 post"><a href="/search/label/book">book</a></li> <li title="1 post"><a href="/search/label/build">build</a></li> <li title="1 post"><a href="/search/label/cassandra">cassandra</a></li> <li title="1 post"><a href="/search/label/chef">chef</a></li> <li title="1 post"><a href="/search/label/client">client</a></li> <li title="1 post"><a href="/search/label/clips">clips</a></li> <li title="1 post"><a href="/search/label/clojure">clojure</a></li> <li title="1 post"><a href="/search/label/cloud">cloud</a></li> <li title="1 post"><a href="/search/label/consistent">consistent</a></li> <li title="1 post"><a href="/search/label/db">db</a></li> <li title="1 post"><a href="/search/label/deploy">deploy</a></li> <li title="1 post"><a href="/search/label/django">django</a></li> <li title="2 posts"><a href="/search/label/dvcs">dvcs</a></li> <li title="2 posts"><a href="/search/label/ec2">ec2</a></li> <li title="4 posts"><a href="/search/label/erlang">erlang</a></li> <li title="5 posts"><a href="/search/label/fl">fl</a></li> <li title="5 posts"><a href="/search/label/fp">fp</a></li> <li title="1 post"><a href="/search/label/gen_server">gen_server</a></li> <li title="1 post"><a href="/search/label/gfs">gfs</a></li> <li title="1 post"><a href="/search/label/git">git</a></li> <li title="1 post"><a href="/search/label/github">github</a></li> <li title="2 posts"><a href="/search/label/google">google</a></li> <li title="2 posts"><a href="/search/label/grid">grid</a></li> <li title="1 post"><a href="/search/label/hash">hash</a></li> <li title="2 posts"><a href="/search/label/hg">hg</a></li> <li title="1 post"><a href="/search/label/ipad">ipad</a></li> <li title="2 posts"><a href="/search/label/java">java</a></li> <li title="1 post"><a href="/search/label/jekyll">jekyll</a></li> <li title="3 posts"><a href="/search/label/jvm">jvm</a></li> <li title="1 post"><a href="/search/label/mac os">mac os</a></li> <li title="1 post"><a href="/search/label/mapreduce">mapreduce</a></li> <li title="1 post"><a href="/search/label/mercurial">mercurial</a></li> <li title="2 posts"><a href="/search/label/nosql">nosql</a></li> <li title="1 post"><a href="/search/label/objective-c">objective-c</a></li> <li title="1 post"><a href="/search/label/osgi">osgi</a></li> <li title="1 post"><a href="/search/label/pax">pax</a></li> <li title="1 post"><a href="/search/label/python">python</a></li> <li title="2 posts"><a href="/search/label/rabbitmq">rabbitmq</a></li> <li title="1 post"><a href="/search/label/ruby">ruby</a></li> <li title="3 posts"><a href="/search/label/scala">scala</a></li> <li title="1 post"><a href="/search/label/scheme">scheme</a></li> <li title="1 post"><a href="/search/label/server">server</a></li></ol>
+
+          </div>
+        </div>
+		<br/>
+		<div id="iready">
+	    	<ol>
+<li><a href="http://alenacpp.blogspot.com/">Алена С++</a></li>
+<li></li>
+<li><a href="http://samolisov.blogspot.com/">Челябинский Программист</a></li>
+</ol>
+        </div>
+        <br/>
+      </div> 
+    </div>
+  </div>
+
+  <script src="/js/jquery.js" type="text/javascript"></script>
+  <script src="/js/twitter.js" type="text/javascript"></script>
+  <script type="text/javascript">
+	var disqus_shortname = 'dieu';
+	(function () {
+	    var s = document.createElement('script'); s.async = true;
+	    s.src = 'http://disqus.com/forums/dieu/count.js';
+	    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+	}());
+  </script>
+
+  
+<!-- Yandex.Metrika counter -->
+<div style="display:none;"><script type="text/javascript">
+(function(w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter445478 = new Ya.Metrika(445478);
+             yaCounter445478.clickmap(true);
+             yaCounter445478.trackLinks(true);
+        
+        } catch(e) { }
+    });
+})(window, 'yandex_metrika_callbacks');
+</script></div>
+<script src="//mc.yandex.ru/metrika/watch.js" type="text/javascript" defer="defer"></script>
+<noscript><img src="//mc.yandex.ru/watch/445478" style="position:absolute; left:-9999px;" alt="" /></noscript>
+<!-- /Yandex.Metrika counter -->
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-6891853-5']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</body>
+</html>

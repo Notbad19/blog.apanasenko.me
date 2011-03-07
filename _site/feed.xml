@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+ 
+ <title>Anton Panasenko</title>
+ <link href="http://blog.apanasenko.me/feed.xml" rel="self"/>
+ <link href="http://blog.apanasenko.me/"/>
+ <updated>2011-03-07T22:12:55+03:00</updated>
+ <id>http://blog.apanasenko.me/</id>
+ <author>
+   <name>Recursive</name>
+   <email>apanasenko@me.com</email>
+ </author>
+
+ 
+ <entry>
+   <title>DjangoBook (RU) in PDF</title>
+   <link href="http://blog.apanasenko.me/2011/01/djangobook-ru-pdf"/>
+   <updated>2011-01-23T00:00:00+03:00</updated>
+   <id>http://blog.apanasenko.me/2011/01/djangobook-ru-pdf</id>
+   <content type="html">Появилась нужда разобраться с Django фреймворком и сразу же озадачился поиском хорошей литературы. Первым делом нашел замечательный проект по переводу djangobook на русский, но автор по каким-то своим причинам не захотел отдавать билд систему для сборки в каком нибудь вменяемом формате (читать с сайта, не очень удобно). Хотя исходники кники в DocBook формате выложил, за что ему спасибо. По этому пришлось самому разбираться с этим форматом (как, чем можно скомпилировать книгу в pdf).</content>
+ </entry>
+ 
+ <entry>
+   <title>GitHub + Jekyll = Blog engine</title>
+   <link href="http://blog.apanasenko.me/2010/12/github-blog-engine"/>
+   <updated>2010-12-08T00:00:00+03:00</updated>
+   <id>http://blog.apanasenko.me/2010/12/github-blog-engine</id>
+   <content type="html">Недавно увидев сайт визитку одного разработчика, захотелось и себе сделать нечто подобное. Первом делом начал искать где это все захостить, покупать что то серьезное не хотелось, а посмотрев популярные проекты для этих целей, не нашел ничего подходящего. Большинство из них не дает большой гибкости, кто то не имеет достаточной кастомизации html и css, кто то не умеет работать с доменами 2рого уровня и т.д. И тут мой взор упал на GitHub Pages.</content>
+ </entry>
+ 
+ <entry>
+   <title>RabbitMQ Erlang Client</title>
+   <link href="http://blog.apanasenko.me/2010/09/rabbitmq-erlang-client"/>
+   <updated>2010-09-14T00:00:00+04:00</updated>
+   <id>http://blog.apanasenko.me/2010/09/rabbitmq-erlang-client</id>
+   <content type="html">Пишу для себя маленький гайд по сборке и установке Erlang клиента для RabbiMQ, а то каждый раз все заново проходиться делать :) Ревизии приведены для версии 2.0.0, а пути к директории Erlang/lib для Ubuntu 10.04. Для OS X, надо будет поменять /usr/lib на /opt/local/lib/, если Erlang ставили из портов.</content>
+ </entry>
+ 
+ <entry>
+   <title>Erlaws API for Amazon EC2</title>
+   <link href="http://blog.apanasenko.me/2010/06/erlaws-api-amazon-ec2"/>
+   <updated>2010-06-13T00:00:00+04:00</updated>
+   <id>http://blog.apanasenko.me/2010/06/erlaws-api-amazon-ec2</id>
+   <content type="html">На днях понадбилась библиотека для работы с &lt;strong&gt;Amazon EC2&lt;/strong&gt; из под &lt;strong&gt;Erlang&lt;/strong&gt;'a, но адекватных предложений не было (гугл в принципе не нашел ни одного варианта). По этому пришлось взять существующую библиотеку для других сервисов Amazon'a и добавить в неё поддержку EC2.</content>
+ </entry>
+ 
+ <entry>
+   <title>Chef install guide</title>
+   <link href="http://blog.apanasenko.me/2010/06/chef-install-guide"/>
+   <updated>2010-06-10T00:00:00+04:00</updated>
+   <id>http://blog.apanasenko.me/2010/06/chef-install-guide</id>
+   <content type="html">Chef - это система провижининга приложений (достаточно удобная и гибкая система) со своими плюсами и недостатками. Но сегодня не много о другом, а именно об установке server-client варианта на EC2.</content>
+ </entry>
+ 
+ <entry>
+   <title>iPad</title>
+   <link href="http://blog.apanasenko.me/2010/05/ipad"/>
+   <updated>2010-05-20T00:00:00+04:00</updated>
+   <id>http://blog.apanasenko.me/2010/05/ipad</id>
+   <content type="html">Ни для кого не секрет, что мобильные платформы становятся все популярнее и популярнее. С начала iPhone (мобильные OS были и раньше такие как WM, Symbian и другие, но именно массовость коммуникаторам и смартфонам принесла iPhone OS) со своим революционными новшествами, потом Android, WebOS, RIM, Maemo (MeeGo), Windows Phone 7 и другие начали ориентироваться на массового пользователя.</content>
+ </entry>
+ 
+ <entry>
+   <title>Cassandra</title>
+   <link href="http://blog.apanasenko.me/2010/05/cassandra"/>
+   <updated>2010-05-02T00:00:00+04:00</updated>
+   <id>http://blog.apanasenko.me/2010/05/cassandra</id>
+   <content type="html">Cassandra - это NoSQL хранилище данных, которое родилось в Facebook и успешно используется в таких крупных веб проектах, как Digg, Twitter и других. Cassandra основана на Columnfamily (первый кто использовал данный подход в NoSQL хранилище Google co своей BigTable) моделе. В ней, у вас есть строки и столбцы, как вы и привыкли видеть.</content>
+ </entry>
+ 
+ <entry>
+   <title>OSGI Pax Constructor</title>
+   <link href="http://blog.apanasenko.me/2010/02/osgi-pax-construct-part-1"/>
+   <updated>2010-02-28T00:00:00+03:00</updated>
+   <id>http://blog.apanasenko.me/2010/02/osgi-pax-construct-part-1</id>
+   <content type="html">Сегодня хотел бы рассказать о таком инструменте, как Pax Construct. Это фактически индустриальный стандарт для ведения проектов на основе технологии &lt;b&gt;OSGi&lt;/b&gt;. Он доступен как стандэлон приложение, так и как плагин для maven2. &lt;b&gt;Pax Construct&lt;/b&gt; предоставляет вам множество инструментов для проектов на основе OSGi, которые помогут вам быстро создавать и управлять вашим проектом. Основная функциональность обеспечивается за счет гибкой архитектуры и интеграции с &lt;b&gt;maven2&lt;/b&gt;, что улучшает и упрощает процесс сборки OSGi проектов под Maven, так же доступные основные архетипы для новых проектов.</content>
+ </entry>
+ 
+ <entry>
+   <title>Chicken install on Mac OS 10.6</title>
+   <link href="http://blog.apanasenko.me/2010/02/chicken-install-on-mac-os-106"/>
+   <updated>2010-02-09T00:00:00+03:00</updated>
+   <id>http://blog.apanasenko.me/2010/02/chicken-install-on-mac-os-106</id>
+   <content type="html">Недавно занялся изучением &lt;b&gt;Scheme&lt;/b&gt; и для этого стал использовать текстовый редактор &lt;b&gt;TextMate&lt;/b&gt;, который имеет интеграцию в виде bundl'a с интерпретатором &lt;b&gt;Chicken&lt;/b&gt;. И так приступим к выявлению проблем и героическому решению...</content>
+ </entry>
+ 
+ <entry>
+   <title>RabbitMQ and Alice</title>
+   <link href="http://blog.apanasenko.me/2009/12/rabbitmq-alice"/>
+   <updated>2009-12-17T00:00:00+03:00</updated>
+   <id>http://blog.apanasenko.me/2009/12/rabbitmq-alice</id>
+   <content type="html">Есть такой прекрасный проект RabbitMQ. И вот появилась задача организовать мониторинг за &lt;strong&gt;RabbitMQ&lt;/strong&gt; сервером. Поискав не много в &lt;strong&gt;google&lt;/strong&gt; нашел решение в виде Alice - это приложение выставляющие &lt;strong&gt;RESTful API&lt;/strong&gt; написанное на &lt;strong&gt;Erlang&lt;/strong&gt;.</content>
+ </entry>
+ 
+ <entry>
+   <title>Scala Functional Language (part 3)</title>
+   <link href="http://blog.apanasenko.me/2009/12/scala-functional-language-part-3"/>
+   <updated>2009-12-15T00:00:00+03:00</updated>
+   <id>http://blog.apanasenko.me/2009/12/scala-functional-language-part-3</id>
+   <content type="html">Сегодня я и Эльдар попытаемся рассказать о &lt;strong&gt;Scala&lt;/strong&gt; с функционального взгляда. &lt;strong&gt;Scala&lt;/strong&gt; – это функциональный язык в том смысле, что каждая функция – это значение. Он предоставляет легковесный синтаксис для определения анонимных функций, а также поддерживает вложенные функции.</content>
+ </entry>
+ 
+ <entry>
+   <title>Scala FL JVM (part 1)</title>
+   <link href="http://blog.apanasenko.me/2009/12/scala-fl-jvm-part-1"/>
+   <updated>2009-12-13T00:00:00+03:00</updated>
+   <id>http://blog.apanasenko.me/2009/12/scala-fl-jvm-part-1</id>
+   <content type="html">В сегодняшнем хайпе &lt;strong&gt;функциональных языках&lt;/strong&gt; программирования &lt;strong&gt;Java&lt;/strong&gt; программисты так же как и все испытывают потребность в каком-то языковом сахаре, функциональных плюшках, etc. Но Sun пока не дает всего этого в своём флагманском языке программирования в отличии от конкурентов, она придерживается консервативного подхода (хотя уже есть подвижки). В следствии всего этого, &lt;strong&gt;Java&lt;/strong&gt; программисты смотрят на другие &lt;strong&gt;JVM&lt;/strong&gt; языки (благо платформа дает все возможности для полета фантазии любого программиста), которые дают все блага описанные выше и многое другое. Один из таких языков это &lt;strong&gt;Scala (SCAlable LAnguage)&lt;/strong&gt; — мультипарадигмальный язык программирования, без &lt;strong&gt;С&lt;/strong&gt; подобного синтаксиса (с более лакониченым). В нем органично сочетаются возможности функционального и объектно ориентированного программирования.</content>
+ </entry>
+ 
+ <entry>
+   <title>Scala Actors (part 2)</title>
+   <link href="http://blog.apanasenko.me/2009/12/scala-actors-part-2"/>
+   <updated>2009-12-13T00:00:00+03:00</updated>
+   <id>http://blog.apanasenko.me/2009/12/scala-actors-part-2</id>
+   <content type="html">В прошлой статье я попытался рассказать, о том что такое &lt;strong&gt;Scala&lt;/strong&gt; и особенностях синтаксиса/языка по сравнению с &lt;strong&gt;Java&lt;/strong&gt;. В этом посте попробую рассмотреть &lt;strong&gt;Scala Actors&lt;/strong&gt;. С появлением многоядерных процессоров параллельное программирование становится незаменимым. Параллелизм в &lt;strong&gt;Scala&lt;/strong&gt; строиться в первую очередь с помощью &lt;strong&gt;actors&lt;/strong&gt;. &lt;strong&gt;Actors&lt;/strong&gt; это параллельные процессы, которые взаимодействуют путем обмена сообщениями. &lt;strong&gt;Actors&lt;/strong&gt; можно также рассматривать как одну из форм активных объектов, где применение метода соответствует посылке сообщений.</content>
+ </entry>
+ 
+ <entry>
+   <title>NoSQL</title>
+   <link href="http://blog.apanasenko.me/2009/12/nosql"/>
+   <updated>2009-12-07T00:00:00+03:00</updated>
+   <id>http://blog.apanasenko.me/2009/12/nosql</id>
+   <content type="html">&lt;b&gt;NoSQL&lt;/b&gt; - новый тренд в IT технологиях, подносящиеся как спасительный круг и избавитель от всех насущных проблем. В основе данного направление лежит отказ от языка SQL и от реалиционных баз данных, как частности. Беспрецедентные объемы данных заставили бизнес взглянуть на альтернативы традиционной технологии реляционных баз данных, которые служили нам добрую службу более тридцати лет. В совокупности эти альтернативы стали известны как &lt;b&gt;NoSQL&lt;/b&gt; базы данных.</content>
+ </entry>
+ 
+ <entry>
+   <title>Consistent hashing</title>
+   <link href="http://blog.apanasenko.me/2009/11/consistent-hashing"/>
+   <updated>2009-11-29T00:00:00+03:00</updated>
+   <id>http://blog.apanasenko.me/2009/11/consistent-hashing</id>
+   <content type="html">Есть большой пласт технологий для создания распределенных систем: создание железных решений, распределенного ПО для управления системой, распределенных хранилищь, etc. Все это двигает grid  технологии и cloud computing, и при разработки всего этого люди встречаются со множеством проблем. Так как проблем много мне хотелось бы остановиться на одной конкретной проблеме: хранение данных в распределенных системах, а именно на способе создания ключей, так как распределенные хранилища строиться из нескольких серверов и традиционной парадигмой хранения данных являеться Key-Value. Т.е. каждому элементу ставится в соответствие какой-либо ключ. Этот ключ выступает средством однозначного соответствия сервера и данных, и  с помощью него всегда можно достатать те данные, которые тебе нужны.</content>
+ </entry>
+ 
+ <entry>
+   <title>CLIPS</title>
+   <link href="http://blog.apanasenko.me/2009/11/clips"/>
+   <updated>2009-11-29T00:00:00+03:00</updated>
+   <id>http://blog.apanasenko.me/2009/11/clips</id>
+   <content type="html">&lt;strong&gt;CLIPS&lt;/strong&gt; (C Language Integrated Production System) - это язык c clojure'о подобным синтаксисом, название которого предложено Чарльзом Форги (Charles Forgy). &lt;strong&gt;CLIPS&lt;/strong&gt; создавался для простой и быстрой разработки экспертных систем.</content>
+ </entry>
+ 
+ <entry>
+   <title>Hg server install</title>
+   <link href="http://blog.apanasenko.me/2009/11/hg-server-install"/>
+   <updated>2009-11-21T00:00:00+03:00</updated>
+   <id>http://blog.apanasenko.me/2009/11/hg-server-install</id>
+   <content type="html">Опять ударила пуля в голову и захотелось на домашнем сервере держать &lt;strong&gt;Mercurial&lt;/strong&gt; репозиторий, который был бы доступен по http. Для этого нам понадобится &lt;strong&gt;Mercurial&lt;/strong&gt;, &lt;strong&gt;Python&lt;/strong&gt;, &lt;strong&gt;Apache2&lt;/strong&gt;, все производиться на Ubuntu, но и для других OS принцип будет тот же.</content>
+ </entry>
+ 
+ <entry>
+   <title>GFS</title>
+   <link href="http://blog.apanasenko.me/2009/11/gfs"/>
+   <updated>2009-11-16T00:00:00+03:00</updated>
+   <id>http://blog.apanasenko.me/2009/11/gfs</id>
+   <content type="html">Как бы не было смешно обоснования данного вопроса, но все таки Google. Так как Google сегодня самый большой частный владелец информации, сегодня это самый популярный поиск, один из основных игроков интернет сервисов. Объемы хранящейся у них информации растут с колоссальной скоростью. Все это дает Google авторитет в понимании проблем и наилучшего решения.</content>
+ </entry>
+ 
+ <entry>
+   <title>Mercurial Hg</title>
+   <link href="http://blog.apanasenko.me/2009/11/mercurial-hg"/>
+   <updated>2009-11-15T00:00:00+03:00</updated>
+   <id>http://blog.apanasenko.me/2009/11/mercurial-hg</id>
+   <content type="html">&lt;strong&gt;DVCS&lt;/strong&gt; (Distributed Version Control System) - это распределенные системы контроля версий, которые в общем случае не нуждаются в централизованном хранилище. Это их главное преимущество перед традиционными системами (CVS, SVN, etc), оно начинает проявляться и выручать при достаточно большой и распределенной команде разработчиков. Это очень удобно когда можно работать без доступа к центральному репозиторию или когда есть возможность делиться своими &quot;экспериментальными&quot; на работками с другими участниками разработки.</content>
+ </entry>
+ 
+ <entry>
+   <title>Cloud Computing</title>
+   <link href="http://blog.apanasenko.me/2009/11/cloud-computing"/>
+   <updated>2009-11-10T00:00:00+03:00</updated>
+   <id>http://blog.apanasenko.me/2009/11/cloud-computing</id>
+   <content type="html">Как говориться все новое это хорошо забытое старое. Cloud Computing не исключение, его основополагающие принципы были заложены за долго до появления данного термина. Не которые из частных реализаций так вовсе были реализованы в бородатые времена (DaaS и терминалы для мейнфреймов), но данные факты не как ни отменяет всей &quot;новизны&quot; данного подхода.</content>
+ </entry>
+ 
+ <entry>
+   <title>Erlang (gen_server)</title>
+   <link href="http://blog.apanasenko.me/2009/10/erlang"/>
+   <updated>2009-10-25T00:00:00+04:00</updated>
+   <id>http://blog.apanasenko.me/2009/10/erlang</id>
+   <content type="html">Про Erlang достаточно много написано на русском (Вики), по этому интереснее конкретные, простые примеры кода. А вот их днем с огнем не сыщешь, не в англоязычном интернете, не тем более в русском... Надо эту ситуацию, как то менять и начну пожалуй с себя :)</content>
+ </entry>
+ 
+ 
+</feed>
