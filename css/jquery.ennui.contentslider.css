@@ -41,12 +41,12 @@
 }
 
 .cs_leftBtn {
-  background: url('../images/cs_leftImg.png') no-repeat;
+  background: url('/blog.apanasenko.me/images/cs_leftImg.png') no-repeat;
   left: 200px;
   outline:0;
 }
 .cs_rightBtn {
-  background: url('../images/cs_rightImg.png') no-repeat;
+  background: url('/blog.apanasenko.me/images/cs_rightImg.png') no-repeat;
   right:200px;
   outline:0;
 }

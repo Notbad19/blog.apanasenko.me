@@ -5,14 +5,14 @@
 	  	<title>
 	    	{% if page.home %} Anton Panasenko {% else %} {{ page.title }} {% endif %} 
 	  	</title>
-		<link rel="stylesheet" href="/css/style.css" type="text/css" media="all"/>
+		<link rel="stylesheet" href="/blog.apanasenko.me/css/style.css" type="text/css" media="all"/>
 	</head>
 <body>
 <div id="header">
 	<ul id="nav" class="nav"> 
-		<li id="main" class="selected"><a href="/"><strong>Home</strong><span>main page</span></a></li> 
-		<li id="post"><a href="{{ page.url }}"><strong>Blog</strong> <span>post</span></a></li>
-		<li id="archive"><a href="/archive"><strong>Archive</strong></a></li> 
+		<li id="main" class="selected"><a href="/blog.apanasenko.me/"><strong>Home</strong><span>main page</span></a></li> 
+		<li id="post"><a href="/blog.apanasenko.me/{{ page.url }}"><strong>Blog</strong> <span>post</span></a></li>
+		<li id="archive"><a href="/blog.apanasenko.me/archive"><strong>Archive</strong></a></li> 
 		<li><a href="http://ru.linkedin.com/in/apanasenko/"><strong>LinkedIn</strong> <span>&rarr;</span></a></li> 
 		<li><a href="http://github.com/dieu"><strong>Github</strong> <span>&rarr;</span></a></li> 
 		<li><a href="http://twitter.com/apanasenko"><strong>Twitter</strong> <span>&rarr;</span></a></li> 
