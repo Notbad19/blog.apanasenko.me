@@ -1,68 +1,29 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta name="google-site-verification" content="bb8epm6suyHfvYU-yFKhhYMyg3SQ__QndlyH-vBmiAk"/>
-  <meta name='yandex-verification' content='74e7c4ae6d68c097'/>
-  <meta name="viewport" content="width=950, maximum-scale=1.0" />
-  <meta name="description" content="<strong>CLIPS</strong> (C Language Integrated Production System) - это язык c clojure'о подобным синтаксисом, название которого предложено Чарльзом Форги (Charles Forgy). <strong>CLIPS</strong> создавался для простой и быстрой разработки экспертных систем." />
-  <meta http-equiv="description" content="<strong>CLIPS</strong> (C Language Integrated Production System) - это язык c clojure'о подобным синтаксисом, название которого предложено Чарльзом Форги (Charles Forgy). <strong>CLIPS</strong> создавался для простой и быстрой разработки экспертных систем."/> 
-  <meta name="robots" content="all"/> 
-  <meta name="resourse-type" content="document"/> 
-  <meta name="document-state" content="dynamic"/> 
-  <meta name="revisit-after" content="1 days"/> 
-  <meta http-equiv="author" content="Anton Panasenko"/>
-  <meta name="copyright" content="Copyright (C) 2011 "/> 
-  <meta name="document-state" content="dynamic"/> 
-  <link rev="made" href="anton.panasenko@gmail.com"/> 
-  <meta http-equiv="reply-to" content="anton.panasenko@gmail.com"/> 
-  <meta name="site-created" content="Anton Panasenko - blog.apanasenko.me"/> 
-  <meta name="addres" content="blog.apanasenko.me"/> 
-  <meta name="distribution" content="global"/> 
-  <title>
-    CLIPS -  Anton Panasenko
-  </title>
-  <link rel="stylesheet" href="/css/reset.css" type="text/css"/>
-  
-  <link rel="stylesheet" href="/css/screen.css" type="text/css"/>
-  <link rel="stylesheet" href="/css/syntax.css" type="text/css"/>
-  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="/css/iphone.css" type="text/css"/>
-  <link rel="stylesheet" media="only screen and (max-device-width: 1024px)" href="/css/ipad.css" type="text/css"/>
-  <link rel="alternate" type="application/atom+xml" href="http://feeds.feedburner.com/apanasenko"/>
-  <link href="/images/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
-  <link href="/images/icon.jpg" rel="apple-touch-icon"/>
-</head>
+	<head>
+ 	  	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	  	<title>
+	    	 CLIPS  
+	  	</title>
+		<link rel="stylesheet" href="/css/style.css" type="text/css" media="all"/>
+	</head>
 <body>
-  <div id="wrapper">
-    <div class="center"><a href="http://blog.apanasenko.me/"><img class="header" alt="header image" src="/images/header.jpg"/></a></div>
-    <div id="inner">
-      <div id="container">
-        <div id="header">
-          <h1>
-            
-              <a href="/">&larr; Anton Panasenko</a>
-            
-          </h1>
-          <ul class="header">
-            <li>
-              <a href="/archive">Archive</a>
-            </li>
-	    <li>
-		<a href="http://ru.linkedin.com/in/apanasenko/">LinkedIn <span class="arrow">&rarr;</span></a>
-	    </li>
-            <li>
-		<a href="http://github.com/dieu">Github <span class="arrow">&rarr;</span></a>
-            </li>
-            <li>
-              <a href="http://twitter.com/apanasenko">Twitter <span class="arrow">&rarr;</span></a>
-            </li>
-          </ul>
-          <hr class="right"/>
-        </div>
-        <h2>CLIPS</h2>
-        
-
-<span id="article_buttons">
+<div id="header">
+	<ul id="nav" class="nav"> 
+		<li id="main" class="selected"><a href="/"><strong>Home</strong><span>main page</span></a></li> 
+		<li id="post"><a href="/2009/11/clips"><strong>Blog</strong> <span>post</span></a></li>
+		<li id="archive"><a href="/archive"><strong>Archive</strong></a></li> 
+		<li><a href="http://ru.linkedin.com/in/apanasenko/"><strong>LinkedIn</strong> <span>&rarr;</span></a></li> 
+		<li><a href="http://github.com/dieu"><strong>Github</strong> <span>&rarr;</span></a></li> 
+		<li><a href="http://twitter.com/apanasenko"><strong>Twitter</strong> <span>&rarr;</span></a></li> 
+	</ul>
+</div>
+<div id="container">			
+	<div class="bar"> 
+	</div> 
+	<br/>
+	<div id="content">
+			<!-- <span id="article_buttons">
   <a id="tweet">
     <span class="balloon">tweet!</span> <img src="/images/tweet.png"/ alt="tweet"/>
   </a>
@@ -71,12 +32,11 @@
   </a>
 </span>
 
-<hr/>
+<hr/> -->
 
-<div id="content">
+<div class="content">
 	<h4><span class="caps">CLIPS</span>?</h4>
-<div style="text-align:center;">
-<p><img src="http://clipsrules.sourceforge.net/clips.gif" alt="Mercurial_logo.png" border="0" width="200" height="240" /></div></p>
+<center><img src="http://clipsrules.sourceforge.net/clips.gif" alt="Mercurial_logo.png" width="200" height="240" /></center>
 <p><strong><span class="caps">CLIPS</span></strong> (C Language Integrated Production System) &#8211; это язык c clojure&#8217;о подобным синтаксисом, название которого предложено Чарльзом Форги (Charles Forgy). <strong><span class="caps">CLIPS</span></strong> создавался для простой и быстрой разработки экспертных систем. У него есть несколько потомков:</p>
 <ol>
 	<li><a href="http://www.jessrules.com">Jess</a> (часть <span class="caps">CLIPS</span>, работающая с правилами и переписанная на Java, позже развившаяся в другом направлении);</li>
@@ -105,126 +65,115 @@
 	<li>Отладка.</li>
 </ol>
 <h4>Небольшой пример</h4>
-<div>
-<pre>
-<code class='clojure'>(deffunction ask-question (?question $?allowed-values)
-(printout t ?question)
-(bind ?answer (read))
-(if (lexemep ?answer) then
-(bind ?answer (lowcase ?answer)))
-(while (not (member ?answer ?allowed-values)) do
-(printout t ?question)
-(bind ?answer (read))
-(if (lexemep ?answer) then
-(bind ?answer (lowcase ?answer))))
-?answer
-<p>)</p>
-<p>(deffunction yes-or-no-p (?question) <br />
- (bind ?response (ask-question ?question yes no у n)) <br />
- (if (or (eq ?response yes) (eq ?response y)) then<br />
-  <span class="caps">TRUE</span> <br />
- else<br />
-  <span class="caps">FALSE</span>)<br />
- )<br />
-)</p>
-<p>(defrule dela  &quot;&quot; <br />
- (not (repair ?) )<br />
-  =&gt;<br />
-   (if (yes-or-no-p &quot;Все хорошо? &quot;) then<br />
-    (assert (repair &quot;веселый&quot;))<br />
-   else<br />
-    (assert (repair &quot;смурной&quot;))<br />
-   )<br />
-)</p>
-<p>(defrule system-banner &quot;&quot;<br />
- (declare (salience 10)) <br />
-  =&gt;<br />
-   (printout t crlf crlf)<br />
-   (printout t &quot;**********************************&quot; crlf) <br />
-   (printout t &quot;* Экспертная система      <strong>&quot; crlf) <br />
-   (printout t &quot;</strong>*********************************&quot; crlf)<br />
-   (printout t crlf crlf) <br />
-) <br />
-(defrule print-repair &quot;&quot;<br />
- (declare (salience 10)) <br />
- (repair ?item) <br />
-  =&gt;<br />
-   (printout t crlf crlf)<br />
-   (printout t &quot;Вы:&quot;)<br />
-   (printout t  crlf  crlf)<br />
-   (format  t   &quot;   %s%n%n%n&quot;   ?item)<br />
-)</code><br />
-  </pre></p>
-</div>
-<p>В этом примере используются основные функции и правила, для написания простой ЭС.<br />
+<div class="highlight"><pre><code class="clojure"><span class="p">(</span><span class="nf">deffunction</span> <span class="nv">ask-question</span> <span class="p">(</span><span class="nf">?question</span> <span class="nv">$?allowed-values</span><span class="p">)</span>
+ <span class="p">(</span><span class="nf">printout</span> <span class="nv">t</span> <span class="nv">?question</span><span class="p">)</span> 
+ <span class="p">(</span><span class="nf">bind</span> <span class="nv">?answer</span> <span class="p">(</span><span class="nf">read</span><span class="p">))</span> 
+ <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nf">lexemep</span> <span class="nv">?answer</span><span class="p">)</span> <span class="nv">then</span>
+  <span class="p">(</span><span class="nf">bind</span> <span class="nv">?answer</span> <span class="p">(</span><span class="nf">lowcase</span> <span class="nv">?answer</span><span class="p">)))</span>
+ <span class="p">(</span><span class="nf">while</span> <span class="p">(</span><span class="nb">not </span><span class="p">(</span><span class="nf">member</span> <span class="nv">?answer</span> <span class="nv">?allowed-values</span><span class="p">))</span> <span class="nv">do</span> 
+  <span class="p">(</span><span class="nf">printout</span> <span class="nv">t</span> <span class="nv">?question</span><span class="p">)</span>
+  <span class="p">(</span><span class="nf">bind</span> <span class="nv">?answer</span> <span class="p">(</span><span class="nf">read</span><span class="p">))</span>
+  <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nf">lexemep</span> <span class="nv">?answer</span><span class="p">)</span> <span class="nv">then</span>
+   <span class="p">(</span><span class="nf">bind</span> <span class="nv">?answer</span> <span class="p">(</span><span class="nf">lowcase</span> <span class="nv">?answer</span><span class="p">))))</span>
+ <span class="nv">?answer</span>
+<span class="p">)</span>
+
+<span class="p">(</span><span class="nf">deffunction</span> <span class="nv">yes-or-no-p</span> <span class="p">(</span><span class="nf">?question</span><span class="p">)</span> 
+ <span class="p">(</span><span class="nf">bind</span> <span class="nv">?response</span> <span class="p">(</span><span class="nf">ask-question</span> <span class="nv">?question</span> <span class="nv">yes</span> <span class="nv">no</span> <span class="err">у</span> <span class="nv">n</span><span class="p">))</span> 
+ <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">or </span><span class="p">(</span><span class="nf">eq</span> <span class="nv">?response</span> <span class="nv">yes</span><span class="p">)</span> <span class="p">(</span><span class="nf">eq</span> <span class="nv">?response</span> <span class="nv">y</span><span class="p">))</span> <span class="nv">then</span>
+  <span class="nv">TRUE</span> 
+ <span class="nv">else</span>
+  <span class="nv">FALSE</span><span class="p">)</span>
+ <span class="p">)</span>
+<span class="p">)</span>
+
+<span class="p">(</span><span class="nf">defrule</span> <span class="nv">dela</span>  <span class="s">&quot;&quot;</span> 
+ <span class="p">(</span><span class="nb">not </span><span class="p">(</span><span class="nf">repair</span> <span class="nv">?</span><span class="p">)</span> <span class="p">)</span>
+  <span class="nv">=&gt;</span>
+   <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nf">yes-or-no-p</span> <span class="s">&quot;Все хорошо? &quot;</span><span class="p">)</span> <span class="nv">then</span>
+    <span class="p">(</span><span class="nb">assert </span><span class="p">(</span><span class="nf">repair</span> <span class="s">&quot;веселый&quot;</span><span class="p">))</span>
+   <span class="nv">else</span>
+    <span class="p">(</span><span class="nb">assert </span><span class="p">(</span><span class="nf">repair</span> <span class="s">&quot;смурной&quot;</span><span class="p">))</span>
+   <span class="p">)</span>
+<span class="p">)</span>
+
+<span class="p">(</span><span class="nf">defrule</span> <span class="nv">system-banner</span> <span class="s">&quot;&quot;</span>
+ <span class="p">(</span><span class="nf">declare</span> <span class="p">(</span><span class="nf">salience</span> <span class="mi">10</span><span class="p">))</span> 
+  <span class="nv">=&gt;</span>
+   <span class="p">(</span><span class="nf">printout</span> <span class="nv">t</span> <span class="nv">crlf</span> <span class="nv">crlf</span><span class="p">)</span>
+   <span class="p">(</span><span class="nf">printout</span> <span class="nv">t</span> <span class="s">&quot;**********************************&quot;</span> <span class="nv">crlf</span><span class="p">)</span> 
+   <span class="p">(</span><span class="nf">printout</span> <span class="nv">t</span> <span class="s">&quot;* Экспертная система      *&quot;</span> <span class="nv">crlf</span><span class="p">)</span> 
+   <span class="p">(</span><span class="nf">printout</span> <span class="nv">t</span> <span class="s">&quot;**********************************&quot;</span> <span class="nv">crlf</span><span class="p">)</span>
+   <span class="p">(</span><span class="nf">printout</span> <span class="nv">t</span> <span class="nv">crlf</span> <span class="nv">crlf</span><span class="p">)</span> 
+<span class="p">)</span> 
+<span class="p">(</span><span class="nf">defrule</span> <span class="nv">print-repair</span> <span class="s">&quot;&quot;</span>
+ <span class="p">(</span><span class="nf">declare</span> <span class="p">(</span><span class="nf">salience</span> <span class="mi">10</span><span class="p">))</span> 
+ <span class="p">(</span><span class="nf">repair</span> <span class="nv">?item</span><span class="p">)</span> 
+  <span class="nv">=&gt;</span>
+   <span class="p">(</span><span class="nf">printout</span> <span class="nv">t</span> <span class="nv">crlf</span> <span class="nv">crlf</span><span class="p">)</span>
+   <span class="p">(</span><span class="nf">printout</span> <span class="nv">t</span> <span class="s">&quot;Вы:&quot;</span><span class="p">)</span>
+   <span class="p">(</span><span class="nf">printout</span> <span class="nv">t</span>  <span class="nv">crlf</span>  <span class="nv">crlf</span><span class="p">)</span>
+   <span class="p">(</span><span class="nf">format</span>  <span class="nv">t</span>   <span class="s">&quot;   %s%n%n%n&quot;</span>   <span class="nv">?item</span><span class="p">)</span>
+<span class="p">)</span>
+</code></pre>
+</div><p>В этом примере используются основные функции и правила, для написания простой ЭС.<br />
 Основная функция:</p>
-<div>
-<pre>
-<code class='clojure'>(deffunction ask-question (?question $?allowed-values)
-(printout t ?question)
-(bind ?answer (read))
-(if (lexemep ?answer) then
-(bind ?answer (lowcase ?answer)))
-(while (not (member ?answer ?allowed-values)) do
-(printout t ?question)
-(bind ?answer (read))
-(if (lexemep ?answer) then
-(bind ?answer (lowcase ?answer))))
-?answer
-<p>)</code><br />
-  </pre></p>
-</div>
-<p>она считывает из диалогового окна интерпретатора все что вы вводите с клавиатуры и возвращает это. <br />
+<div class="highlight"><pre><code class="clojure"><span class="p">(</span><span class="nf">deffunction</span> <span class="nv">ask-question</span> <span class="p">(</span><span class="nf">?question</span> <span class="nv">$?allowed-values</span><span class="p">)</span>
+ <span class="p">(</span><span class="nf">printout</span> <span class="nv">t</span> <span class="nv">?question</span><span class="p">)</span> 
+ <span class="p">(</span><span class="nf">bind</span> <span class="nv">?answer</span> <span class="p">(</span><span class="nf">read</span><span class="p">))</span> 
+ <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nf">lexemep</span> <span class="nv">?answer</span><span class="p">)</span> <span class="nv">then</span>
+  <span class="p">(</span><span class="nf">bind</span> <span class="nv">?answer</span> <span class="p">(</span><span class="nf">lowcase</span> <span class="nv">?answer</span><span class="p">)))</span>
+ <span class="p">(</span><span class="nf">while</span> <span class="p">(</span><span class="nb">not </span><span class="p">(</span><span class="nf">member</span> <span class="nv">?answer</span> <span class="nv">?allowed-values</span><span class="p">))</span> <span class="nv">do</span> 
+  <span class="p">(</span><span class="nf">printout</span> <span class="nv">t</span> <span class="nv">?question</span><span class="p">)</span>
+  <span class="p">(</span><span class="nf">bind</span> <span class="nv">?answer</span> <span class="p">(</span><span class="nf">read</span><span class="p">))</span>
+  <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nf">lexemep</span> <span class="nv">?answer</span><span class="p">)</span> <span class="nv">then</span>
+   <span class="p">(</span><span class="nf">bind</span> <span class="nv">?answer</span> <span class="p">(</span><span class="nf">lowcase</span> <span class="nv">?answer</span><span class="p">))))</span>
+ <span class="nv">?answer</span>
+<span class="p">)</span>
+</code></pre>
+</div><p>она считывает из диалогового окна интерпретатора все что вы вводите с клавиатуры и возвращает это. <br />
 Следующая функция выбирает ввели вы или нет требуемый ответ (конкретно yes или no):</p>
-<div>
-<pre>
-<code class='clojure'>(deffunction yes-or-no-p (?question)
-(bind ?response (ask-question ?question yes no у n))
-(if (or (eq ?response yes) (eq ?response y)) then
-<span class="caps">TRUE</span>
-else
-<span class="caps">FALSE</span>)
-)
-<p>)</code><br />
-  </pre></p>
-</div>
-<p>Далее следует основные и единственное правило в нашем примере:</p>
-<div>
-<pre>
-<code class='clojure'>(defrule dela  &amp;quot;&amp;quot;
-(not (repair ?) )
-=&gt;
-(if (yes-or-no-p &quot;Все хорошо? &quot;) then
-(assert (repair &quot;веселый&quot;))
-else
-(assert (repair &quot;смурной&quot;))
-)
-<p>)</code><br />
-  </pre></p>
-</div>
-<p>тут мы проверяем начальные значения для выполнения правила и если они удовлетворяют нас, мы выполняем само правило, которое задает вопрос и устанавливает в переменной значение (в нашем случае это и есть конечный ответ). <br />
+<div class="highlight"><pre><code class="clojure"><span class="p">(</span><span class="nf">deffunction</span> <span class="nv">yes-or-no-p</span> <span class="p">(</span><span class="nf">?question</span><span class="p">)</span> 
+ <span class="p">(</span><span class="nf">bind</span> <span class="nv">?response</span> <span class="p">(</span><span class="nf">ask-question</span> <span class="nv">?question</span> <span class="nv">yes</span> <span class="nv">no</span> <span class="err">у</span> <span class="nv">n</span><span class="p">))</span> 
+ <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">or </span><span class="p">(</span><span class="nf">eq</span> <span class="nv">?response</span> <span class="nv">yes</span><span class="p">)</span> <span class="p">(</span><span class="nf">eq</span> <span class="nv">?response</span> <span class="nv">y</span><span class="p">))</span> <span class="nv">then</span>
+  <span class="nv">TRUE</span> 
+ <span class="nv">else</span>
+  <span class="nv">FALSE</span><span class="p">)</span>
+ <span class="p">)</span>
+<span class="p">)</span>
+</code></pre>
+</div><p>Далее следует основные и единственное правило в нашем примере:</p>
+<div class="highlight"><pre><code class="clojure"><span class="p">(</span><span class="nf">defrule</span> <span class="nv">dela</span>  <span class="s">&quot;&quot;</span> 
+ <span class="p">(</span><span class="nb">not </span><span class="p">(</span><span class="nf">repair</span> <span class="nv">?</span><span class="p">)</span> <span class="p">)</span>
+  <span class="nv">=&gt;</span>
+   <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nf">yes-or-no-p</span> <span class="s">&quot;Все хорошо? &quot;</span><span class="p">)</span> <span class="nv">then</span>
+    <span class="p">(</span><span class="nb">assert </span><span class="p">(</span><span class="nf">repair</span> <span class="s">&quot;веселый&quot;</span><span class="p">))</span>
+   <span class="nv">else</span>
+    <span class="p">(</span><span class="nb">assert </span><span class="p">(</span><span class="nf">repair</span> <span class="s">&quot;смурной&quot;</span><span class="p">))</span>
+   <span class="p">)</span>
+<span class="p">)</span>
+</code></pre>
+</div><p>тут мы проверяем начальные значения для выполнения правила и если они удовлетворяют нас, мы выполняем само правило, которое задает вопрос и устанавливает в переменной значение (в нашем случае это и есть конечный ответ). <br />
 И в конце мы просто выводим установленный ранее ответ, особенность лишь одна, то что у данных правил установлен пониженный приоритет, что бы мы точно знали что они выполняться последними.</p>
-<div>
-<pre>
-<code class='clojure'>(defrule system-banner &amp;quot;&amp;quot;
-(declare (salience 10))
-=&gt;
-(printout t crlf crlf)
-(printout t &quot;**********************************&quot; crlf)
-(printout t &quot;* Экспертная система      *&quot; crlf)
-(printout t &quot;**********************************&quot; crlf)
-(printout t crlf crlf)
-<p>) <br />
-(defrule print-repair &quot;&quot;<br />
- (declare (salience 10)) <br />
- (repair ?item) <br />
-  =&gt;<br />
-   (printout t crlf crlf)<br />
-   (printout t &quot;Вы:&quot;)<br />
-   (printout t  crlf  crlf)<br />
-   (format  t   &quot;   %s%n%n%n&quot;   ?item)<br />
-)</code><br />
-  </pre></p>
+<div class="highlight"><pre><code class="clojure"><span class="p">(</span><span class="nf">defrule</span> <span class="nv">system-banner</span> <span class="s">&quot;&quot;</span>
+ <span class="p">(</span><span class="nf">declare</span> <span class="p">(</span><span class="nf">salience</span> <span class="mi">10</span><span class="p">))</span> 
+  <span class="nv">=&gt;</span>
+   <span class="p">(</span><span class="nf">printout</span> <span class="nv">t</span> <span class="nv">crlf</span> <span class="nv">crlf</span><span class="p">)</span>
+   <span class="p">(</span><span class="nf">printout</span> <span class="nv">t</span> <span class="s">&quot;**********************************&quot;</span> <span class="nv">crlf</span><span class="p">)</span> 
+   <span class="p">(</span><span class="nf">printout</span> <span class="nv">t</span> <span class="s">&quot;* Экспертная система      *&quot;</span> <span class="nv">crlf</span><span class="p">)</span> 
+   <span class="p">(</span><span class="nf">printout</span> <span class="nv">t</span> <span class="s">&quot;**********************************&quot;</span> <span class="nv">crlf</span><span class="p">)</span>
+   <span class="p">(</span><span class="nf">printout</span> <span class="nv">t</span> <span class="nv">crlf</span> <span class="nv">crlf</span><span class="p">)</span> 
+<span class="p">)</span> 
+<span class="p">(</span><span class="nf">defrule</span> <span class="nv">print-repair</span> <span class="s">&quot;&quot;</span>
+ <span class="p">(</span><span class="nf">declare</span> <span class="p">(</span><span class="nf">salience</span> <span class="mi">10</span><span class="p">))</span> 
+ <span class="p">(</span><span class="nf">repair</span> <span class="nv">?item</span><span class="p">)</span> 
+  <span class="nv">=&gt;</span>
+   <span class="p">(</span><span class="nf">printout</span> <span class="nv">t</span> <span class="nv">crlf</span> <span class="nv">crlf</span><span class="p">)</span>
+   <span class="p">(</span><span class="nf">printout</span> <span class="nv">t</span> <span class="s">&quot;Вы:&quot;</span><span class="p">)</span>
+   <span class="p">(</span><span class="nf">printout</span> <span class="nv">t</span>  <span class="nv">crlf</span>  <span class="nv">crlf</span><span class="p">)</span>
+   <span class="p">(</span><span class="nf">format</span>  <span class="nv">t</span>   <span class="s">&quot;   %s%n%n%n&quot;</span>   <span class="nv">?item</span><span class="p">)</span>
+<span class="p">)</span>
+</code></pre>
 </div>
 
 	
@@ -258,45 +207,30 @@ else
   })();
 </script>
 
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<script type="text/javascript">
+	$('#main').removeClass('selected');
+	$('#post').addClass('selected');
+</script>
+
 <!--
 
 -->
 
-      </div>
+	</div>
+</div>
+<!-- <div id="footer">
+	<a href="">Source code</a>
+</div> -->
 
-      <div id="slide_bar">
-		<div id="subscribe">
-			<a href="http://feeds.feedburner.com/apanasenko" rel="alternate" title="feed" type="application/rss+xml"><img alt="rss" src="http://lh3.ggpht.com/_wN3Yn5K_LYs/SviFaWzVaAI/AAAAAAAAACE/t5QGxBDsiMs/rss.png"/></a>
-		</div>	
-        <div id="cloud_tag">
-          <div id="cloud_tag_div">
-                <ol id="tag-cloud"><li title="1 post"><a href="/search/label/actors">actors</a></li> <li title="1 post"><a href="/search/label/alice">alice</a></li> <li title="2 posts"><a href="/search/label/amazon">amazon</a></li> <li title="1 post"><a href="/search/label/apple">apple</a></li> <li title="1 post"><a href="/search/label/aws">aws</a></li> <li title="1 post"><a href="/search/label/azure">azure</a></li> <li title="1 post"><a href="/search/label/blog">blog</a></li> <li title="1 post"><a href="/search/label/book">book</a></li> <li title="1 post"><a href="/search/label/build">build</a></li> <li title="1 post"><a href="/search/label/cassandra">cassandra</a></li> <li title="1 post"><a href="/search/label/chef">chef</a></li> <li title="1 post"><a href="/search/label/client">client</a></li> <li title="1 post"><a href="/search/label/clips">clips</a></li> <li title="1 post"><a href="/search/label/clojure">clojure</a></li> <li title="1 post"><a href="/search/label/cloud">cloud</a></li> <li title="1 post"><a href="/search/label/consistent">consistent</a></li> <li title="1 post"><a href="/search/label/db">db</a></li> <li title="1 post"><a href="/search/label/deploy">deploy</a></li> <li title="1 post"><a href="/search/label/django">django</a></li> <li title="2 posts"><a href="/search/label/dvcs">dvcs</a></li> <li title="2 posts"><a href="/search/label/ec2">ec2</a></li> <li title="4 posts"><a href="/search/label/erlang">erlang</a></li> <li title="5 posts"><a href="/search/label/fl">fl</a></li> <li title="5 posts"><a href="/search/label/fp">fp</a></li> <li title="1 post"><a href="/search/label/gen_server">gen_server</a></li> <li title="1 post"><a href="/search/label/gfs">gfs</a></li> <li title="1 post"><a href="/search/label/git">git</a></li> <li title="1 post"><a href="/search/label/github">github</a></li> <li title="2 posts"><a href="/search/label/google">google</a></li> <li title="2 posts"><a href="/search/label/grid">grid</a></li> <li title="1 post"><a href="/search/label/hash">hash</a></li> <li title="2 posts"><a href="/search/label/hg">hg</a></li> <li title="1 post"><a href="/search/label/ipad">ipad</a></li> <li title="2 posts"><a href="/search/label/java">java</a></li> <li title="1 post"><a href="/search/label/jekyll">jekyll</a></li> <li title="3 posts"><a href="/search/label/jvm">jvm</a></li> <li title="1 post"><a href="/search/label/mac os">mac os</a></li> <li title="1 post"><a href="/search/label/mapreduce">mapreduce</a></li> <li title="1 post"><a href="/search/label/mercurial">mercurial</a></li> <li title="2 posts"><a href="/search/label/nosql">nosql</a></li> <li title="1 post"><a href="/search/label/objective-c">objective-c</a></li> <li title="1 post"><a href="/search/label/osgi">osgi</a></li> <li title="1 post"><a href="/search/label/pax">pax</a></li> <li title="1 post"><a href="/search/label/python">python</a></li> <li title="2 posts"><a href="/search/label/rabbitmq">rabbitmq</a></li> <li title="1 post"><a href="/search/label/ruby">ruby</a></li> <li title="3 posts"><a href="/search/label/scala">scala</a></li> <li title="1 post"><a href="/search/label/scheme">scheme</a></li> <li title="1 post"><a href="/search/label/server">server</a></li></ol>
-
-          </div>
-        </div>
-		<br/>
-		<div id="iready">
-	    	<ol>
-<li><a href="http://alenacpp.blogspot.com/">Алена С++</a></li>
-<li></li>
-<li><a href="http://samolisov.blogspot.com/">Челябинский Программист</a></li>
-</ol>
-        </div>
-        <br/>
-      </div> 
-    </div>
-  </div>
-
-  <script src="/js/jquery.js" type="text/javascript"></script>
-  <script src="/js/twitter.js" type="text/javascript"></script>
-  <script type="text/javascript">
-	var disqus_shortname = 'dieu';
-	(function () {
-	    var s = document.createElement('script'); s.async = true;
-	    s.src = 'http://disqus.com/forums/dieu/count.js';
-	    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-	}());
-  </script>
+ <script type="text/javascript">
+var disqus_shortname = 'dieu';
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.src = 'http://disqus.com/forums/dieu/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+ </script>
 
   
 <!-- Yandex.Metrika counter -->

@@ -7,10 +7,10 @@ categories:
 - hg
 - server
 - dvcs
+image: http://lh6.ggpht.com/_wN3Yn5K_LYs/Sv9RZPG2API/AAAAAAAAACs/I0Qq9icgvCA/Mercurial_logo.png?imgmax=800
 ---
 
-<div style="text-align:center;">
-<img src="http://lh6.ggpht.com/_wN3Yn5K_LYs/Sv9RZPG2API/AAAAAAAAACs/I0Qq9icgvCA/Mercurial_logo.png?imgmax=800" alt="Mercurial_logo.png" border="0" width="200" height="240" /></div>
+<center><img src="http://lh6.ggpht.com/_wN3Yn5K_LYs/Sv9RZPG2API/AAAAAAAAACs/I0Qq9icgvCA/Mercurial_logo.png?imgmax=800" alt="Mercurial_logo.png" width="200" height="240" /></center>
 
 Опять ударила пуля в голову и захотелось на домашнем сервере держать <strong>Mercurial</strong> репозиторий, который был бы доступен по http. Для этого нам понадобится <strong>Mercurial</strong>, <strong>Python</strong>, <strong>Apache2</strong>, все производиться на Ubuntu, но и для других OS принцип будет тот же.
 

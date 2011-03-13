@@ -1,68 +1,29 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta name="google-site-verification" content="bb8epm6suyHfvYU-yFKhhYMyg3SQ__QndlyH-vBmiAk"/>
-  <meta name='yandex-verification' content='74e7c4ae6d68c097'/>
-  <meta name="viewport" content="width=950, maximum-scale=1.0" />
-  <meta name="description" content="Сегодня я и Эльдар попытаемся рассказать о <strong>Scala</strong> с функционального взгляда. <strong>Scala</strong> – это функциональный язык в том смысле, что каждая функция – это значение. Он предоставляет легковесный синтаксис для определения анонимных функций, а также поддерживает вложенные функции." />
-  <meta http-equiv="description" content="Сегодня я и Эльдар попытаемся рассказать о <strong>Scala</strong> с функционального взгляда. <strong>Scala</strong> – это функциональный язык в том смысле, что каждая функция – это значение. Он предоставляет легковесный синтаксис для определения анонимных функций, а также поддерживает вложенные функции."/> 
-  <meta name="robots" content="all"/> 
-  <meta name="resourse-type" content="document"/> 
-  <meta name="document-state" content="dynamic"/> 
-  <meta name="revisit-after" content="1 days"/> 
-  <meta http-equiv="author" content="Anton Panasenko"/>
-  <meta name="copyright" content="Copyright (C) 2011 "/> 
-  <meta name="document-state" content="dynamic"/> 
-  <link rev="made" href="anton.panasenko@gmail.com"/> 
-  <meta http-equiv="reply-to" content="anton.panasenko@gmail.com"/> 
-  <meta name="site-created" content="Anton Panasenko - blog.apanasenko.me"/> 
-  <meta name="addres" content="blog.apanasenko.me"/> 
-  <meta name="distribution" content="global"/> 
-  <title>
-    Scala Functional Language (part 3) -  Anton Panasenko
-  </title>
-  <link rel="stylesheet" href="/css/reset.css" type="text/css"/>
-  
-  <link rel="stylesheet" href="/css/screen.css" type="text/css"/>
-  <link rel="stylesheet" href="/css/syntax.css" type="text/css"/>
-  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="/css/iphone.css" type="text/css"/>
-  <link rel="stylesheet" media="only screen and (max-device-width: 1024px)" href="/css/ipad.css" type="text/css"/>
-  <link rel="alternate" type="application/atom+xml" href="http://feeds.feedburner.com/apanasenko"/>
-  <link href="/images/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
-  <link href="/images/icon.jpg" rel="apple-touch-icon"/>
-</head>
+	<head>
+ 	  	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	  	<title>
+	    	 Scala Functional Language (part 3)  
+	  	</title>
+		<link rel="stylesheet" href="/css/style.css" type="text/css" media="all"/>
+	</head>
 <body>
-  <div id="wrapper">
-    <div class="center"><a href="http://blog.apanasenko.me/"><img class="header" alt="header image" src="/images/header.jpg"/></a></div>
-    <div id="inner">
-      <div id="container">
-        <div id="header">
-          <h1>
-            
-              <a href="/">&larr; Anton Panasenko</a>
-            
-          </h1>
-          <ul class="header">
-            <li>
-              <a href="/archive">Archive</a>
-            </li>
-	    <li>
-		<a href="http://ru.linkedin.com/in/apanasenko/">LinkedIn <span class="arrow">&rarr;</span></a>
-	    </li>
-            <li>
-		<a href="http://github.com/dieu">Github <span class="arrow">&rarr;</span></a>
-            </li>
-            <li>
-              <a href="http://twitter.com/apanasenko">Twitter <span class="arrow">&rarr;</span></a>
-            </li>
-          </ul>
-          <hr class="right"/>
-        </div>
-        <h2>Scala Functional Language (part 3)</h2>
-        
-
-<span id="article_buttons">
+<div id="header">
+	<ul id="nav" class="nav"> 
+		<li id="main" class="selected"><a href="/"><strong>Home</strong><span>main page</span></a></li> 
+		<li id="post"><a href="/2009/12/scala-functional-language-part-3"><strong>Blog</strong> <span>post</span></a></li>
+		<li id="archive"><a href="/archive"><strong>Archive</strong></a></li> 
+		<li><a href="http://ru.linkedin.com/in/apanasenko/"><strong>LinkedIn</strong> <span>&rarr;</span></a></li> 
+		<li><a href="http://github.com/dieu"><strong>Github</strong> <span>&rarr;</span></a></li> 
+		<li><a href="http://twitter.com/apanasenko"><strong>Twitter</strong> <span>&rarr;</span></a></li> 
+	</ul>
+</div>
+<div id="container">			
+	<div class="bar"> 
+	</div> 
+	<br/>
+	<div id="content">
+			<!-- <span id="article_buttons">
   <a id="tweet">
     <span class="balloon">tweet!</span> <img src="/images/tweet.png"/ alt="tweet"/>
   </a>
@@ -71,133 +32,102 @@
   </a>
 </span>
 
-<hr/>
+<hr/> -->
 
-<div id="content">
-	<div style="text-align:center;">
-<p><img src="http://lh6.ggpht.com/_wN3Yn5K_LYs/SyeQl3IHyBI/AAAAAAAAAJg/EUkRIIcWRRA/function%3Dmachine.jpg?imgmax=800" alt="function=machine.jpg" border="0" width="400" height="325" /></div></p>
+<div class="content">
+	<center><img src="http://lh6.ggpht.com/_wN3Yn5K_LYs/SyeQl3IHyBI/AAAAAAAAAJg/EUkRIIcWRRA/function%3Dmachine.jpg?imgmax=800" alt="function=machine.jpg" width="400" height="325" /></center>
 <p>Сегодня я и <a href="http://reldan.livejournal.com/">Эльдар</a> попытаемся рассказать о <strong>Scala</strong> с функционального взгляда. <strong>Scala</strong> – это функциональный язык в том смысле, что каждая функция – это значение. Он предоставляет легковесный синтаксис для определения анонимных функций, а также поддерживает вложенные функции.</p>
 <h4>Локальные функции</h4>
 <p>В Scala мы можем определить функцию внутри другой функции.</p>
-<div>
-<pre>
-<code class='scala'>object Function {
-def main(arg:Array[String]) = {
-println(f(2, 3)) //9
-}
-def f(i: Int, j: Int):Int = {
-def localF(i: Int) = {
-i + j + 1
-}
-localF(i + 3)
-}
-<p>}</code><br />
-  </pre></p>
-</div>
-<h4>Замыкания</h4>
+<div class="highlight"><pre><code class="scala"><span class="k">object</span> <span class="nc">Function</span> <span class="o">{</span>
+  <span class="k">def</span> <span class="n">main</span><span class="o">(</span><span class="n">arg</span><span class="k">:</span><span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span> <span class="k">=</span> <span class="o">{</span>
+    <span class="n">println</span><span class="o">(</span><span class="n">f</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">))</span> <span class="c1">//9</span>
+  <span class="o">}</span>
+  <span class="k">def</span> <span class="n">f</span><span class="o">(</span><span class="n">i</span><span class="k">:</span> <span class="kt">Int</span><span class="o">,</span> <span class="n">j</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span><span class="k">:</span><span class="kt">Int</span> <span class="o">=</span> <span class="o">{</span>
+    <span class="k">def</span> <span class="n">localF</span><span class="o">(</span><span class="n">i</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span> <span class="k">=</span> <span class="o">{</span>
+      <span class="n">i</span> <span class="o">+</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="o">}</span>
+    <span class="n">localF</span><span class="o">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">3</span><span class="o">)</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div><h4>Замыкания</h4>
 <p><strong>Замыкание</strong> — это особый вид функции. Она определена в теле другой функции и создаётся каждый раз во время её выполнения. При этом вложенная внутренняя функция содержит ссылки на локальные переменные внешней функции. Каждый раз при выполнении внешней функции происходит создание нового экземпляра внутренней функции, с новыми ссылками на переменные внешней функции. Как видно из примера функция <strong>closure</strong> содержит свободную переменную <strong>j</strong> и связанную <strong>i</strong>.</p>
-<div>
-<pre>
-<code class='scala'>object Function {
-def main(arg:Array[String]) = {
-println(f(2, 3)) //9
-}
-def f(i: Int, j: Int):Int = {
-val closure = (i: Int) =&gt; i + j + 1
-closure(i + 3)
-}
-<p>}</code><br />
-  </pre></p>
-</div>
-<p>Также можно это записать вот так:</p>
-<div>
-<pre>
-<code class='scala'>object Function {
-def main(arg:Array[String]) = {
-println(f(2, 3))
-}
-def f(i: Int, j: Int):Int = ((i: Int) =&gt; i + j + 1) (i + 3)
-<p>}</code><br />
-  </pre></p>
-</div>
-<p>Можно использовать подчеркивания, как <strong>плейсхолдеры</strong> параметров:</p>
-<div>
-<pre>
-<code class='scala'>object Function {
-def main(arg:Array[String]) = {
-println(f(2, 3))
-}
-def f(i: Int, j: Int):Int = ((_:Int) + j + 1) (i + 3)
-<p>}</code><br />
-  </pre></p>
-</div>
-<h4>Частично применимые функции</h4>
+<div class="highlight"><pre><code class="scala"><span class="k">object</span> <span class="nc">Function</span> <span class="o">{</span>
+  <span class="k">def</span> <span class="n">main</span><span class="o">(</span><span class="n">arg</span><span class="k">:</span><span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span> <span class="k">=</span> <span class="o">{</span>
+    <span class="n">println</span><span class="o">(</span><span class="n">f</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">))</span> <span class="c1">//9</span>
+  <span class="o">}</span>
+  <span class="k">def</span> <span class="n">f</span><span class="o">(</span><span class="n">i</span><span class="k">:</span> <span class="kt">Int</span><span class="o">,</span> <span class="n">j</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span><span class="k">:</span><span class="kt">Int</span> <span class="o">=</span> <span class="o">{</span>
+    <span class="k">val</span> <span class="n">closure</span> <span class="k">=</span> <span class="o">(</span><span class="n">i</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">i</span> <span class="o">+</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">closure</span><span class="o">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">3</span><span class="o">)</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div><p>Также можно это записать вот так:</p>
+<div class="highlight"><pre><code class="scala"><span class="k">object</span> <span class="nc">Function</span> <span class="o">{</span>
+  <span class="k">def</span> <span class="n">main</span><span class="o">(</span><span class="n">arg</span><span class="k">:</span><span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span> <span class="k">=</span> <span class="o">{</span>
+    <span class="n">println</span><span class="o">(</span><span class="n">f</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">))</span>
+  <span class="o">}</span>
+  <span class="k">def</span> <span class="n">f</span><span class="o">(</span><span class="n">i</span><span class="k">:</span> <span class="kt">Int</span><span class="o">,</span> <span class="n">j</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span><span class="k">:</span><span class="kt">Int</span> <span class="o">=</span> <span class="o">((</span><span class="n">i</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">i</span> <span class="o">+</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="o">)</span> <span class="o">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">3</span><span class="o">)</span>
+<span class="o">}</span>
+</code></pre>
+</div><p>Можно использовать подчеркивания, как <strong>плейсхолдеры</strong> параметров:</p>
+<div class="highlight"><pre><code class="scala"><span class="k">object</span> <span class="nc">Function</span> <span class="o">{</span>
+  <span class="k">def</span> <span class="n">main</span><span class="o">(</span><span class="n">arg</span><span class="k">:</span><span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span> <span class="k">=</span> <span class="o">{</span>
+    <span class="n">println</span><span class="o">(</span><span class="n">f</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">))</span>
+  <span class="o">}</span>
+  <span class="k">def</span> <span class="n">f</span><span class="o">(</span><span class="n">i</span><span class="k">:</span> <span class="kt">Int</span><span class="o">,</span> <span class="n">j</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span><span class="k">:</span><span class="kt">Int</span> <span class="o">=</span> <span class="o">((</span><span class="n">_:</span><span class="nc">Int</span><span class="o">)</span> <span class="o">+</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="o">)</span> <span class="o">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">3</span><span class="o">)</span>
+<span class="o">}</span>
+</code></pre>
+</div><h4>Частично применимые функции</h4>
 <p>Пусть в <strong>Scala</strong> есть функция :</p>
-<div>
-<pre>
-<code class='scala'>def sum(a:Int, b:Int, c:Int) = a + b + c</code>
-</pre>
-</div>
-<p>Если вызвать sum(1) компилятор сообщит о неправильном количестве параметров. Однако есть способ заменить при вызове функции часть входных переменных подчеркиванием.</p>
-<div>
-<pre>
-<code class='scala'>sum(1, 2, 3)
-<p>(sum(1, 2, _:Int))(3) // (Int) =&gt; Int<br />
-(sum(1, _:Int, <em>:Int))(2, 3) // (Int, Int) =&gt; Int<br />
-(sum(</em>:Int, _:Int, _:Int))(1, 2, 3) //(Int, Int, Int) =&gt; Int</code><br />
-  </pre></p>
-</div>
-<h4>Списки</h4>
+<div class="highlight"><pre><code class="scala"><span class="k">def</span> <span class="n">sum</span><span class="o">(</span><span class="n">a</span><span class="k">:</span><span class="kt">Int</span><span class="o">,</span> <span class="n">b</span><span class="k">:</span><span class="kt">Int</span><span class="o">,</span> <span class="n">c</span><span class="k">:</span><span class="kt">Int</span><span class="o">)</span> <span class="k">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">+</span> <span class="n">c</span>
+</code></pre>
+</div><p>Если вызвать sum(1) компилятор сообщит о неправильном количестве параметров. Однако есть способ заменить при вызове функции часть входных переменных подчеркиванием.</p>
+<div class="highlight"><pre><code class="scala"><span class="n">sum</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">)</span> 
+<span class="o">(</span><span class="n">sum</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="n">_:</span><span class="nc">Int</span><span class="o">))(</span><span class="mi">3</span><span class="o">)</span> <span class="c1">// (Int) =&gt; Int</span>
+<span class="o">(</span><span class="n">sum</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">_:</span><span class="nc">Int</span><span class="o">,</span> <span class="n">_:</span><span class="nc">Int</span><span class="o">))(</span><span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">)</span> <span class="c1">// (Int, Int) =&gt; Int</span>
+<span class="o">(</span><span class="n">sum</span><span class="o">(</span><span class="n">_:</span><span class="nc">Int</span><span class="o">,</span> <span class="n">_:</span><span class="nc">Int</span><span class="o">,</span> <span class="n">_:</span><span class="nc">Int</span><span class="o">))(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">)</span> <span class="c1">//(Int, Int, Int) =&gt; Int</span>
+</code></pre>
+</div><h4>Списки</h4>
 <p>Список, пожалуй, самая распространенная структура при программировании на <strong>Scala</strong>. Список подобно массивам гомогенный, т.е. содержит элементы только определенного типа.</p>
-<div>
-<pre>
-<code class='scala'>val fruit = List(&amp;quot;apples&amp;quot;, &amp;quot;oranges&amp;quot;, &amp;quot;bananas&amp;quot;)</code>
-</pre>
-</div>
-<p>Над списком в <strong>Scala</strong> можно применять функции <strong>head</strong> и <strong>tail</strong> (Lisp: car cdr). <strong>head</strong> возвращает первый элемент списка, <strong>tail</strong> &#8211; все элементы списка, кроме первого.</p>
-<div>
-<pre>
-<code class='scala'>val fruit = &amp;quot;apples&amp;quot; :: (&amp;quot;oranges&amp;quot; :: (&amp;quot;bananas&amp;quot; :: Nil))</code>
-</pre>
-</div>
-<p>Сортировка вставками используя head и tail:</p>
-<div>
-<pre>
-<code class='scala'>object Function {
-def main(arg:Array[String]) = {
-println(iSort(List(5, 4, 3, 2, 1, 0))) //List(0, 1, 2, 3, 4, 5)
-}
-def iSort(xs: List[Int]): List[Int] =
-if (xs.isEmpty) Nil
-else insert(xs.head, iSort(xs.tail))
-def insert(x: Int, xs: List[Int]): List[Int] =
-if (xs.isEmpty || x &lt;= xs.head) x::xs
-else xs.head :: insert(x, xs.tail)
-<p>}</code><br />
-  </pre></p>
-</div>
-<p>Тоже самое можно записать несколько иначе использую паттерн матчинг(Pattern matching)<br />
+<div class="highlight"><pre><code class="scala"><span class="k">val</span> <span class="n">fruit</span> <span class="k">=</span> <span class="nc">List</span><span class="o">(</span><span class="s">&quot;apples&quot;</span><span class="o">,</span> <span class="s">&quot;oranges&quot;</span><span class="o">,</span> <span class="s">&quot;bananas&quot;</span><span class="o">)</span>
+</code></pre>
+</div><p>Над списком в <strong>Scala</strong> можно применять функции <strong>head</strong> и <strong>tail</strong> (Lisp: car cdr). <strong>head</strong> возвращает первый элемент списка, <strong>tail</strong> &#8211; все элементы списка, кроме первого.</p>
+<div class="highlight"><pre><code class="scala"><span class="k">val</span> <span class="n">fruit</span> <span class="k">=</span> <span class="s">&quot;apples&quot;</span> <span class="o">::</span> <span class="o">(</span><span class="s">&quot;oranges&quot;</span> <span class="o">::</span> <span class="o">(</span><span class="s">&quot;bananas&quot;</span> <span class="o">::</span> <span class="nc">Nil</span><span class="o">))</span>
+</code></pre>
+</div><p>Сортировка вставками используя head и tail:</p>
+<div class="highlight"><pre><code class="scala"><span class="k">object</span> <span class="nc">Function</span> <span class="o">{</span>
+  <span class="k">def</span> <span class="n">main</span><span class="o">(</span><span class="n">arg</span><span class="k">:</span><span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span> <span class="k">=</span> <span class="o">{</span>
+    <span class="n">println</span><span class="o">(</span><span class="n">iSort</span><span class="o">(</span><span class="nc">List</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">)))</span> <span class="c1">//List(0, 1, 2, 3, 4, 5)</span>
+  <span class="o">}</span>
+  <span class="k">def</span> <span class="n">iSort</span><span class="o">(</span><span class="n">xs</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">Int</span><span class="o">])</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span> <span class="k">=</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">xs</span><span class="o">.</span><span class="n">isEmpty</span><span class="o">)</span> <span class="nc">Nil</span>
+    <span class="k">else</span> <span class="n">insert</span><span class="o">(</span><span class="n">xs</span><span class="o">.</span><span class="n">head</span><span class="o">,</span> <span class="n">iSort</span><span class="o">(</span><span class="n">xs</span><span class="o">.</span><span class="n">tail</span><span class="o">))</span>
+  <span class="k">def</span> <span class="n">insert</span><span class="o">(</span><span class="n">x</span><span class="k">:</span> <span class="kt">Int</span><span class="o">,</span> <span class="n">xs</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">Int</span><span class="o">])</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span> <span class="k">=</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">xs</span><span class="o">.</span><span class="n">isEmpty</span> <span class="o">||</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="n">xs</span><span class="o">.</span><span class="n">head</span><span class="o">)</span> <span class="n">x</span><span class="o">::</span><span class="n">xs</span>
+    <span class="k">else</span> <span class="n">xs</span><span class="o">.</span><span class="n">head</span> <span class="o">::</span> <span class="n">insert</span><span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">xs</span><span class="o">.</span><span class="n">tail</span><span class="o">)</span>
+<span class="o">}</span>
+</code></pre>
+</div><p>Тоже самое можно записать несколько иначе использую паттерн матчинг(Pattern matching)<br />
 <blockquote><br />
 <strong>Pattern matching</strong> &#8211; это сравнение с образцом, сопоставление с шаблоном.</blockquote></p>
-<div>
-<pre>
-<code class='scala'>object Function {
-def main(arg:Array[String]) = {
-println(iSort(List(5, 4, 3, 2, 1, 0)))
-}
-def iSort(xs: List[Int]): List[Int] = xs match {
-case List() =&gt; List()
-case x :: xs1 =&gt; insert(x, iSort(xs1))
-}
-def insert(x: Int, xs: List[Int]): List[Int] = xs match {
-case List() =&gt; List(x)
-case y :: ys =&gt; if (x &lt;= y) x :: xs
-else y :: insert(x, ys)
-}
-<p>}</code><br />
-  </pre></p>
-</div>
-<p>Кроме в работе с <strong>pattern matching</strong>&#8216;ом часто используются так называемые <strong>case class</strong>&#8217;ы, которые имеют некторые особенности. При объявлении компилятор:</p>
+<div class="highlight"><pre><code class="scala"><span class="k">object</span> <span class="nc">Function</span> <span class="o">{</span>
+  <span class="k">def</span> <span class="n">main</span><span class="o">(</span><span class="n">arg</span><span class="k">:</span><span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span> <span class="k">=</span> <span class="o">{</span>
+    <span class="n">println</span><span class="o">(</span><span class="n">iSort</span><span class="o">(</span><span class="nc">List</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">)))</span>
+  <span class="o">}</span>
+  <span class="k">def</span> <span class="n">iSort</span><span class="o">(</span><span class="n">xs</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">Int</span><span class="o">])</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span> <span class="k">=</span> <span class="n">xs</span> <span class="k">match</span> <span class="o">{</span>
+    <span class="k">case</span> <span class="nc">List</span><span class="o">()</span> <span class="k">=&gt;</span> <span class="nc">List</span><span class="o">()</span>
+    <span class="k">case</span> <span class="n">x</span> <span class="o">::</span> <span class="n">xs1</span> <span class="k">=&gt;</span> <span class="n">insert</span><span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">iSort</span><span class="o">(</span><span class="n">xs1</span><span class="o">))</span>
+  <span class="o">}</span>
+  <span class="k">def</span> <span class="n">insert</span><span class="o">(</span><span class="n">x</span><span class="k">:</span> <span class="kt">Int</span><span class="o">,</span> <span class="n">xs</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">Int</span><span class="o">])</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span> <span class="k">=</span> <span class="n">xs</span> <span class="k">match</span> <span class="o">{</span>
+    <span class="k">case</span> <span class="nc">List</span><span class="o">()</span> <span class="k">=&gt;</span> <span class="nc">List</span><span class="o">(</span><span class="n">x</span><span class="o">)</span>
+    <span class="k">case</span> <span class="n">y</span> <span class="o">::</span> <span class="n">ys</span> <span class="k">=&gt;</span> <span class="k">if</span> <span class="o">(</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="n">y</span><span class="o">)</span> <span class="n">x</span> <span class="o">::</span> <span class="n">xs</span>
+    <span class="k">else</span> <span class="n">y</span> <span class="o">::</span> <span class="n">insert</span><span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">ys</span><span class="o">)</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div><p>Кроме в работе с <strong>pattern matching</strong>&#8216;ом часто используются так называемые <strong>case class</strong>&#8217;ы, которые имеют некторые особенности. При объявлении компилятор:</p>
 <ol>
 	<li>cоздет функцию-конструктор с именем, совпадающим с класом</li>
 	<li>имплиментирует в классе toString, equals, hashCode на основе аргументов конструктора</li>
@@ -206,66 +136,43 @@ else y :: insert(x, ys)
 <p>Мы их использовали в предыдущей <a href="http://blog.apanasenko.me/2009/12/scala-actors-part-2/">статье</a> в примере с пинг-понгом.</p>
 <h4>Работа со списками</h4>
 <p><strong>Map</strong> принимает <strong>List[Т]</strong> и функцию <strong>Т =&gt; U</strong>. Возвращает <strong>List[U]</strong></p>
-<div>
-<pre>
-<code class='scala'>List.range(1, 6) map (_ % 2) // List(1, 0, 1, 0, 1)
-<p>List(&quot;apples&quot;, &quot;oranges&quot;, &quot;bananas&quot;) map (_.toList.reverse.mkString) // List(selppa, segnaro, sananab)</code><br />
-  </pre></p>
-</div>
-<p><strong>FlatMap</strong> схож с <strong>Map</strong>, но вызывает конкатенацию всех результатов функции.</p>
-<div>
-<pre>
-<code class='scala'>List(&amp;quot;apples&amp;quot;, &amp;quot;oranges&amp;quot;, &amp;quot;bananas&amp;quot;) map (_.toList) // List(List(a, p, p, l, e, s), List(o, r, a, n, g, e, s), List(b, a, n, a, n, a, s))
-<p>List(&quot;apples&quot;, &quot;oranges&quot;, &quot;bananas&quot;) flatMap (_.toList) // List(a, p, p, l, e, s, o, r, a, n, g, e, s, b, a, n, a, n, a, s)</code><br />
-  </pre></p>
-</div>
-<p><strong>Foreach</strong>:</p>
-<div>
-<pre>
-<code class='scala'>object Function {
-def main(arg:Array[String]) = {
-var sum = 0
-List.range(1, 6) foreach (sum += _)
-println(sum) // 15
-}
-<p>}</code><br />
-  </pre></p>
-</div>
-<p><strong>Filter</strong>:</p>
-<div>
-<pre>
-<code class='scala'>List.range(1, 6) filter (_ &amp;gt; 3)// List(4, 5)</code>
-</pre>
-</div>
-<p>Также есть find, forall, exists, find, partition, takeWhile, dropWhile</p>
+<div class="highlight"><pre><code class="scala"><span class="nc">List</span><span class="o">.</span><span class="n">range</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">6</span><span class="o">)</span> <span class="n">map</span> <span class="o">(</span><span class="k">_</span> <span class="o">%</span> <span class="mi">2</span><span class="o">)</span> <span class="c1">// List(1, 0, 1, 0, 1)</span>
+<span class="nc">List</span><span class="o">(</span><span class="s">&quot;apples&quot;</span><span class="o">,</span> <span class="s">&quot;oranges&quot;</span><span class="o">,</span> <span class="s">&quot;bananas&quot;</span><span class="o">)</span> <span class="n">map</span> <span class="o">(</span><span class="n">_</span><span class="o">.</span><span class="n">toList</span><span class="o">.</span><span class="n">reverse</span><span class="o">.</span><span class="n">mkString</span><span class="o">)</span> <span class="c1">// List(selppa, segnaro, sananab)</span>
+</code></pre>
+</div><p><strong>FlatMap</strong> схож с <strong>Map</strong>, но вызывает конкатенацию всех результатов функции.</p>
+<div class="highlight"><pre><code class="scala"><span class="nc">List</span><span class="o">(</span><span class="s">&quot;apples&quot;</span><span class="o">,</span> <span class="s">&quot;oranges&quot;</span><span class="o">,</span> <span class="s">&quot;bananas&quot;</span><span class="o">)</span> <span class="n">map</span> <span class="o">(</span><span class="n">_</span><span class="o">.</span><span class="n">toList</span><span class="o">)</span> <span class="c1">// List(List(a, p, p, l, e, s), List(o, r, a, n, g, e, s), List(b, a, n, a, n, a, s))</span>
+<span class="nc">List</span><span class="o">(</span><span class="s">&quot;apples&quot;</span><span class="o">,</span> <span class="s">&quot;oranges&quot;</span><span class="o">,</span> <span class="s">&quot;bananas&quot;</span><span class="o">)</span> <span class="n">flatMap</span> <span class="o">(</span><span class="n">_</span><span class="o">.</span><span class="n">toList</span><span class="o">)</span> <span class="c1">// List(a, p, p, l, e, s, o, r, a, n, g, e, s, b, a, n, a, n, a, s)</span>
+</code></pre>
+</div><p><strong>Foreach</strong>:</p>
+<div class="highlight"><pre><code class="scala"><span class="k">object</span> <span class="nc">Function</span> <span class="o">{</span>
+  <span class="k">def</span> <span class="n">main</span><span class="o">(</span><span class="n">arg</span><span class="k">:</span><span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span> <span class="k">=</span> <span class="o">{</span>
+    <span class="k">var</span> <span class="n">sum</span> <span class="k">=</span> <span class="mi">0</span>
+    <span class="nc">List</span><span class="o">.</span><span class="n">range</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">6</span><span class="o">)</span> <span class="n">foreach</span> <span class="o">(</span><span class="n">sum</span> <span class="o">+=</span> <span class="n">_</span><span class="o">)</span>
+    <span class="n">println</span><span class="o">(</span><span class="n">sum</span><span class="o">)</span> <span class="c1">// 15</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div><p><strong>Filter</strong>:</p>
+<div class="highlight"><pre><code class="scala"><span class="nc">List</span><span class="o">.</span><span class="n">range</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">6</span><span class="o">)</span> <span class="n">filter</span> <span class="o">(</span><span class="k">_</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="o">)</span><span class="c1">// List(4, 5)</span>
+</code></pre>
+</div><p>Также есть find, forall, exists, find, partition, takeWhile, dropWhile</p>
 <h4>Свертки</h4>
 <blockquote>
 <p>В программировании <strong>свёртка</strong> (англ. <strong>folding</strong>, также известна как reduce и accumulate) — функция высшего порядка, которая производит преобразование структуры данных к единственному атомарному значению при помощи заданной функции. Операция свёртки часто используется в функциональном программировании при обработке списков.<br />
 Свёртка может быть обобщена на произвольный алгебраический тип данных при помощи понятия «катаморфизм» из теории категорий.</blockquote></p>
-<div>
-<pre>
-<code class='scala'>fold left /:
-<p>fold right :\</code><br />
-  </pre></p>
-</div>
-<p>Сумма всех элементов:</p>
-<div>
-<pre>
-<code class='scala'>def sum(xs: List[Int]):Int = (0 /: xs) (_ + _)
-<p>(0 /: List.range(1, 6)) (_ + _)</code><br />
-  </pre></p>
-</div>
-<p>Эквивалентно:</p>
-<div>
-<pre>
-<code class='scala'>List.range(1, 6).foldLeft(0)(_+_)</code>
-</pre>
-</div>
-<p>Произведение всех элементов</p>
-<div>
-<pre>
-<code class='scala'>def product(xs: List[Int]): Int = (1 /: xs) (_ * _)</code>
-</pre>
+<div class="highlight"><pre><code class="scala"><span class="n">fold</span> <span class="n">left</span> <span class="o">/:</span>
+<span class="n">fold</span> <span class="n">right</span> <span class="o">:\</span>
+</code></pre>
+</div><p>Сумма всех элементов:</p>
+<div class="highlight"><pre><code class="scala"><span class="k">def</span> <span class="n">sum</span><span class="o">(</span><span class="n">xs</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">Int</span><span class="o">])</span><span class="k">:</span><span class="kt">Int</span> <span class="o">=</span> <span class="o">(</span><span class="mi">0</span> <span class="o">/:</span> <span class="n">xs</span><span class="o">)</span> <span class="o">(</span><span class="k">_</span> <span class="o">+</span> <span class="n">_</span><span class="o">)</span>
+<span class="o">(</span><span class="mi">0</span> <span class="o">/:</span> <span class="nc">List</span><span class="o">.</span><span class="n">range</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">6</span><span class="o">))</span> <span class="o">(</span><span class="k">_</span> <span class="o">+</span> <span class="n">_</span><span class="o">)</span>
+</code></pre>
+</div><p>Эквивалентно:</p>
+<div class="highlight"><pre><code class="scala"><span class="nc">List</span><span class="o">.</span><span class="n">range</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">6</span><span class="o">).</span><span class="n">foldLeft</span><span class="o">(</span><span class="mi">0</span><span class="o">)(</span><span class="n">_+_</span><span class="o">)</span>
+</code></pre>
+</div><p>Произведение всех элементов</p>
+<div class="highlight"><pre><code class="scala"><span class="k">def</span> <span class="n">product</span><span class="o">(</span><span class="n">xs</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">Int</span><span class="o">])</span><span class="k">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="o">(</span><span class="mi">1</span> <span class="o">/:</span> <span class="n">xs</span><span class="o">)</span> <span class="o">(</span><span class="k">_</span> <span class="o">*</span> <span class="n">_</span><span class="o">)</span>
+</code></pre>
 </div>
 
 	
@@ -299,45 +206,30 @@ println(sum) // 15
   })();
 </script>
 
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<script type="text/javascript">
+	$('#main').removeClass('selected');
+	$('#post').addClass('selected');
+</script>
+
 <!--
 
 -->
 
-      </div>
+	</div>
+</div>
+<!-- <div id="footer">
+	<a href="">Source code</a>
+</div> -->
 
-      <div id="slide_bar">
-		<div id="subscribe">
-			<a href="http://feeds.feedburner.com/apanasenko" rel="alternate" title="feed" type="application/rss+xml"><img alt="rss" src="http://lh3.ggpht.com/_wN3Yn5K_LYs/SviFaWzVaAI/AAAAAAAAACE/t5QGxBDsiMs/rss.png"/></a>
-		</div>	
-        <div id="cloud_tag">
-          <div id="cloud_tag_div">
-                <ol id="tag-cloud"><li title="1 post"><a href="/search/label/actors">actors</a></li> <li title="1 post"><a href="/search/label/alice">alice</a></li> <li title="2 posts"><a href="/search/label/amazon">amazon</a></li> <li title="1 post"><a href="/search/label/apple">apple</a></li> <li title="1 post"><a href="/search/label/aws">aws</a></li> <li title="1 post"><a href="/search/label/azure">azure</a></li> <li title="1 post"><a href="/search/label/blog">blog</a></li> <li title="1 post"><a href="/search/label/book">book</a></li> <li title="1 post"><a href="/search/label/build">build</a></li> <li title="1 post"><a href="/search/label/cassandra">cassandra</a></li> <li title="1 post"><a href="/search/label/chef">chef</a></li> <li title="1 post"><a href="/search/label/client">client</a></li> <li title="1 post"><a href="/search/label/clips">clips</a></li> <li title="1 post"><a href="/search/label/clojure">clojure</a></li> <li title="1 post"><a href="/search/label/cloud">cloud</a></li> <li title="1 post"><a href="/search/label/consistent">consistent</a></li> <li title="1 post"><a href="/search/label/db">db</a></li> <li title="1 post"><a href="/search/label/deploy">deploy</a></li> <li title="1 post"><a href="/search/label/django">django</a></li> <li title="2 posts"><a href="/search/label/dvcs">dvcs</a></li> <li title="2 posts"><a href="/search/label/ec2">ec2</a></li> <li title="4 posts"><a href="/search/label/erlang">erlang</a></li> <li title="5 posts"><a href="/search/label/fl">fl</a></li> <li title="5 posts"><a href="/search/label/fp">fp</a></li> <li title="1 post"><a href="/search/label/gen_server">gen_server</a></li> <li title="1 post"><a href="/search/label/gfs">gfs</a></li> <li title="1 post"><a href="/search/label/git">git</a></li> <li title="1 post"><a href="/search/label/github">github</a></li> <li title="2 posts"><a href="/search/label/google">google</a></li> <li title="2 posts"><a href="/search/label/grid">grid</a></li> <li title="1 post"><a href="/search/label/hash">hash</a></li> <li title="2 posts"><a href="/search/label/hg">hg</a></li> <li title="1 post"><a href="/search/label/ipad">ipad</a></li> <li title="2 posts"><a href="/search/label/java">java</a></li> <li title="1 post"><a href="/search/label/jekyll">jekyll</a></li> <li title="3 posts"><a href="/search/label/jvm">jvm</a></li> <li title="1 post"><a href="/search/label/mac os">mac os</a></li> <li title="1 post"><a href="/search/label/mapreduce">mapreduce</a></li> <li title="1 post"><a href="/search/label/mercurial">mercurial</a></li> <li title="2 posts"><a href="/search/label/nosql">nosql</a></li> <li title="1 post"><a href="/search/label/objective-c">objective-c</a></li> <li title="1 post"><a href="/search/label/osgi">osgi</a></li> <li title="1 post"><a href="/search/label/pax">pax</a></li> <li title="1 post"><a href="/search/label/python">python</a></li> <li title="2 posts"><a href="/search/label/rabbitmq">rabbitmq</a></li> <li title="1 post"><a href="/search/label/ruby">ruby</a></li> <li title="3 posts"><a href="/search/label/scala">scala</a></li> <li title="1 post"><a href="/search/label/scheme">scheme</a></li> <li title="1 post"><a href="/search/label/server">server</a></li></ol>
-
-          </div>
-        </div>
-		<br/>
-		<div id="iready">
-	    	<ol>
-<li><a href="http://alenacpp.blogspot.com/">Алена С++</a></li>
-<li></li>
-<li><a href="http://samolisov.blogspot.com/">Челябинский Программист</a></li>
-</ol>
-        </div>
-        <br/>
-      </div> 
-    </div>
-  </div>
-
-  <script src="/js/jquery.js" type="text/javascript"></script>
-  <script src="/js/twitter.js" type="text/javascript"></script>
-  <script type="text/javascript">
-	var disqus_shortname = 'dieu';
-	(function () {
-	    var s = document.createElement('script'); s.async = true;
-	    s.src = 'http://disqus.com/forums/dieu/count.js';
-	    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-	}());
-  </script>
+ <script type="text/javascript">
+var disqus_shortname = 'dieu';
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.src = 'http://disqus.com/forums/dieu/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+ </script>
 
   
 <!-- Yandex.Metrika counter -->

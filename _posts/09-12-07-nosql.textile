@@ -6,10 +6,10 @@ published: true
 categories:
 - db
 - nosql
+image: http://lh6.ggpht.com/_wN3Yn5K_LYs/SxvK3DAKbdI/AAAAAAAAAEc/83Uitfm8kRY/1.png?imgmax=750
 ---
 
-<div style="text-align: center;">
-<img alt="NoSQL" border="0" height="160" src="http://lh6.ggpht.com/_wN3Yn5K_LYs/SxvK3DAKbdI/AAAAAAAAAEc/83Uitfm8kRY/1.png?imgmax=750" width="750" /></div>
+<center><img alt="NoSQL" height="160" src="http://lh6.ggpht.com/_wN3Yn5K_LYs/SxvK3DAKbdI/AAAAAAAAAEc/83Uitfm8kRY/1.png?imgmax=750" width="750" /></center>
 
 <b>NoSQL</b> - новый тренд в IT технологиях, подносящиеся как спасительный круг и избавитель от всех насущных проблем. В основе данного направление лежит отказ от языка SQL и от реалиционных баз данных, как частности. Беспрецедентные объемы данных заставили бизнес взглянуть на альтернативы традиционной технологии реляционных баз данных, которые служили нам добрую службу более тридцати лет. В совокупности эти альтернативы стали известны как "<b>NoSQL</b> базы данных". Что же плохого в SQL и реалиционных базах данных? Как говорят "проповедники" нового учения, это:
 

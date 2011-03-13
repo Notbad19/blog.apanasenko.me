@@ -8,10 +8,10 @@ categories:
 - fp
 - jvm
 - scala
+image: http://lh6.ggpht.com/_wN3Yn5K_LYs/SyeQl3IHyBI/AAAAAAAAAJg/EUkRIIcWRRA/function%3Dmachine.jpg?imgmax=800
 ---
 
-<div style="text-align:center;">
-<img src="http://lh6.ggpht.com/_wN3Yn5K_LYs/SyeQl3IHyBI/AAAAAAAAAJg/EUkRIIcWRRA/function%3Dmachine.jpg?imgmax=800" alt="function=machine.jpg" border="0" width="400" height="325" /></div>
+<center><img src="http://lh6.ggpht.com/_wN3Yn5K_LYs/SyeQl3IHyBI/AAAAAAAAAJg/EUkRIIcWRRA/function%3Dmachine.jpg?imgmax=800" alt="function=machine.jpg" width="400" height="325" /></center>
 
 Сегодня я и <a href="http://reldan.livejournal.com/">Эльдар</a> попытаемся рассказать о <strong>Scala</strong> с функционального взгляда. <strong>Scala</strong> – это функциональный язык в том смысле, что каждая функция – это значение. Он предоставляет легковесный синтаксис для определения анонимных функций, а также поддерживает вложенные функции.
 

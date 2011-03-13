@@ -1,68 +1,29 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta name="google-site-verification" content="bb8epm6suyHfvYU-yFKhhYMyg3SQ__QndlyH-vBmiAk"/>
-  <meta name='yandex-verification' content='74e7c4ae6d68c097'/>
-  <meta name="viewport" content="width=950, maximum-scale=1.0" />
-  <meta name="description" content="В сегодняшнем хайпе <strong>функциональных языках</strong> программирования <strong>Java</strong> программисты так же как и все испытывают потребность в каком-то языковом сахаре, функциональных плюшках, etc. Но Sun пока не дает всего этого в своём флагманском языке программирования в отличии от конкурентов, она придерживается консервативного подхода (хотя уже есть подвижки). В следствии всего этого, <strong>Java</strong> программисты смотрят на другие <strong>JVM</strong> языки (благо платформа дает все возможности для полета фантазии любого программиста), которые дают все блага описанные выше и многое другое. Один из таких языков это <strong>Scala (SCAlable LAnguage)</strong> — мультипарадигмальный язык программирования, без <strong>С</strong> подобного синтаксиса (с более лакониченым). В нем органично сочетаются возможности функционального и объектно ориентированного программирования." />
-  <meta http-equiv="description" content="В сегодняшнем хайпе <strong>функциональных языках</strong> программирования <strong>Java</strong> программисты так же как и все испытывают потребность в каком-то языковом сахаре, функциональных плюшках, etc. Но Sun пока не дает всего этого в своём флагманском языке программирования в отличии от конкурентов, она придерживается консервативного подхода (хотя уже есть подвижки). В следствии всего этого, <strong>Java</strong> программисты смотрят на другие <strong>JVM</strong> языки (благо платформа дает все возможности для полета фантазии любого программиста), которые дают все блага описанные выше и многое другое. Один из таких языков это <strong>Scala (SCAlable LAnguage)</strong> — мультипарадигмальный язык программирования, без <strong>С</strong> подобного синтаксиса (с более лакониченым). В нем органично сочетаются возможности функционального и объектно ориентированного программирования."/> 
-  <meta name="robots" content="all"/> 
-  <meta name="resourse-type" content="document"/> 
-  <meta name="document-state" content="dynamic"/> 
-  <meta name="revisit-after" content="1 days"/> 
-  <meta http-equiv="author" content="Anton Panasenko"/>
-  <meta name="copyright" content="Copyright (C) 2011 "/> 
-  <meta name="document-state" content="dynamic"/> 
-  <link rev="made" href="anton.panasenko@gmail.com"/> 
-  <meta http-equiv="reply-to" content="anton.panasenko@gmail.com"/> 
-  <meta name="site-created" content="Anton Panasenko - blog.apanasenko.me"/> 
-  <meta name="addres" content="blog.apanasenko.me"/> 
-  <meta name="distribution" content="global"/> 
-  <title>
-    Scala FL JVM (part 1) -  Anton Panasenko
-  </title>
-  <link rel="stylesheet" href="/css/reset.css" type="text/css"/>
-  
-  <link rel="stylesheet" href="/css/screen.css" type="text/css"/>
-  <link rel="stylesheet" href="/css/syntax.css" type="text/css"/>
-  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="/css/iphone.css" type="text/css"/>
-  <link rel="stylesheet" media="only screen and (max-device-width: 1024px)" href="/css/ipad.css" type="text/css"/>
-  <link rel="alternate" type="application/atom+xml" href="http://feeds.feedburner.com/apanasenko"/>
-  <link href="/images/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
-  <link href="/images/icon.jpg" rel="apple-touch-icon"/>
-</head>
+	<head>
+ 	  	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	  	<title>
+	    	 Scala FL JVM (part 1)  
+	  	</title>
+		<link rel="stylesheet" href="/css/style.css" type="text/css" media="all"/>
+	</head>
 <body>
-  <div id="wrapper">
-    <div class="center"><a href="http://blog.apanasenko.me/"><img class="header" alt="header image" src="/images/header.jpg"/></a></div>
-    <div id="inner">
-      <div id="container">
-        <div id="header">
-          <h1>
-            
-              <a href="/">&larr; Anton Panasenko</a>
-            
-          </h1>
-          <ul class="header">
-            <li>
-              <a href="/archive">Archive</a>
-            </li>
-	    <li>
-		<a href="http://ru.linkedin.com/in/apanasenko/">LinkedIn <span class="arrow">&rarr;</span></a>
-	    </li>
-            <li>
-		<a href="http://github.com/dieu">Github <span class="arrow">&rarr;</span></a>
-            </li>
-            <li>
-              <a href="http://twitter.com/apanasenko">Twitter <span class="arrow">&rarr;</span></a>
-            </li>
-          </ul>
-          <hr class="right"/>
-        </div>
-        <h2>Scala FL JVM (part 1)</h2>
-        
-
-<span id="article_buttons">
+<div id="header">
+	<ul id="nav" class="nav"> 
+		<li id="main" class="selected"><a href="/"><strong>Home</strong><span>main page</span></a></li> 
+		<li id="post"><a href="/2009/12/scala-fl-jvm-part-1"><strong>Blog</strong> <span>post</span></a></li>
+		<li id="archive"><a href="/archive"><strong>Archive</strong></a></li> 
+		<li><a href="http://ru.linkedin.com/in/apanasenko/"><strong>LinkedIn</strong> <span>&rarr;</span></a></li> 
+		<li><a href="http://github.com/dieu"><strong>Github</strong> <span>&rarr;</span></a></li> 
+		<li><a href="http://twitter.com/apanasenko"><strong>Twitter</strong> <span>&rarr;</span></a></li> 
+	</ul>
+</div>
+<div id="container">			
+	<div class="bar"> 
+	</div> 
+	<br/>
+	<div id="content">
+			<!-- <span id="article_buttons">
   <a id="tweet">
     <span class="balloon">tweet!</span> <img src="/images/tweet.png"/ alt="tweet"/>
   </a>
@@ -71,11 +32,10 @@
   </a>
 </span>
 
-<hr/>
+<hr/> -->
 
-<div id="content">
-	<div style="text-align:center;">
-<p><img src="http://lh6.ggpht.com/_wN3Yn5K_LYs/SyTg_KXBQOI/AAAAAAAAAIs/vP10ZF48vtk/newsflash_logo.png?imgmax=800" alt="newsflash_logo.png" border="0" width="646" height="93" /></div></p>
+<div class="content">
+	<center><img src="http://lh6.ggpht.com/_wN3Yn5K_LYs/SyTg_KXBQOI/AAAAAAAAAIs/vP10ZF48vtk/newsflash_logo.png?imgmax=800" alt="newsflash_logo.png" width="646" height="93" /></center>
 <p>В сегодняшнем хайпе <strong>функциональных языках</strong> программирования <strong>Java</strong> программисты так же как и все испытывают потребность в каком-то языковом сахаре, функциональных плюшках, etc. Но Sun пока не дает всего этого в своём флагманском языке программирования в отличии от конкурентов, она придерживается консервативного подхода (хотя уже есть <a href="http://www.jroller.com/scolebourne/entry/closures_in_jdk_7">подвижки</a>). В следствии всего этого, <strong>Java</strong> программисты смотрят на другие <strong><span class="caps">JVM</span></strong> языки (благо платформа дает все возможности для полета фантазии любого программиста), которые дают все блага описанные выше и многое другое. Один из таких языков это <strong>Scala (SCAlable LAnguage)</strong> — мультипарадигмальный язык программирования, без <strong>С</strong> подобного синтаксиса (с более лакониченым). В нем органично сочетаются возможности функционального и объектно ориентированного программирования.</p>
 <h4>История</h4>
 <p>Язык был создан в 2001—2004 годах в Лаборатории методов программирования <a href="http://ru.wikipedia.org/wiki/EPFL"><span class="caps">EPFL</span></a>. Автором языка считается <a href="http://people.epfl.ch/martin.odersky">Martin Odersky</a> создатель языка <strong>Pizza</strong>, который стал прототипом <strong>Generic</strong> в <strong>Java</strong>. Он стал результатом исследований, направленных на разработку улучшенной языковой поддержки компонентного ПО. За основу при разработке языка были взяты 2 идеи:</p>
@@ -104,180 +64,154 @@
 <ol>
 	<li><strong>Hello World и Object</strong>:</li>
 </ol>
-<div>
-<pre>
-<code class='scala'>object HelloWorld {
-def main(arg: Array[String]) {
-println(&quot;Hello, world!&quot;)
-}
-<p>}</code><br />
-  </pre></p>
-</div>
-<p>В Scala можно объявить отдельные объекты, которые буду себя вести согласно паттерну <a href="http://ru.wikipedia.org/wiki/Одиночка_(шаблон_проектирования)">Singelton</a>. Из этого листинга видно, что массивы типизируются с помощью <strong>[]</strong>, а не как обычно в <strong>Java, &lt;&gt;</strong>. Доступ к элементам массива происходит через оператор <strong>()</strong></p>
-<div>
-<pre>
-<code class='scala'>object HelloWorld {
-def main(arg: Array[String]) {
-println(&quot;Hello, world! &quot; + arg(0))
-}
-<p>}</code><br />
-  </pre></p>
-</div>
-<ol>
+<div class="highlight"><pre><code class="scala"><span class="k">object</span> <span class="nc">HelloWorld</span> <span class="o">{</span>
+  <span class="k">def</span> <span class="n">main</span><span class="o">(</span><span class="n">arg</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span> <span class="o">{</span>
+    <span class="n">println</span><span class="o">(</span><span class="s">&quot;Hello, world!&quot;</span><span class="o">)</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div><p>В Scala можно объявить отдельные объекты, которые буду себя вести согласно паттерну <a href="http://ru.wikipedia.org/wiki/Одиночка_(шаблон_проектирования)">Singelton</a>. Из этого листинга видно, что массивы типизируются с помощью <strong>[]</strong>, а не как обычно в <strong>Java, &lt;&gt;</strong>. Доступ к элементам массива происходит через оператор <strong>()</strong></p>
+<div class="highlight"><pre><code class="scala"><span class="k">object</span> <span class="nc">HelloWorld</span> <span class="o">{</span>
+  <span class="k">def</span> <span class="n">main</span><span class="o">(</span><span class="n">arg</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span> <span class="o">{</span>
+    <span class="n">println</span><span class="o">(</span><span class="s">&quot;Hello, world! &quot;</span> <span class="o">+</span> <span class="n">arg</span><span class="o">(</span><span class="mi">0</span><span class="o">))</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div><ol>
 	<li><strong>Функции(Методы)</strong>:<br />
 Функции как видно из листинга выше объявляются с помощью ключевого слова <strong>def</strong>, так же перед объявлением функции могут быть указаны модификаторы доступа <strong>private, protected</strong> (по умолчанию всем методам выставляется модификатор <strong>public</strong>, который отсутствует в явном виде). Есть еще один интересный момент, с помощью которого можно типизировать модификаторы доступа, как и обычные типы, накладывая тем самым на методы и поля больше ограничений.</li>
 </ol>
-<div>
-<pre>
-<code class='scala'>object HelloWorld {
-def main(arg: Array[String]) {
-println(hello + world)
-}
-private[HelloWorld] def hello() = &quot;Hello, &quot;
-protected[this] def world() = &quot;World!&quot;
-<p>}</code><br />
-  </pre></p>
-</div>
-<p>Так же в <strong>Scala</strong> методы и операторы однозначны, т.е. в <strong>Scala</strong> по сравнению с <strong>Java</strong> появилась возможность перегрузки операторов.</p>
-<div>
-<pre>
-<code class='scala'>class Complex(r: Double, i: Double) {
-def real = r
-def image = i
-def magnitude = Math.sqrt(r * r + i * i)
-def angle = Math.atan2(i, r)
-def +(that: Complex) = new Complex(this.real + that.real, this.image + that.image)
-override def toString = real + &quot; + i*&quot; + image + &quot; | &quot; + magnitude + &quot;<strong>e^(i</strong>&quot; + angle + &quot;))&quot;
-<p>}</code><br />
-  </pre></p>
-</div>
-<p>Модификатор <strong>override</strong>, как уже можно было заметить обязателен когда вы хотите перегрузить метод.</p>
+<div class="highlight"><pre><code class="scala"><span class="k">object</span> <span class="nc">HelloWorld</span> <span class="o">{</span>
+  <span class="k">def</span> <span class="n">main</span><span class="o">(</span><span class="n">arg</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span> <span class="o">{</span>
+    <span class="n">println</span><span class="o">(</span><span class="n">hello</span> <span class="o">+</span> <span class="n">world</span><span class="o">)</span>
+  <span class="o">}</span>
+  <span class="k">private</span><span class="o">[</span><span class="kt">HelloWorld</span><span class="o">]</span> <span class="k">def</span> <span class="n">hello</span><span class="o">()</span> <span class="k">=</span> <span class="s">&quot;Hello, &quot;</span>
+  <span class="k">protected</span><span class="o">[</span><span class="kt">this</span><span class="o">]</span> <span class="k">def</span> <span class="n">world</span><span class="o">()</span> <span class="k">=</span> <span class="s">&quot;World!&quot;</span>
+<span class="o">}</span>
+</code></pre>
+</div><p>Так же в <strong>Scala</strong> методы и операторы однозначны, т.е. в <strong>Scala</strong> по сравнению с <strong>Java</strong> появилась возможность перегрузки операторов.</p>
+<div class="highlight"><pre><code class="scala"><span class="k">class</span> <span class="nc">Complex</span><span class="o">(</span><span class="n">r</span><span class="k">:</span> <span class="kt">Double</span><span class="o">,</span> <span class="n">i</span><span class="k">:</span> <span class="kt">Double</span><span class="o">)</span> <span class="o">{</span>
+  <span class="k">def</span> <span class="n">real</span> <span class="k">=</span> <span class="n">r</span>
+  <span class="k">def</span> <span class="n">image</span> <span class="k">=</span> <span class="n">i</span>
+  <span class="k">def</span> <span class="n">magnitude</span> <span class="k">=</span> <span class="nc">Math</span><span class="o">.</span><span class="n">sqrt</span><span class="o">(</span><span class="n">r</span> <span class="o">*</span> <span class="n">r</span> <span class="o">+</span> <span class="n">i</span> <span class="o">*</span> <span class="n">i</span><span class="o">)</span>
+  <span class="k">def</span> <span class="n">angle</span> <span class="k">=</span> <span class="nc">Math</span><span class="o">.</span><span class="n">atan2</span><span class="o">(</span><span class="n">i</span><span class="o">,</span> <span class="n">r</span><span class="o">)</span>
+  <span class="k">def</span> <span class="o">+(</span><span class="n">that</span><span class="k">:</span> <span class="kt">Complex</span><span class="o">)</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Complex</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="n">real</span> <span class="o">+</span> <span class="n">that</span><span class="o">.</span><span class="n">real</span><span class="o">,</span> <span class="k">this</span><span class="o">.</span><span class="n">image</span> <span class="o">+</span> <span class="n">that</span><span class="o">.</span><span class="n">image</span><span class="o">)</span>
+  <span class="k">override</span> <span class="k">def</span> <span class="n">toString</span> <span class="k">=</span> <span class="n">real</span> <span class="o">+</span> <span class="s">&quot; + i*&quot;</span> <span class="o">+</span> <span class="n">image</span> <span class="o">+</span> <span class="s">&quot; | &quot;</span> <span class="o">+</span> <span class="n">magnitude</span> <span class="o">+</span> <span class="s">&quot;*e^(i*&quot;</span> <span class="o">+</span> <span class="n">angle</span> <span class="o">+</span> <span class="s">&quot;))&quot;</span>
+<span class="o">}</span>
+</code></pre>
+</div><p>Модификатор <strong>override</strong>, как уже можно было заметить обязателен когда вы хотите перегрузить метод.</p>
 <ol>
 	<li><strong>Классы</strong>:</li>
 </ol>
-<div>
-<pre>
-<code class='scala'>class Point2d(x: Float, y: Float) {
-def length = Math.sqrt(x * 2, y * y)
-override def toString = &quot;(&quot; + x + &quot;, &quot; + y + &quot;)&quot;
-<p>}</code><br />
-  </pre></p>
-</div>
-<p>Как видно из листинга примера, объявление класса отличается от Java, сразу рядом с названием можно объявить &#8220;простой&#8221; конструктор, тем самым сохранив начальные поля класса, но так же существует и способ объявления конструктора обычным способом.</p>
-<div>
-<pre>
-<code class='scala'>class Point2d {
-var x: Float
-var y: Float
-def this(x: Float, y: Float) {
-this.x = x; this.y = y
-}
-def length = Math.sqrt(x * 2, y * y)
-override def toString = ”(” + x + ”, ” + y + ”)”
-<p>}</code><br />
-  </pre></p>
-</div>
-<p>Из этого листинга так же видно, что &#8220;;&#8221; не обязательный знак как в Java, а применяется только тогда когда надо явно указать разделение операций, в остальных случаях достаточно перевода строки. Так же видно, что для указания типа используется &#8220;:&#8221; как у переменных, так и у методов. Так же у переменных существуют модификаторы <strong>var</strong> и <strong>val</strong>, которые делают переменные изменяемыми и не изменяемыми соответственно.</p>
+<div class="highlight"><pre><code class="scala"><span class="k">class</span> <span class="nc">Point2d</span><span class="o">(</span><span class="n">x</span><span class="k">:</span> <span class="kt">Float</span><span class="o">,</span> <span class="n">y</span><span class="k">:</span> <span class="kt">Float</span><span class="o">)</span> <span class="o">{</span> 
+  <span class="k">def</span> <span class="n">length</span> <span class="k">=</span> <span class="nc">Math</span><span class="o">.</span><span class="n">sqrt</span><span class="o">(</span><span class="n">x</span> <span class="o">*</span> <span class="mi">2</span><span class="o">,</span> <span class="n">y</span> <span class="o">*</span> <span class="n">y</span><span class="o">)</span>
+  <span class="k">override</span> <span class="k">def</span> <span class="n">toString</span> <span class="k">=</span> <span class="s">&quot;(&quot;</span> <span class="o">+</span> <span class="n">x</span> <span class="o">+</span> <span class="s">&quot;, &quot;</span> <span class="o">+</span> <span class="n">y</span> <span class="o">+</span> <span class="s">&quot;)&quot;</span>
+<span class="o">}</span>
+</code></pre>
+</div><p>Как видно из листинга примера, объявление класса отличается от Java, сразу рядом с названием можно объявить &#8220;простой&#8221; конструктор, тем самым сохранив начальные поля класса, но так же существует и способ объявления конструктора обычным способом.</p>
+<div class="highlight"><pre><code class="scala"><span class="k">class</span> <span class="nc">Point2d</span> <span class="o">{</span> 
+  <span class="k">var</span> <span class="n">x</span><span class="k">:</span> <span class="kt">Float</span> 
+  <span class="k">var</span> <span class="n">y</span><span class="k">:</span> <span class="kt">Float</span> 
+  <span class="k">def</span> <span class="k">this</span><span class="o">(</span><span class="n">x</span><span class="k">:</span> <span class="kt">Float</span><span class="o">,</span> <span class="n">y</span><span class="k">:</span> <span class="kt">Float</span><span class="o">)</span> <span class="o">{</span> 
+ <span class="k">this</span><span class="o">.</span><span class="n">x</span> <span class="k">=</span> <span class="n">x</span><span class="o">;</span> <span class="k">this</span><span class="o">.</span><span class="n">y</span> <span class="k">=</span> <span class="n">y</span>
+  <span class="o">}</span> 
+  <span class="k">def</span> <span class="n">length</span> <span class="k">=</span> <span class="nc">Math</span><span class="o">.</span><span class="n">sqrt</span><span class="o">(</span><span class="n">x</span> <span class="o">*</span> <span class="mi">2</span><span class="o">,</span> <span class="n">y</span> <span class="o">*</span> <span class="n">y</span><span class="o">)</span>
+  <span class="k">override</span> <span class="k">def</span> <span class="n">toString</span> <span class="k">=</span> <span class="err">”</span><span class="o">(</span><span class="err">”</span> <span class="o">+</span> <span class="n">x</span> <span class="o">+</span> <span class="err">”</span><span class="o">,</span> <span class="err">”</span> <span class="o">+</span> <span class="n">y</span> <span class="o">+</span> <span class="err">”</span><span class="o">)</span><span class="err">”</span>
+<span class="o">}</span> 
+</code></pre>
+</div><p>Из этого листинга так же видно, что &#8220;;&#8221; не обязательный знак как в Java, а применяется только тогда когда надо явно указать разделение операций, в остальных случаях достаточно перевода строки. Так же видно, что для указания типа используется &#8220;:&#8221; как у переменных, так и у методов. Так же у переменных существуют модификаторы <strong>var</strong> и <strong>val</strong>, которые делают переменные изменяемыми и не изменяемыми соответственно.</p>
 <ol>
 	<li><strong>Traits</strong>:</li>
 </ol>
 <p>Trait — это интерфейс, который может содержать реализации методов, но не может содержать поля. В этом смысле в Scala есть множественное наследование.</p>
-<div>
-<pre>
-<code class='scala'>trait Comparable[T] {
-def compareTo(that: T): Int
-def &gt;(that: T) = compareTo(that) &gt; 0
-def &gt;=(that: T) = compareTo(that) &gt;= 0
-def ==(that: T) = compareTo(that) == 0
-def &lt;(that: T) = compareTo(that) &lt; 0
-def &lt;=(that: T) = compareTo(that) &lt;= 0
-<p>}<br />
-class Fraction(num: Int, denom: Int) extends Comparable[Fraction] { <br />
-  def compareTo(that: Fraction) = this.num * that.denom &#8211; that.num * this.denom<br />
-} <br />
-new Fraction(3, 4) &gt; new Fraction(1, 2) // возвращает true</code><br />
-  </pre></p>
-</div>
-<ol>
+<div class="highlight"><pre><code class="scala"><span class="k">trait</span> <span class="nc">Comparable</span><span class="o">[</span><span class="kt">T</span><span class="o">]</span> <span class="o">{</span> 
+  <span class="k">def</span> <span class="n">compareTo</span><span class="o">(</span><span class="n">that</span><span class="k">:</span> <span class="kt">T</span><span class="o">)</span><span class="k">:</span> <span class="kt">Int</span> 
+  <span class="k">def</span> <span class="o">&gt;(</span><span class="n">that</span><span class="k">:</span> <span class="kt">T</span><span class="o">)</span> <span class="k">=</span> <span class="n">compareTo</span><span class="o">(</span><span class="n">that</span><span class="o">)</span> <span class="o">&gt;</span> <span class="mi">0</span> 
+  <span class="k">def</span> <span class="o">&gt;=(</span><span class="n">that</span><span class="k">:</span> <span class="kt">T</span><span class="o">)</span> <span class="k">=</span> <span class="n">compareTo</span><span class="o">(</span><span class="n">that</span><span class="o">)</span> <span class="o">&gt;=</span> <span class="mi">0</span> 
+  <span class="k">def</span> <span class="o">==(</span><span class="n">that</span><span class="k">:</span> <span class="kt">T</span><span class="o">)</span> <span class="k">=</span> <span class="n">compareTo</span><span class="o">(</span><span class="n">that</span><span class="o">)</span> <span class="o">==</span> <span class="mi">0</span> 
+  <span class="k">def</span> <span class="o">&lt;(</span><span class="n">that</span><span class="k">:</span> <span class="kt">T</span><span class="o">)</span> <span class="k">=</span> <span class="n">compareTo</span><span class="o">(</span><span class="n">that</span><span class="o">)</span> <span class="o">&lt;</span> <span class="mi">0</span> 
+  <span class="k">def</span> <span class="o">&lt;=(</span><span class="n">that</span><span class="k">:</span> <span class="kt">T</span><span class="o">)</span> <span class="k">=</span> <span class="n">compareTo</span><span class="o">(</span><span class="n">that</span><span class="o">)</span> <span class="o">&lt;=</span> <span class="mi">0</span>
+<span class="o">}</span>
+<span class="k">class</span> <span class="nc">Fraction</span><span class="o">(</span><span class="n">num</span><span class="k">:</span> <span class="kt">Int</span><span class="o">,</span> <span class="n">denom</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span> <span class="k">extends</span> <span class="nc">Comparable</span><span class="o">[</span><span class="kt">Fraction</span><span class="o">]</span> <span class="o">{</span> 
+  <span class="k">def</span> <span class="n">compareTo</span><span class="o">(</span><span class="n">that</span><span class="k">:</span> <span class="kt">Fraction</span><span class="o">)</span> <span class="k">=</span> <span class="k">this</span><span class="o">.</span><span class="n">num</span> <span class="o">*</span> <span class="n">that</span><span class="o">.</span><span class="n">denom</span> <span class="o">-</span> <span class="n">that</span><span class="o">.</span><span class="n">num</span> <span class="o">*</span> <span class="k">this</span><span class="o">.</span><span class="n">denom</span>
+<span class="o">}</span> 
+<span class="k">new</span> <span class="nc">Fraction</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">)</span> <span class="o">&gt;</span> <span class="k">new</span> <span class="nc">Fraction</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">)</span> <span class="c1">// возвращает true</span>
+</code></pre>
+</div><ol>
 	<li><strong>Mixin</strong>:</li>
 </ol>
-<div>
-<pre>
-<code class='scala'>object Pets {
-def main(arg: Array[String]) {
-println(new Pet(&quot;Martin&quot;)) //Martin
-println(new Pet(&quot;Martin&quot;) with PetName) //Name: Martin
-}
-<p>}<br />
-class Pet(val name:String) {<br />
-  override def toString = name<br />
-}<br />
-trait PetName {<br />
-  override def toString = &quot;Name: &quot; + super.toString<br />
-}</code><br />
-  </pre></p>
-</div>
-<h4>Небольшой пример</h4>
+<div class="highlight"><pre><code class="scala"><span class="k">object</span> <span class="nc">Pets</span> <span class="o">{</span>
+  <span class="k">def</span> <span class="n">main</span><span class="o">(</span><span class="n">arg</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span> <span class="o">{</span>
+    <span class="n">println</span><span class="o">(</span><span class="k">new</span> <span class="nc">Pet</span><span class="o">(</span><span class="s">&quot;Martin&quot;</span><span class="o">))</span> <span class="c1">//Martin</span>
+    <span class="n">println</span><span class="o">(</span><span class="k">new</span> <span class="nc">Pet</span><span class="o">(</span><span class="s">&quot;Martin&quot;</span><span class="o">)</span> <span class="k">with</span> <span class="nc">PetName</span><span class="o">)</span> <span class="c1">//Name: Martin</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+<span class="k">class</span> <span class="nc">Pet</span><span class="o">(</span><span class="k">val</span> <span class="n">name</span><span class="k">:</span><span class="kt">String</span><span class="o">)</span> <span class="o">{</span>
+  <span class="k">override</span> <span class="k">def</span> <span class="n">toString</span> <span class="k">=</span> <span class="n">name</span>
+<span class="o">}</span>
+<span class="k">trait</span> <span class="nc">PetName</span> <span class="o">{</span>
+  <span class="k">override</span> <span class="k">def</span> <span class="n">toString</span> <span class="k">=</span> <span class="s">&quot;Name: &quot;</span> <span class="o">+</span> <span class="k">super</span><span class="o">.</span><span class="n">toString</span>
+<span class="o">}</span>
+</code></pre>
+</div><h4>Небольшой пример</h4>
 <p>На <strong>Java</strong>:</p>
-<div>
-<pre>
-<code class='scala'>public class QuicksortJava {
-private static void doSort(int start, int end, int[] array) {
-if (start &gt;= end)
-return;
-int i = start, j = end;
-int cur = i &#8211; (i &#8211; j) / 2;
-while (i &lt; j) {
-while (i &lt; cur &amp;&amp; (array[i] &lt;= array[cur])) {
-i++;
-}
-while (j &gt; cur &amp;&amp; (array[cur] &lt;= array[j])) {
-j&#8212;;
-}
-if (i &lt; j) {
-int temp = array[i];
-array[i] = array[j];
-array[j] = temp;
-if (i == cur)
-cur = j;
-else if (j == cur)
-cur = i;
-}
-}
-doSort(start, cur, array);
-doSort(cur + 1, end, array);
-}
-public void sort(int[] xs) {
-doSort(0, xs.length &#8211; 1, xs);
-}
-public static void main(String[] arg) {
-int[] xs = new int[]{5, 4, 3, 2, 1, 0};
-new QuicksortJava().sort(xs);
-System.out.println(Arrays.toString(xs));
-}
-<p>}</code><br />
-  </pre></p>
-</div>
-<p>и <strong>Scala</strong>:</p>
-<div>
-<pre>
-<code class='scala'>object Quicksort {
-def sort(xs: Array[Int]): Array[Int] = {
-if (xs.length &lt;= 1) xs
-else {
-val pivot = xs(xs.length / 2)
-Array.concat(
-sort(xs filter (pivot &gt;)),
-xs filter (pivot ==),
-sort(xs filter (pivot &lt;)))
-}
-}
-def main(arg:Array[String]) = {
-val xs = Array(5, 4, 3, 2, 1, 0)
-println(sort(xs).toString)
-}
-<p>}</code><br />
-  </pre></p>
+<div class="highlight"><pre><code class="scala"><span class="n">public</span> <span class="k">class</span> <span class="nc">QuicksortJava</span> <span class="o">{</span>
+    <span class="k">private</span> <span class="n">static</span> <span class="n">void</span> <span class="n">doSort</span><span class="o">(</span><span class="n">int</span> <span class="n">start</span><span class="o">,</span> <span class="n">int</span> <span class="n">end</span><span class="o">,</span> <span class="n">int</span><span class="o">[]</span> <span class="n">array</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">start</span> <span class="o">&gt;=</span> <span class="n">end</span><span class="o">)</span>
+            <span class="k">return</span><span class="o">;</span>
+        <span class="n">int</span> <span class="n">i</span> <span class="k">=</span> <span class="n">start</span><span class="o">,</span> <span class="n">j</span> <span class="k">=</span> <span class="n">end</span><span class="o">;</span>
+        <span class="n">int</span> <span class="n">cur</span> <span class="k">=</span> <span class="n">i</span> <span class="o">-</span> <span class="o">(</span><span class="n">i</span> <span class="o">-</span> <span class="n">j</span><span class="o">)</span> <span class="o">/</span> <span class="mi">2</span><span class="o">;</span>
+        <span class="k">while</span> <span class="o">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">j</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">while</span> <span class="o">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">cur</span> <span class="o">&amp;&amp;</span> <span class="o">(</span><span class="n">array</span><span class="o">[</span><span class="kt">i</span><span class="o">]</span> <span class="o">&lt;=</span> <span class="n">array</span><span class="o">[</span><span class="kt">cur</span><span class="o">]))</span> <span class="o">{</span>
+                <span class="n">i</span><span class="o">++;</span>
+            <span class="o">}</span>
+            <span class="k">while</span> <span class="o">(</span><span class="n">j</span> <span class="o">&gt;</span> <span class="n">cur</span> <span class="o">&amp;&amp;</span> <span class="o">(</span><span class="n">array</span><span class="o">[</span><span class="kt">cur</span><span class="o">]</span> <span class="o">&lt;=</span> <span class="n">array</span><span class="o">[</span><span class="kt">j</span><span class="o">]))</span> <span class="o">{</span>
+                <span class="n">j</span><span class="o">--;</span>
+            <span class="o">}</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">j</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">int</span> <span class="n">temp</span> <span class="k">=</span> <span class="n">array</span><span class="o">[</span><span class="kt">i</span><span class="o">];</span>
+                <span class="n">array</span><span class="o">[</span><span class="kt">i</span><span class="o">]</span> <span class="k">=</span> <span class="n">array</span><span class="o">[</span><span class="kt">j</span><span class="o">];</span>
+                <span class="n">array</span><span class="o">[</span><span class="kt">j</span><span class="o">]</span> <span class="k">=</span> <span class="n">temp</span><span class="o">;</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">i</span> <span class="o">==</span> <span class="n">cur</span><span class="o">)</span>
+                    <span class="n">cur</span> <span class="k">=</span> <span class="n">j</span><span class="o">;</span>
+                <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">j</span> <span class="o">==</span> <span class="n">cur</span><span class="o">)</span>
+                    <span class="n">cur</span> <span class="k">=</span> <span class="n">i</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="n">doSort</span><span class="o">(</span><span class="n">start</span><span class="o">,</span> <span class="n">cur</span><span class="o">,</span> <span class="n">array</span><span class="o">);</span>
+        <span class="n">doSort</span><span class="o">(</span><span class="n">cur</span> <span class="o">+</span> <span class="mi">1</span><span class="o">,</span> <span class="n">end</span><span class="o">,</span> <span class="n">array</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="n">public</span> <span class="n">void</span> <span class="n">sort</span><span class="o">(</span><span class="n">int</span><span class="o">[]</span> <span class="n">xs</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">doSort</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="n">xs</span><span class="o">.</span><span class="n">length</span> <span class="o">-</span> <span class="mi">1</span><span class="o">,</span> <span class="n">xs</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="n">public</span> <span class="n">static</span> <span class="n">void</span> <span class="n">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">arg</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">int</span><span class="o">[]</span> <span class="n">xs</span> <span class="k">=</span> <span class="k">new</span> <span class="n">int</span><span class="o">[]{</span><span class="mi">5</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">};</span>
+        <span class="k">new</span> <span class="nc">QuicksortJava</span><span class="o">().</span><span class="n">sort</span><span class="o">(</span><span class="n">xs</span><span class="o">);</span>
+        <span class="nc">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="o">(</span><span class="nc">Arrays</span><span class="o">.</span><span class="n">toString</span><span class="o">(</span><span class="n">xs</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div><p>и <strong>Scala</strong>:</p>
+<div class="highlight"><pre><code class="scala"><span class="k">object</span> <span class="nc">Quicksort</span> <span class="o">{</span>
+  <span class="k">def</span> <span class="n">sort</span><span class="o">(</span><span class="n">xs</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">Int</span><span class="o">])</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span> <span class="k">=</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">xs</span><span class="o">.</span><span class="n">length</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="o">)</span> <span class="n">xs</span>
+    <span class="k">else</span> <span class="o">{</span>
+      <span class="k">val</span> <span class="n">pivot</span> <span class="k">=</span> <span class="n">xs</span><span class="o">(</span><span class="n">xs</span><span class="o">.</span><span class="n">length</span> <span class="o">/</span> <span class="mi">2</span><span class="o">)</span>
+      <span class="nc">Array</span><span class="o">.</span><span class="n">concat</span><span class="o">(</span>
+        <span class="n">sort</span><span class="o">(</span><span class="n">xs</span> <span class="n">filter</span> <span class="o">(</span><span class="n">pivot</span> <span class="o">&gt;)),</span>
+        <span class="n">xs</span> <span class="n">filter</span> <span class="o">(</span><span class="n">pivot</span> <span class="o">==),</span>
+        <span class="n">sort</span><span class="o">(</span><span class="n">xs</span> <span class="n">filter</span> <span class="o">(</span><span class="n">pivot</span> <span class="o">&lt;)))</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+
+  <span class="k">def</span> <span class="n">main</span><span class="o">(</span><span class="n">arg</span><span class="k">:</span><span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span> <span class="k">=</span> <span class="o">{</span>
+    <span class="k">val</span> <span class="n">xs</span> <span class="k">=</span> <span class="nc">Array</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">)</span>
+    <span class="n">println</span><span class="o">(</span><span class="n">sort</span><span class="o">(</span><span class="n">xs</span><span class="o">).</span><span class="n">toString</span><span class="o">)</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
 </div>
 
 	
@@ -311,45 +245,30 @@ println(sort(xs).toString)
   })();
 </script>
 
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<script type="text/javascript">
+	$('#main').removeClass('selected');
+	$('#post').addClass('selected');
+</script>
+
 <!--
 
 -->
 
-      </div>
+	</div>
+</div>
+<!-- <div id="footer">
+	<a href="">Source code</a>
+</div> -->
 
-      <div id="slide_bar">
-		<div id="subscribe">
-			<a href="http://feeds.feedburner.com/apanasenko" rel="alternate" title="feed" type="application/rss+xml"><img alt="rss" src="http://lh3.ggpht.com/_wN3Yn5K_LYs/SviFaWzVaAI/AAAAAAAAACE/t5QGxBDsiMs/rss.png"/></a>
-		</div>	
-        <div id="cloud_tag">
-          <div id="cloud_tag_div">
-                <ol id="tag-cloud"><li title="1 post"><a href="/search/label/actors">actors</a></li> <li title="1 post"><a href="/search/label/alice">alice</a></li> <li title="2 posts"><a href="/search/label/amazon">amazon</a></li> <li title="1 post"><a href="/search/label/apple">apple</a></li> <li title="1 post"><a href="/search/label/aws">aws</a></li> <li title="1 post"><a href="/search/label/azure">azure</a></li> <li title="1 post"><a href="/search/label/blog">blog</a></li> <li title="1 post"><a href="/search/label/book">book</a></li> <li title="1 post"><a href="/search/label/build">build</a></li> <li title="1 post"><a href="/search/label/cassandra">cassandra</a></li> <li title="1 post"><a href="/search/label/chef">chef</a></li> <li title="1 post"><a href="/search/label/client">client</a></li> <li title="1 post"><a href="/search/label/clips">clips</a></li> <li title="1 post"><a href="/search/label/clojure">clojure</a></li> <li title="1 post"><a href="/search/label/cloud">cloud</a></li> <li title="1 post"><a href="/search/label/consistent">consistent</a></li> <li title="1 post"><a href="/search/label/db">db</a></li> <li title="1 post"><a href="/search/label/deploy">deploy</a></li> <li title="1 post"><a href="/search/label/django">django</a></li> <li title="2 posts"><a href="/search/label/dvcs">dvcs</a></li> <li title="2 posts"><a href="/search/label/ec2">ec2</a></li> <li title="4 posts"><a href="/search/label/erlang">erlang</a></li> <li title="5 posts"><a href="/search/label/fl">fl</a></li> <li title="5 posts"><a href="/search/label/fp">fp</a></li> <li title="1 post"><a href="/search/label/gen_server">gen_server</a></li> <li title="1 post"><a href="/search/label/gfs">gfs</a></li> <li title="1 post"><a href="/search/label/git">git</a></li> <li title="1 post"><a href="/search/label/github">github</a></li> <li title="2 posts"><a href="/search/label/google">google</a></li> <li title="2 posts"><a href="/search/label/grid">grid</a></li> <li title="1 post"><a href="/search/label/hash">hash</a></li> <li title="2 posts"><a href="/search/label/hg">hg</a></li> <li title="1 post"><a href="/search/label/ipad">ipad</a></li> <li title="2 posts"><a href="/search/label/java">java</a></li> <li title="1 post"><a href="/search/label/jekyll">jekyll</a></li> <li title="3 posts"><a href="/search/label/jvm">jvm</a></li> <li title="1 post"><a href="/search/label/mac os">mac os</a></li> <li title="1 post"><a href="/search/label/mapreduce">mapreduce</a></li> <li title="1 post"><a href="/search/label/mercurial">mercurial</a></li> <li title="2 posts"><a href="/search/label/nosql">nosql</a></li> <li title="1 post"><a href="/search/label/objective-c">objective-c</a></li> <li title="1 post"><a href="/search/label/osgi">osgi</a></li> <li title="1 post"><a href="/search/label/pax">pax</a></li> <li title="1 post"><a href="/search/label/python">python</a></li> <li title="2 posts"><a href="/search/label/rabbitmq">rabbitmq</a></li> <li title="1 post"><a href="/search/label/ruby">ruby</a></li> <li title="3 posts"><a href="/search/label/scala">scala</a></li> <li title="1 post"><a href="/search/label/scheme">scheme</a></li> <li title="1 post"><a href="/search/label/server">server</a></li></ol>
-
-          </div>
-        </div>
-		<br/>
-		<div id="iready">
-	    	<ol>
-<li><a href="http://alenacpp.blogspot.com/">Алена С++</a></li>
-<li></li>
-<li><a href="http://samolisov.blogspot.com/">Челябинский Программист</a></li>
-</ol>
-        </div>
-        <br/>
-      </div> 
-    </div>
-  </div>
-
-  <script src="/js/jquery.js" type="text/javascript"></script>
-  <script src="/js/twitter.js" type="text/javascript"></script>
-  <script type="text/javascript">
-	var disqus_shortname = 'dieu';
-	(function () {
-	    var s = document.createElement('script'); s.async = true;
-	    s.src = 'http://disqus.com/forums/dieu/count.js';
-	    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-	}());
-  </script>
+ <script type="text/javascript">
+var disqus_shortname = 'dieu';
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.src = 'http://disqus.com/forums/dieu/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+ </script>
 
   
 <!-- Yandex.Metrika counter -->

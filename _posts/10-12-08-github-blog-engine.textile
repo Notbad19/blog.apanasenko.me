@@ -9,9 +9,10 @@ categories:
 - jekyll
 - ruby
 - blog
+image: http://github.com/images/modules/header/logo_pages.png
 ---
 
-<div class="center"><img src="http://github.com/images/modules/header/logo_pages.png" alt="GitHub Pages"/></div>
+<center><img src="http://github.com/images/modules/header/logo_pages.png" alt="GitHub Pages"/></center>
 
 Недавно увидев сайт визитку одного разработчика, захотелось и себе сделать нечто подобное. Первом делом начал искать где это все захостить, покупать что то серьезное не хотелось, а посмотрев популярные проекты для этих целей, не нашел ничего подходящего. Большинство из них не дает большой гибкости, кто то не имеет достаточной кастомизации html и css, кто то не умеет работать с доменами 2рого уровня и т.д. И тут мой взор упал на "GitHub Pages":http://pages.github.com/.
 

@@ -1,0 +1,249 @@
+body {
+	background: #F4F4E8 url('http://www.ermark.ro/live/adora/images/light/back-noise.jpg');
+}
+
+h2,h3,h4,h5,h6 {
+  	color: #333;
+}
+
+a {
+  	color:#000;
+  	text-decoration:none;
+}
+
+a img {
+  	vertical-align: middle;
+}
+
+span#eighty{
+  	color:#007236;
+}
+
+span#beans{
+  	color:#72bf44;
+}
+
+a:hover, a:hover span#eighty, a:hover span#beans {
+  	color:#444;
+}
+
+ol, li {
+	list-style: none;
+}
+
+blockquote {
+  	padding: 0px 0px 0px 10px;
+  	font-style:italic;
+}
+
+div#disqus_thread {
+  	margin: 50px 0px 0px 0px;
+}
+
+#, 
+div#dsq-pagination, 
+div.dsq-sharing-options, 
+div.dsq-dc-logo
+div.dsq-options, 
+div#dsq-global-toolbar {
+  	display:none !important;
+}
+
+div.center {
+	position: relative;
+	clear: both; 
+	text-align: center;
+}
+
+#header {
+	position: relative;
+	top:-25px;
+	width: fixed;
+	width: 800px;
+	margin:0 auto 0 auto;
+	overflow:hidden; 
+}
+
+#header ul, li {
+	list-style: none;
+}
+
+#header .nav li {
+	margin:0 1px 0 1px;
+	float:left;
+	width:70px;
+	text-align:center;
+	height:95px;
+	position:relative;
+}
+
+#header .nav li a,                                                  
+#header .nav li strong {
+	font-weight:normal;
+	text-decoration:none; 
+}
+
+#header .nav li strong {
+	font-size:14px;
+	color:#362e30;
+	line-height:12px;
+	display:block;
+	height:16px;
+	padding-top:40px; 
+}
+
+#header .nav li.selected {
+	background:#982020 url('http://www.ermark.ro/live/urban/images/back-nav-top.png') no-repeat 0px 0px;
+	z-index:-1; 
+}
+
+#header .nav li span { 
+	font-size:12px;
+	color:#362e30;
+}
+
+#header .nav li a:hover {
+	color:#982020;
+} 
+ 
+#header .nav li.selected strong {
+	font-size:14px;
+	color:#fff;
+}
+
+#header .nav li.selected span {
+	color:#fff;
+}
+
+#container {
+	width: fixed;
+	width: 800px;
+	margin:0 auto 0 auto;
+}
+
+#container div.bar { 
+	background-color: #362e30;
+	height:55px;
+	padding-left:55px;
+	top: -20px;
+	position: relative;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-o-border-radius: 5px;
+	border-radius: 5px;
+}
+
+#container div.bar h3 {
+	font-size:16px;
+	color:#fff;
+	float:left;
+	width:80px;
+	height:40px;
+	line-height:14px;
+}
+
+#container div.bar p { 
+	font-size:12px;
+	width:500px;
+	float:left;
+	margin-left:10px;
+	line-height:17px;
+	color:#fff;
+}
+
+#content {
+	left: 30px;
+	position: relative;
+}
+
+#content ol, #content li {
+	list-style: disc;
+}
+
+#content code,pre {
+  	font-family:"Monaco", "Courier New", monospace;
+  	font-size: 12px;
+  	line-height: 150%;
+}
+
+pre {
+  	white-space: pre-wrap;
+  	white-space: -moz-pre-wrap;
+  	white-space: -pre-wrap;
+  	white-space: -o-pre-wrap;
+  	word-wrap: break-word;
+}
+
+div#content pre {
+  	-moz-border-radius:5px;
+  	-webkit-border-radius:5px;
+  	background-color:#222;
+  	color:#fff;
+  	font-size: 13px;
+  	padding: 20px;
+  	text-shadow:0 1px 0 #000;
+  	width: 790px;
+  	margin: 0px 0px 0px -40px;
+}
+
+div.notice {
+  	-moz-border-radius:5px;
+  	-moz-box-shadow:0 -1px 0 #fffddd;
+  	-webkit-border-radius:5px;
+  	-webkit-box-shadow:0 -1px 0 #fffddd;
+  	background-color:#fffbbb;
+  	padding: 20px;
+  	text-shadow:0 1px 0 #dddaaa;
+  	width: 790px;
+  	margin: 0px 0px 5px -40px;
+}
+
+em {
+  	font-style:italic;
+}
+
+.content p {
+	font-size: 14px;
+}
+
+#content div.imgLarge.wd205 { 
+	background:url('http://www.ermark.ro/live/adora/images/back-image-shadow-205.png') no-repeat 0px 206px;      
+	padding-bottom:7px; 
+}
+
+#content div.imgLarge {
+	padding:1px 0 1px 0;
+	padding-bottom:4px;
+	margin:0;
+	left: 10px;
+	position:relative; 
+	background:#f0f0f0;
+}
+
+#content img { 
+	padding:14px;
+	display:none;
+	background:#fff;
+	border:1px solid #e0dadb;
+}
+
+#content img:first-child {
+	display:block; 
+}
+   
+#footer {
+	display: block;
+	position: relative;
+	text-align: center;
+	width: 100%;
+	border: 8px solid #362e30;
+	bottom: -8px;
+	left: -8px;
+	background-color: #362e30;
+}
+
+#footer a {
+	font-weight:normal;
+	text-decoration:none; 
+	color:#fff;	
+}

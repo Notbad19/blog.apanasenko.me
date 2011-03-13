@@ -8,12 +8,12 @@ categories:
 - fp
 - clips
 - clojure
+image: http://clipsrules.sourceforge.net/clips.gif
 ---
 
 h4. CLIPS?
 
-<div style="text-align:center;">
-<img src="http://clipsrules.sourceforge.net/clips.gif" alt="Mercurial_logo.png" border="0" width="200" height="240" /></div>
+<center><img src="http://clipsrules.sourceforge.net/clips.gif" alt="Mercurial_logo.png" width="200" height="240" /></center>
 
 <strong>CLIPS</strong> (C Language Integrated Production System) - это язык c clojure'о подобным синтаксисом, название которого предложено Чарльзом Форги (Charles Forgy). <strong>CLIPS</strong> создавался для простой и быстрой разработки экспертных систем. У него есть несколько потомков:
 

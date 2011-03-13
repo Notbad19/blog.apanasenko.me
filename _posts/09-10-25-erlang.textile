@@ -7,6 +7,7 @@ categories:
 - erlang
 - gen_server
 - mapreduce
+image: http://sameshirteveryday.com/wp-content/uploads/2009/10/erlan_logo.jpg
 ---
 
 Про Erlang достаточно много написано на русском (<a href="http://ru.wikipedia.org/wiki/Erlang">Вики</a>), по этому интереснее конкретные, простые примеры кода. А вот их днем с огнем не сыщешь, не в англоязычном интернете, не тем более в русском... Надо эту ситуацию, как то менять и начну пожалуй с себя :)

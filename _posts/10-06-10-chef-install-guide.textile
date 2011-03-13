@@ -7,9 +7,10 @@ categories:
 - chef
 - deploy
 - ec2
+image: http://s3.amazonaws.com/opscode-corpsite/assets/53/legos_small_rounded_original_original.jpg
 ---
 
-<div class="separator" style="clear: both; text-align: center;"><a href="http://www.opscode.com/chef/" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="http://s3.amazonaws.com/opscode-corpsite/assets/53/legos_small_rounded_original_original.jpg" /></a></div>
+<center><a href="http://www.opscode.com/chef/"><img src="http://s3.amazonaws.com/opscode-corpsite/assets/53/legos_small_rounded_original_original.jpg" /></a></center>
 
 "*Chef* (Chef site)":http://www.opscode.com/chef/ это система провижининга приложений (достаточно удобная и гибкая система) со своими плюсами и недостатками. Но сегодня не много о другом, а именно об установке server-client варианта на EC2.
 

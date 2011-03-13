@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Scala Actors (part 2)
-excerpt: В прошлой статье я попытался рассказать, о том что такое <strong>Scala</strong> и особенностях синтаксиса/языка по сравнению с <strong>Java</strong>. В этом посте попробую рассмотреть <strong>Scala Actors</strong>. С появлением многоядерных процессоров параллельное программирование становится незаменимым. Параллелизм в <strong>Scala</strong> строиться в первую очередь с помощью <strong>actors</strong>. <strong>Actors</strong> это параллельные процессы, которые взаимодействуют путем обмена сообщениями. <strong>Actors</strong> можно также рассматривать как одну из форм активных объектов, где применение метода соответствует посылке сообщений.
+excerpt: В прошлой статье я попытался рассказать, о том что такое <strong>Scala</strong> и особенностях синтаксиса/языка по сравнению с <strong>Java</strong>. В этом посте попробую рассмотреть <strong>Scala Actors</strong>. С появлением многоядерных процессоров параллельное программирование становится незаменимым. Параллелизм в <strong>Scala</strong> строиться в первую очередь с помощью <strong>actors</strong>. <strong>Actors</strong> это параллельные процессы, которые взаимодействуют путем обмена сообщениями.
 published: true
 categories:
 - fl
@@ -9,10 +9,10 @@ categories:
 - jvm
 - scala
 - actors
+image: http://lh5.ggpht.com/_wN3Yn5K_LYs/SyUTH_nU5hI/AAAAAAAAAI0/buL0ZX6nd7M/scala_logo.png?imgmax=800
 ---
 
-<div style="text-align:center;">
-<img src="http://lh5.ggpht.com/_wN3Yn5K_LYs/SyUTH_nU5hI/AAAAAAAAAI0/buL0ZX6nd7M/scala_logo.png?imgmax=800" alt="scala_logo.png" border="0" width="268" height="174" /></div>
+<center><img src="http://lh5.ggpht.com/_wN3Yn5K_LYs/SyUTH_nU5hI/AAAAAAAAAI0/buL0ZX6nd7M/scala_logo.png?imgmax=800" alt="scala_logo.png" width="268" height="174" /></center>
 
 В прошлой <a href="http://blog.apanasenko.me/2009/12/scala-fl-jvm-part-1/">статье</a> я попытался рассказать, о том что такое <strong>Scala</strong> и особенностях синтаксиса/языка по сравнению с <strong>Java</strong>. В этом посте попробую рассмотреть <strong>Scala Actors</strong>. С появлением многоядерных процессоров параллельное программирование становится незаменимым. Параллелизм в <strong>Scala</strong> строиться в первую очередь с помощью <strong>actors</strong>. <strong>Actors</strong> это параллельные процессы, которые взаимодействуют путем обмена сообщениями. <strong>Actors</strong> можно также рассматривать как одну из форм активных объектов, где применение метода соответствует посылке сообщений.
 

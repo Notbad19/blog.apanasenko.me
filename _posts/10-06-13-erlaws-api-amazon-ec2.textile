@@ -8,9 +8,10 @@ categories:
 - aws
 - ec2
 - erlang
+image: http://sameshirteveryday.com/wp-content/uploads/2009/10/erlan_logo.jpg
 ---
 
-<div class="separator" style="clear: both; text-align: center;"><a href="http://github.com/dieu/erlaws" alt="erlaws" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="http://sameshirteveryday.com/wp-content/uploads/2009/10/erlan_logo.jpg" alt="erlaws" height="400"/></a></div>
+<center><a href="http://github.com/dieu/erlaws" alt="erlaws"><img src="http://sameshirteveryday.com/wp-content/uploads/2009/10/erlan_logo.jpg" alt="erlaws" height="400"/></a></center>
 
 На днях понадбилась библиотека для работы с *Amazon EC2* из под <strong>Erlang</strong>'a, но адекватных предложений не было (гугл в принципе не нашел ни одного варианта). По этому пришлось взять существующую библиотеку для других сервисов Amazon'a и добавить в неё поддержку EC2. Встречайте "Erlaws (Erlaws)":http://github.com/dieu/erlaws :)
 

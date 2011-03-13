@@ -2,11 +2,7 @@
 layout: default
 ---
 
-{% if page.author %}
-  This is a guest post written by <a href="http://twitter.com/{{ page.author.twitter }}" title="{{ page.author.full}}">@{{ page.author.twitter }}</a>. {{ page.author.description }}
-{% endif %}
-
-<span id="article_buttons">
+<!-- <span id="article_buttons">
   <a id="tweet">
     <span class="balloon">tweet!</span> <img src="/images/tweet.png"/ alt="tweet"/>
   </a>
@@ -15,9 +11,9 @@ layout: default
   </a>
 </span>
 
-<hr/>
+<hr/> -->
 
-<div id="content">
+<div class="content">
 	{{ content }}
 
 	{% if page.categories %}
@@ -41,6 +37,12 @@ layout: default
    dsq.src = 'http://dieu.disqus.com/embed.js';
    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
   })();
+</script>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<script type="text/javascript">
+	$('#main').removeClass('selected');
+	$('#post').addClass('selected');
 </script>
 
 <!--

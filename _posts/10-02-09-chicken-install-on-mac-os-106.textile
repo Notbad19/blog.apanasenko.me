@@ -8,10 +8,10 @@ categories:
 - fp
 - mac os
 - scheme
+image: http://lh5.ggpht.com/_wN3Yn5K_LYs/S3E8PPuvQtI/AAAAAAAAALA/DBuAElszD5s/chicken4-low.png?imgmax=800
 ---
 
-<div style="text-align: center;">
-<img alt="chicken4-low.png" border="0" height="400" src="http://lh5.ggpht.com/_wN3Yn5K_LYs/S3E8PPuvQtI/AAAAAAAAALA/DBuAElszD5s/chicken4-low.png?imgmax=800" width="335" /></div>
+<center><img alt="chicken4-low.png" height="400" src="http://lh5.ggpht.com/_wN3Yn5K_LYs/S3E8PPuvQtI/AAAAAAAAALA/DBuAElszD5s/chicken4-low.png?imgmax=800" width="335" /></center>
 
 Недавно занялся изучением <b>Scheme</b> и для этого стал использовать текстовый редактор <b>TextMate</b>, который имеет интеграцию в виде bundl'a с интерпретатором <b>Chicken</b>. И так приступим к выявлению проблем и героическому решению...
 

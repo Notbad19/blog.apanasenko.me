@@ -8,12 +8,11 @@ categories:
 - rabbitmq
 - client
 - build
+image: http://www.rabbitmq.com/img/rabbitmq_logo_strap.png
 ---
-<div style="clear: both; text-align: center;">
-	<br/><br/><br/><br/><br/>
-	<a href="http://www.rabbitmq.com/" alt="RabbitMQ Server" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img src="http://www.rabbitmq.com/img/rabbitmq_logo_strap.png" alt="RabbitMQ" width="361" height="76"/></a>
-	<br/><br/><br/><br/><br/>
-</div>
+<center>
+	<a href="http://www.rabbitmq.com/" alt="RabbitMQ Server"><img src="http://www.rabbitmq.com/img/rabbitmq_logo_strap.png" alt="RabbitMQ" width="361" height="76"/></a>
+</center>
 
 Пишу для себя маленький гайд по сборке и установке Erlang клиента для RabbiMQ, а то каждый раз все заново проходиться делать :) Ревизии приведены для версии 2.0.0, а пути к директории Erlang/lib для Ubuntu 10.04. Для OS X, надо будет поменять /usr/lib на /opt/local/lib/, если Erlang ставили из портов.
 

@@ -7,10 +7,10 @@ categories:
 - java
 - nosql
 - cassandra
+image: http://cassandra.apache.org/media/img/cassandra_logo.png
 ---
 
-<div class="separator" style="clear: both; text-align: center;">
-<a href="http://cassandra.apache.org/media/img/cassandra_logo.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="64" src="http://cassandra.apache.org/media/img/cassandra_logo.png" width="320" /></a></div>
+<center><a href="http://cassandra.apache.org/media/img/cassandra_logo.png"><img height="64" src="http://cassandra.apache.org/media/img/cassandra_logo.png" width="320" /></a></center>
 
 <strong>Cassandra</strong> - это <strong>NoSQL</strong> хранилище данных, которое родилось в <strong>Facebook</strong> и успешно используется в таких крупных веб проектах, как <strong>Digg</strong>, <strong>Twitter</strong> и других. <strong>Cassandra</strong> основана на <strong>Columnfamily</strong> (первый кто использовал данный подход в NoSQL хранилище "Google co своей BigTable":http://labs.google.com/papers/bigtable-osdi06.pdf ) моделе. В ней, у вас есть строки и столбцы, как вы и привыкли видеть.
 

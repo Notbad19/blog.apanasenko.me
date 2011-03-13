@@ -1,68 +1,29 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta name="google-site-verification" content="bb8epm6suyHfvYU-yFKhhYMyg3SQ__QndlyH-vBmiAk"/>
-  <meta name='yandex-verification' content='74e7c4ae6d68c097'/>
-  <meta name="viewport" content="width=950, maximum-scale=1.0" />
-  <meta name="description" content="<strong>DVCS</strong> (Distributed Version Control System) - это распределенные системы контроля версий, которые в общем случае не нуждаются в централизованном хранилище. Это их главное преимущество перед традиционными системами (CVS, SVN, etc), оно начинает проявляться и выручать при достаточно большой и распределенной команде разработчиков. Это очень удобно когда можно работать без доступа к центральному репозиторию или когда есть возможность делиться своими "экспериментальными" на работками с другими участниками разработки." />
-  <meta http-equiv="description" content="<strong>DVCS</strong> (Distributed Version Control System) - это распределенные системы контроля версий, которые в общем случае не нуждаются в централизованном хранилище. Это их главное преимущество перед традиционными системами (CVS, SVN, etc), оно начинает проявляться и выручать при достаточно большой и распределенной команде разработчиков. Это очень удобно когда можно работать без доступа к центральному репозиторию или когда есть возможность делиться своими "экспериментальными" на работками с другими участниками разработки."/> 
-  <meta name="robots" content="all"/> 
-  <meta name="resourse-type" content="document"/> 
-  <meta name="document-state" content="dynamic"/> 
-  <meta name="revisit-after" content="1 days"/> 
-  <meta http-equiv="author" content="Anton Panasenko"/>
-  <meta name="copyright" content="Copyright (C) 2011 "/> 
-  <meta name="document-state" content="dynamic"/> 
-  <link rev="made" href="anton.panasenko@gmail.com"/> 
-  <meta http-equiv="reply-to" content="anton.panasenko@gmail.com"/> 
-  <meta name="site-created" content="Anton Panasenko - blog.apanasenko.me"/> 
-  <meta name="addres" content="blog.apanasenko.me"/> 
-  <meta name="distribution" content="global"/> 
-  <title>
-    Mercurial Hg -  Anton Panasenko
-  </title>
-  <link rel="stylesheet" href="/css/reset.css" type="text/css"/>
-  
-  <link rel="stylesheet" href="/css/screen.css" type="text/css"/>
-  <link rel="stylesheet" href="/css/syntax.css" type="text/css"/>
-  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="/css/iphone.css" type="text/css"/>
-  <link rel="stylesheet" media="only screen and (max-device-width: 1024px)" href="/css/ipad.css" type="text/css"/>
-  <link rel="alternate" type="application/atom+xml" href="http://feeds.feedburner.com/apanasenko"/>
-  <link href="/images/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
-  <link href="/images/icon.jpg" rel="apple-touch-icon"/>
-</head>
+	<head>
+ 	  	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	  	<title>
+	    	 Mercurial Hg  
+	  	</title>
+		<link rel="stylesheet" href="/css/style.css" type="text/css" media="all"/>
+	</head>
 <body>
-  <div id="wrapper">
-    <div class="center"><a href="http://blog.apanasenko.me/"><img class="header" alt="header image" src="/images/header.jpg"/></a></div>
-    <div id="inner">
-      <div id="container">
-        <div id="header">
-          <h1>
-            
-              <a href="/">&larr; Anton Panasenko</a>
-            
-          </h1>
-          <ul class="header">
-            <li>
-              <a href="/archive">Archive</a>
-            </li>
-	    <li>
-		<a href="http://ru.linkedin.com/in/apanasenko/">LinkedIn <span class="arrow">&rarr;</span></a>
-	    </li>
-            <li>
-		<a href="http://github.com/dieu">Github <span class="arrow">&rarr;</span></a>
-            </li>
-            <li>
-              <a href="http://twitter.com/apanasenko">Twitter <span class="arrow">&rarr;</span></a>
-            </li>
-          </ul>
-          <hr class="right"/>
-        </div>
-        <h2>Mercurial Hg</h2>
-        
-
-<span id="article_buttons">
+<div id="header">
+	<ul id="nav" class="nav"> 
+		<li id="main" class="selected"><a href="/"><strong>Home</strong><span>main page</span></a></li> 
+		<li id="post"><a href="/2009/11/mercurial-hg"><strong>Blog</strong> <span>post</span></a></li>
+		<li id="archive"><a href="/archive"><strong>Archive</strong></a></li> 
+		<li><a href="http://ru.linkedin.com/in/apanasenko/"><strong>LinkedIn</strong> <span>&rarr;</span></a></li> 
+		<li><a href="http://github.com/dieu"><strong>Github</strong> <span>&rarr;</span></a></li> 
+		<li><a href="http://twitter.com/apanasenko"><strong>Twitter</strong> <span>&rarr;</span></a></li> 
+	</ul>
+</div>
+<div id="container">			
+	<div class="bar"> 
+	</div> 
+	<br/>
+	<div id="content">
+			<!-- <span id="article_buttons">
   <a id="tweet">
     <span class="balloon">tweet!</span> <img src="/images/tweet.png"/ alt="tweet"/>
   </a>
@@ -71,9 +32,9 @@
   </a>
 </span>
 
-<hr/>
+<hr/> -->
 
-<div id="content">
+<div class="content">
 	<p><strong><span class="caps">DVCS</span></strong> (Distributed Version Control System) &#8211; это распределенные системы контроля версий, которые в общем случае не нуждаются в централизованном хранилище. Это их главное преимущество перед традиционными системами (<span class="caps">CVS</span>, <span class="caps">SVN</span>, etc), оно начинает проявляться и выручать при достаточно большой и распределенной команде разработчиков. Это очень удобно когда можно работать без доступа к центральному репозиторию или когда есть возможность делиться своими &#8220;экспериментальными&#8221; на работками с другими участниками разработки. Известные представители этого семейства:</p>
 <ol>
 	<li>Darcs;</li>
@@ -83,8 +44,7 @@
 	<li>Mercurial.</li>
 </ol>
 <h4>Mercurial</h4>
-<div style="text-align:center;">
-<p><img src="http://lh6.ggpht.com/_wN3Yn5K_LYs/Sv9RZPG2API/AAAAAAAAACs/I0Qq9icgvCA/Mercurial_logo.png?imgmax=800" alt="Mercurial_logo.png" border="0" width="200" height="240" /></div></p>
+<center><img src="http://lh6.ggpht.com/_wN3Yn5K_LYs/Sv9RZPG2API/AAAAAAAAACs/I0Qq9icgvCA/Mercurial_logo.png?imgmax=800" alt="Mercurial_logo.png" width="200" height="240" /></center>
 <p><strong>Mercurial</strong> популярная система контроля версий, список использующих в качестве основной системы контроля версий достаточно впечатляющий:</p>
 <ol>
 	<li>Mozilla</li>
@@ -114,127 +74,84 @@
 </ol>
 <p>Mercurial написан на Python&#8217;e, но особо узкие места были переписаны в виде Python-C расширений. Hg умеет работать поверх протоколов <span class="caps">HTTP</span>/<span class="caps">HTTPS</span> и <span class="caps">SSH</span>. Локальный сервер репозитория очень лекго умеет подниматься с помощью команды hg serve в корне локального репозитория (сервер поднимается на порту 8000). Из личного опыта Mercurail очень производителен и легок в обращении, за счет основы в виде Python&#8217;a отлично интегрируется во все популярные платформы. Так же имеет кросплатформенный <span class="caps">GUI</span> клиент <a href="http://bitbucket.org/tortoisehg/stable/wiki/Home">TortoiseHg</a>, который интегрируется как в Windows, так и в Gnome/Nautilus.</p>
 <h4>Основные команды</h4>
-<div>
-<pre>
-<code class='bash'>hg clone [address]</code>
-</pre>
-</div>
-<p>Для создания рабочей копии.</p>
-<div>
-<pre>
-<code class='bash'>hg pull [address]</code>
-</pre>
-</div>
-<p>Для скачивания последней ревизии.</p>
-<div>
-<pre>
-<code class='bash'>hg add [file]</code>
-</pre>
-</div>
-<p>Для добавления файла в новый коммит.</p>
-<div>
-<pre>
-<code class='bash'>hg push [address]</code>
-</pre>
-</div>
-<p>Для добавления последних коммитов в удаленный репозиторий.</p>
-<div>
-<pre>
-<code class='bash'>hg commit</code>
-</pre>
-</div>
-<p>Для добавления нового коммита в рабочую копию.</p>
-<div>
-<pre>
-<code class='bash'>hg merge</code>
-</pre>
-</div>
-<p>Для мержа конфликтов.</p>
-<div>
-<pre>
-<code class='bash'>hg resolve</code>
-</pre>
-</div>
-<p>Для возврата к последнему валидному коммиту после не удачного мержа.</p>
-<div>
-<pre>
-<code class='bash'>hg up</code>
-</pre>
-</div>
-<p>Для обновления рабочей копии.</p>
+<div class="highlight"><pre><code class="bash">hg clone <span class="o">[</span>address<span class="o">]</span>
+</code></pre>
+</div><p>Для создания рабочей копии.</p>
+<div class="highlight"><pre><code class="bash">hg pull <span class="o">[</span>address<span class="o">]</span>
+</code></pre>
+</div><p>Для скачивания последней ревизии.</p>
+<div class="highlight"><pre><code class="bash">hg add <span class="o">[</span>file<span class="o">]</span>
+</code></pre>
+</div><p>Для добавления файла в новый коммит.</p>
+<div class="highlight"><pre><code class="bash">hg push <span class="o">[</span>address<span class="o">]</span>
+</code></pre>
+</div><p>Для добавления последних коммитов в удаленный репозиторий.</p>
+<div class="highlight"><pre><code class="bash">hg commit
+</code></pre>
+</div><p>Для добавления нового коммита в рабочую копию.</p>
+<div class="highlight"><pre><code class="bash">hg merge
+</code></pre>
+</div><p>Для мержа конфликтов.</p>
+<div class="highlight"><pre><code class="bash">hg resolve
+</code></pre>
+</div><p>Для возврата к последнему валидному коммиту после не удачного мержа.</p>
+<div class="highlight"><pre><code class="bash">hg up
+</code></pre>
+</div><p>Для обновления рабочей копии.</p>
 <h4>Плагины</h4>
 <p>Для установки плагинов достаточно записать строку с названием после [extensions] в файл .hgrc (в корне домашней директории).</p>
 <p>fetch — выполняет обновление рабочей копии, merge (если нет конфликтов) и commit.</p>
-<div>
-<pre>
-<code class='bash'>fetch =</code>
-</pre>
-</div>
-<p>purge — отчищает все файлы, которые не были добавлены в рабочую копию (commit)</p>
-<div>
-<pre>
-<code class='bash'>purge =</code>
-</pre>
-</div>
-<p>color — раскрашивает вывод команд</p>
-<div>
-<pre>
-<code class='bash'>color =</code>
-</pre>
-</div>
-<p>churn — добавляет не которые метрики по вашему репозиторию.</p>
-<div>
-<pre>
-<code class='bash'>churn =</code>
-</pre>
-</div>
-<p>Так же надо добавить</p>
-<div>
-<pre>
-<code class='bash'>churn = --progress</code>
-</pre>
-</div>
-<p>в [defaults] секцию</p>
+<div class="highlight"><pre><code class="bash"><span class="nv">fetch</span> <span class="o">=</span> 
+</code></pre>
+</div><p>purge — отчищает все файлы, которые не были добавлены в рабочую копию (commit)</p>
+<div class="highlight"><pre><code class="bash"><span class="nv">purge</span> <span class="o">=</span> 
+</code></pre>
+</div><p>color — раскрашивает вывод команд</p>
+<div class="highlight"><pre><code class="bash"><span class="nv">color</span> <span class="o">=</span> 
+</code></pre>
+</div><p>churn — добавляет не которые метрики по вашему репозиторию.</p>
+<div class="highlight"><pre><code class="bash"><span class="nv">churn</span> <span class="o">=</span> 
+</code></pre>
+</div><p>Так же надо добавить</p>
+<div class="highlight"><pre><code class="bash"><span class="nv">churn</span> <span class="o">=</span> --progress
+</code></pre>
+</div><p>в [defaults] секцию</p>
 <p>graphlog — дает возможность получить графическое представление лога репозитория</p>
-<div>
-<pre>
-<code class='bash'>graphlog =</code>
-</pre>
-</div>
-<p>Для работы локального репозитория без ssl не обходимо добавить</p>
-<div>
-<pre>
-<code class='bash'>[web]
-<p>allow_push = *<br />
-push_ssl = false</code><br />
-  </pre></p>
-</div>
-<p>в ~/.hgrc файл.</p>
+<div class="highlight"><pre><code class="bash"><span class="nv">graphlog</span> <span class="o">=</span> 
+</code></pre>
+</div><p>Для работы локального репозитория без ssl не обходимо добавить</p>
+<div class="highlight"><pre><code class="bash"><span class="o">[</span>web<span class="o">]</span>
+<span class="nv">allow_push</span> <span class="o">=</span> *
+<span class="nv">push_ssl</span> <span class="o">=</span> <span class="nb">false</span> 
+</code></pre>
+</div><p>в ~/.hgrc файл.</p>
 <h4>Пример файла .hgrc</h4>
-<div>
-<pre>
-<code class='bash'>[auth]
-<p>project.prefix = [address]<br />
-project.username = [username]<br />
-project.password = [password]<br />
-project.schemes = http https</p>
-<p>[ui]<br />
-username = &quot;Anton Panasenko&quot;<br />
-style = compact</p>
-<p>[defaults]<br />
-branches = &#8212;active<br />
-churn = &#8212;progress</p>
-<p>[extensions]<br />
-churn =<br />
-color =<br />
-graphlog =<br />
-fetch = <br />
-purge = <br />
-pager = <br />
-rebase =</p>
-<p>[pager]<br />
-attend = log, glog</code><br />
-  </pre></p>
+<div class="highlight"><pre><code class="bash"><span class="o">[</span>auth<span class="o">]</span>
+project.prefix <span class="o">=</span> <span class="o">[</span>address<span class="o">]</span>
+project.username <span class="o">=</span> <span class="o">[</span>username<span class="o">]</span>
+project.password <span class="o">=</span> <span class="o">[</span>password<span class="o">]</span>
+project.schemes <span class="o">=</span> http https
+
+<span class="o">[</span>ui<span class="o">]</span>
+<span class="nv">username</span> <span class="o">=</span> <span class="s2">&quot;Anton Panasenko&quot;</span>
+<span class="nv">style</span> <span class="o">=</span> compact
+
+<span class="o">[</span>defaults<span class="o">]</span>
+<span class="nv">branches</span> <span class="o">=</span> --active
+<span class="nv">churn</span> <span class="o">=</span> --progress
+
+<span class="o">[</span>extensions<span class="o">]</span>
+<span class="nv">churn</span> <span class="o">=</span>
+<span class="nv">color</span> <span class="o">=</span>
+<span class="nv">graphlog</span> <span class="o">=</span>
+<span class="nv">fetch</span> <span class="o">=</span> 
+<span class="nv">purge</span> <span class="o">=</span> 
+<span class="nv">pager</span> <span class="o">=</span> 
+<span class="nv">rebase</span> <span class="o">=</span> 
+
+<span class="o">[</span>pager<span class="o">]</span>
+<span class="nv">attend</span> <span class="o">=</span> log, glog
+</code></pre>
 </div>
 
 	
@@ -264,45 +181,30 @@ attend = log, glog</code><br />
   })();
 </script>
 
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<script type="text/javascript">
+	$('#main').removeClass('selected');
+	$('#post').addClass('selected');
+</script>
+
 <!--
 
 -->
 
-      </div>
+	</div>
+</div>
+<!-- <div id="footer">
+	<a href="">Source code</a>
+</div> -->
 
-      <div id="slide_bar">
-		<div id="subscribe">
-			<a href="http://feeds.feedburner.com/apanasenko" rel="alternate" title="feed" type="application/rss+xml"><img alt="rss" src="http://lh3.ggpht.com/_wN3Yn5K_LYs/SviFaWzVaAI/AAAAAAAAACE/t5QGxBDsiMs/rss.png"/></a>
-		</div>	
-        <div id="cloud_tag">
-          <div id="cloud_tag_div">
-                <ol id="tag-cloud"><li title="1 post"><a href="/search/label/actors">actors</a></li> <li title="1 post"><a href="/search/label/alice">alice</a></li> <li title="2 posts"><a href="/search/label/amazon">amazon</a></li> <li title="1 post"><a href="/search/label/apple">apple</a></li> <li title="1 post"><a href="/search/label/aws">aws</a></li> <li title="1 post"><a href="/search/label/azure">azure</a></li> <li title="1 post"><a href="/search/label/blog">blog</a></li> <li title="1 post"><a href="/search/label/book">book</a></li> <li title="1 post"><a href="/search/label/build">build</a></li> <li title="1 post"><a href="/search/label/cassandra">cassandra</a></li> <li title="1 post"><a href="/search/label/chef">chef</a></li> <li title="1 post"><a href="/search/label/client">client</a></li> <li title="1 post"><a href="/search/label/clips">clips</a></li> <li title="1 post"><a href="/search/label/clojure">clojure</a></li> <li title="1 post"><a href="/search/label/cloud">cloud</a></li> <li title="1 post"><a href="/search/label/consistent">consistent</a></li> <li title="1 post"><a href="/search/label/db">db</a></li> <li title="1 post"><a href="/search/label/deploy">deploy</a></li> <li title="1 post"><a href="/search/label/django">django</a></li> <li title="2 posts"><a href="/search/label/dvcs">dvcs</a></li> <li title="2 posts"><a href="/search/label/ec2">ec2</a></li> <li title="4 posts"><a href="/search/label/erlang">erlang</a></li> <li title="5 posts"><a href="/search/label/fl">fl</a></li> <li title="5 posts"><a href="/search/label/fp">fp</a></li> <li title="1 post"><a href="/search/label/gen_server">gen_server</a></li> <li title="1 post"><a href="/search/label/gfs">gfs</a></li> <li title="1 post"><a href="/search/label/git">git</a></li> <li title="1 post"><a href="/search/label/github">github</a></li> <li title="2 posts"><a href="/search/label/google">google</a></li> <li title="2 posts"><a href="/search/label/grid">grid</a></li> <li title="1 post"><a href="/search/label/hash">hash</a></li> <li title="2 posts"><a href="/search/label/hg">hg</a></li> <li title="1 post"><a href="/search/label/ipad">ipad</a></li> <li title="2 posts"><a href="/search/label/java">java</a></li> <li title="1 post"><a href="/search/label/jekyll">jekyll</a></li> <li title="3 posts"><a href="/search/label/jvm">jvm</a></li> <li title="1 post"><a href="/search/label/mac os">mac os</a></li> <li title="1 post"><a href="/search/label/mapreduce">mapreduce</a></li> <li title="1 post"><a href="/search/label/mercurial">mercurial</a></li> <li title="2 posts"><a href="/search/label/nosql">nosql</a></li> <li title="1 post"><a href="/search/label/objective-c">objective-c</a></li> <li title="1 post"><a href="/search/label/osgi">osgi</a></li> <li title="1 post"><a href="/search/label/pax">pax</a></li> <li title="1 post"><a href="/search/label/python">python</a></li> <li title="2 posts"><a href="/search/label/rabbitmq">rabbitmq</a></li> <li title="1 post"><a href="/search/label/ruby">ruby</a></li> <li title="3 posts"><a href="/search/label/scala">scala</a></li> <li title="1 post"><a href="/search/label/scheme">scheme</a></li> <li title="1 post"><a href="/search/label/server">server</a></li></ol>
-
-          </div>
-        </div>
-		<br/>
-		<div id="iready">
-	    	<ol>
-<li><a href="http://alenacpp.blogspot.com/">Алена С++</a></li>
-<li></li>
-<li><a href="http://samolisov.blogspot.com/">Челябинский Программист</a></li>
-</ol>
-        </div>
-        <br/>
-      </div> 
-    </div>
-  </div>
-
-  <script src="/js/jquery.js" type="text/javascript"></script>
-  <script src="/js/twitter.js" type="text/javascript"></script>
-  <script type="text/javascript">
-	var disqus_shortname = 'dieu';
-	(function () {
-	    var s = document.createElement('script'); s.async = true;
-	    s.src = 'http://disqus.com/forums/dieu/count.js';
-	    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-	}());
-  </script>
+ <script type="text/javascript">
+var disqus_shortname = 'dieu';
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.src = 'http://disqus.com/forums/dieu/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+ </script>
 
   
 <!-- Yandex.Metrika counter -->

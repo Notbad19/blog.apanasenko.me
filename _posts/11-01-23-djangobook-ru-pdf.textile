@@ -7,9 +7,10 @@ categories:
 - django
 - python
 - book
+image: http://www.loggly.com/wp-content/uploads/2010/05/django-logo-positive.png
 ---
 
-<div class="center"><img src="http://www.loggly.com/wp-content/uploads/2010/05/django-logo-positive.png" alt="Django" height="240"/></div>
+<center><img src="http://www.loggly.com/wp-content/uploads/2010/05/django-logo-positive.png" alt="Django" height="240"/></center>
 
 Появилась нужда разобраться с Django фреймворком и сразу же озадачился поиском хорошей литературы. Первым делом нашел замечательный "проект по переводу":http://djbook.ru/ "djangobook":http://djangobook.com/ на русский, но автор по каким-то своим причинам не захотел отдавать билд систему для сборки в каком нибудь вменяемом формате (читать с сайта, не очень удобно). Хотя "исходники книги":https://github.com/RaD/djangobook в DocBook формате выложил, за что ему спасибо. По этому пришлось самому разбираться с этим форматом (как, чем можно скомпилировать книгу в pdf).
 

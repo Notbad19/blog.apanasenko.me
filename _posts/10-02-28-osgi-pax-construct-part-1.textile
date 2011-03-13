@@ -1,16 +1,16 @@
 ---
 layout: post
 title: OSGI Pax Constructor
-excerpt: Сегодня хотел бы рассказать о таком инструменте, как Pax Construct. Это фактически индустриальный стандарт для ведения проектов на основе технологии <b>OSGi</b>. Он доступен как стандэлон приложение, так и как плагин для maven2. <b>Pax Construct</b> предоставляет вам множество инструментов для проектов на основе OSGi, которые помогут вам быстро создавать и управлять вашим проектом. Основная функциональность обеспечивается за счет гибкой архитектуры и интеграции с <b>maven2</b>, что улучшает и упрощает процесс сборки OSGi проектов под Maven, так же доступные основные архетипы для новых проектов.
+excerpt: Сегодня хотел бы рассказать о таком инструменте, как Pax Construct. Это фактически индустриальный стандарт для ведения проектов на основе технологии <b>OSGi</b>. Он доступен как стандэлон приложение, так и как плагин для maven2. <b>Pax Construct</b> предоставляет вам множество инструментов для проектов на основе OSGi, которые помогут вам быстро создавать и управлять вашим проектом.
 published: true
 categories:
 - java
 - osgi
 - pax
+image: http://lh3.ggpht.com/_wN3Yn5K_LYs/S4qgrm96rhI/AAAAAAAAALs/8oaJzXA9RLE/pax-construct.png
 ---
 
-<div style="text-align: center;">
-<img alt="pax-construct.png" border="0" height="278" src="http://lh3.ggpht.com/_wN3Yn5K_LYs/S4qgrm96rhI/AAAAAAAAALs/8oaJzXA9RLE/pax-construct.png?imgmax=800" width="417" /></div>
+<center><img alt="pax-construct.png" height="278" src="http://lh3.ggpht.com/_wN3Yn5K_LYs/S4qgrm96rhI/AAAAAAAAALs/8oaJzXA9RLE/pax-construct.png?imgmax=800" width="417" /></center>
 
 Сегодня хотел бы рассказать о таком инструменте, как "Pax Construct":http://wiki.ops4j.org/display/paxconstruct/Pax+Construct. Это фактически индустриальный стандарт для ведения проектов на основе технологии <b>OSGi</b>. Он доступен как "стандэлон приложение":http://wiki.ops4j.org/display/paxconstruct/Download, так и как плагин для "maven2":http://www.ops4j.org/projects/pax/construct/. <b>Pax Construct</b> предоставляет вам множество инструментов для проектов на основе OSGi, которые помогут вам быстро создавать и управлять вашим проектом. Основная функциональность обеспечивается за счет гибкой архитектуры и интеграции с <b>maven2</b>, что улучшает и упрощает процесс сборки OSGi проектов под Maven, так же доступные основные архетипы для новых проектов.
 
